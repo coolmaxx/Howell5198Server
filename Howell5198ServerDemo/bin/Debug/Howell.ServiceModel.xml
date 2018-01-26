@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Howell.ServiceModel</name>
+    </assembly>
+    <members>
+        <member name="T:Howell.ServiceModel.Log.ServiceEventLog">
+            <summary>
+            服务的事件查看器日志写入工具    
+            </summary>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.#ctor(System.Diagnostics.EventLog)">
+            <summary>
+            
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ToMessage(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Debug(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Debug(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.DebugFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.DebugFormat(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.DebugFormat(System.String,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.DebugFormat(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.DebugFormat(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Error(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Error(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ErrorFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ErrorFormat(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ErrorFormat(System.String,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ErrorFormat(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.ErrorFormat(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Fatal(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Fatal(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.FatalFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.FatalFormat(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.FatalFormat(System.String,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.FatalFormat(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.FatalFormat(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Info(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Info(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.InfoFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.InfoFormat(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.InfoFormat(System.String,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.InfoFormat(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.InfoFormat(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Warn(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Warn(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.WarnFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.WarnFormat(System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+            <param name="arg2"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.WarnFormat(System.String,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+            <param name="arg1"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.WarnFormat(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="arg0"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.WarnFormat(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.IsEnabledFor(log4net.Core.Level)">
+            <summary>
+            
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Log(log4net.Core.LoggingEvent)">
+            <summary>
+            
+            </summary>
+            <param name="logEvent"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.Log.ServiceEventLog.Log(System.Type,log4net.Core.Level,System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="callerStackBoundaryDeclaringType"></param>
+            <param name="level"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.IsDebugEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.IsErrorEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.IsFatalEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.IsInfoEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.IsWarnEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.Name">
+            <summary>
+            日志查看器对象名称
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.Log.ServiceEventLog.Repository">
+            <summary>
+            日志仓库
+            </summary>
+        </member>
+        <member name="T:Howell.ServiceModel.ServiceManager">
+            <summary>
+            服务管理器
+            可以多个服务同时开启与关闭
+            </summary>
+        </member>
+        <member name="M:Howell.ServiceModel.ServiceManager.#ctor(System.ServiceModel.ServiceHost[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell.ServiceModel.ServiceManager.#ctor(System.ServiceModel.ServiceHost[],log4net.ILog)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Howell.ServiceModel.ServiceManager.Run">
+            <summary>
+            运行所有的服务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.ServiceModel.ServiceManager.Stop">
+            <summary>
+            停止所有的服务
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.ServiceManager.Logger">
+            <summary>
+            日志器
+            </summary>
+        </member>
+        <member name="P:Howell.ServiceModel.ServiceManager.Services">
+            <summary>
+            当前服务管理器内的服务对象列表信息
+            </summary>
+        </member>
+    </members>
+</doc>

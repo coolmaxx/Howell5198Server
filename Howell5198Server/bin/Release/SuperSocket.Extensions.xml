@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperSocket.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeader">
+            <summary>
+            固定长度头基类
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.Validated">
+            <summary>
+            头结构是否合法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.GetBytes">
+            <summary>
+            将固定长度头对象转换为字节数组
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            将字节数组转换为固定长度头对象
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.GetFixedHeaderLength">
+            <summary>
+            获取固定长度头的长度
+            </summary>
+            <returns>返回固定长度头的长度</returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.GetPayloadLength">
+            <summary>
+            获取载荷数据长度
+            </summary>
+            <returns>返回载荷数据长度</returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeader.SetPayloadLength(System.Int32)">
+            <summary>
+            设置载荷数据长度
+            </summary>
+            <param name="payloadLength">载荷数据长度</param>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession`1">
+            <summary>
+            协议服务端会话对象
+            </summary>
+            <typeparam name="TFixedHeader">数据包头结构类型</typeparam>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession`1.Send(SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo{`0})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="packageInfo"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession`1.TrySend(SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo{`0})">
+            <summary>
+            Try send message.
+            </summary>
+            <param name="packageInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1">
+            <summary>
+            固定头协议服务器对象
+            </summary>
+            <typeparam name="TFixedHeader">数据包头结构类型</typeparam>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,SuperSocket.SocketBase.SocketMode)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="mode">SOCKET侦听模式，TCP/UDP</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,SuperSocket.SocketBase.SocketMode,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="mode">SOCKET侦听模式，TCP/UDP</param>
+            <param name="sendTimeOut">发送超时时间，单位：毫秒</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,SuperSocket.SocketBase.SocketMode,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="mode">SOCKET侦听模式，TCP/UDP</param>
+            <param name="sendTimeOut">发送超时时间，单位：毫秒</param>
+            <param name="receiveBufferSize">接收缓存大小, 默认:4096字节</param>
+            <param name="sendBufferSize">发送缓存大小, 默认:4096字节</param>
+            <param name="sendingQueueSize">发送队列长度，默认:5</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="ssl">是否启用SSL安全连接</param>
+            <param name="certFilePath">证书路径</param>
+            <param name="certPassword">证书密码</param>
+            <param name="clientCertificateRequired">是否需要客户端也提供证书</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="ssl">是否启用SSL安全连接</param>
+            <param name="certFilePath">证书路径</param>
+            <param name="certPassword">证书密码</param>
+            <param name="clientCertificateRequired">是否需要客户端也提供证书</param>
+            <param name="sendTimeOut">发送超时时间，单位：毫秒</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port">本地侦听端口号</param>
+            <param name="maxRequestLength">最大单包长度，单位字节</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="ssl">是否启用SSL安全连接</param>
+            <param name="certFilePath">证书路径</param>
+            <param name="certPassword">证书密码</param>
+            <param name="clientCertificateRequired">是否需要客户端也提供证书</param>
+            <param name="sendTimeOut">发送超时时间，单位：毫秒</param>
+            <param name="receiveBufferSize">接收缓存大小, 默认:4096字节</param>
+            <param name="sendBufferSize">发送缓存大小, 默认:4096字节</param>
+            <param name="sendingQueueSize">发送队列长度，默认:5</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.ValidateClientCertificate(SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession{`0},System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="sender"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="sslPolicyErrors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.OnNewSessionConnected(SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession{`0})">
+            <summary>
+            OnNewSessionConnected
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.OnSessionClosed(SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession{`0},SuperSocket.SocketBase.CloseReason)">
+            <summary>
+            OnSessionClosed
+            </summary>
+            <param name="session"></param>
+            <param name="reason"></param>
+        </member>
+        <member name="E:SuperSocket.Extensions.Protocol.FixedHeaderProtocolServer`1.ValidateSessionCertificate">
+            <summary>
+            客户端证书认证事件
+            </summary>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.ValidateSessionCertificate`1">
+            <summary>
+            认证客户端会话证书
+            </summary>
+            <typeparam name="TFixedHeader"></typeparam>
+            <param name="session"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="sslPolicyErrors"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeaderPackageReceiveFilter`1">
+            <summary>
+            固定长度包头的接收过滤器
+            </summary>
+            <typeparam name="TFixedHeader">数据包头结构类型</typeparam>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderPackageReceiveFilter`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderPackageReceiveFilter`1.GetBodyLengthFromHeader(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderPackageReceiveFilter`1.ResolveRequestInfo(System.ArraySegment{System.Byte},System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+            <param name="bodyBuffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1">
+            <summary>
+            固定头协议结构的客户端对象
+            </summary>
+            <typeparam name="TFixedHeader">数据包头结构类型</typeparam>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.#ctor(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ipAddress">服务器终结点IP</param>
+            <param name="port">服务器终结点端口号</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.#ctor(System.Net.EndPoint)">
+            <summary>
+            
+            </summary>
+            <param name="remoteEndPoint">服务器终结点</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.#ctor(System.Net.EndPoint,System.Int32)">
+            <summary>
+            create a new media transmission client instance.
+            </summary>
+            <param name="remoteEndPoint">服务器终结点</param>
+            <param name="receiveBufferSize">最大缓存数据字节长度</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.#ctor(System.Net.EndPoint,System.Int32,System.Boolean,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            
+            </summary>
+            <param name="remoteEndPoint"></param>
+            <param name="receiveBufferSize"></param>
+            <param name="ssl">是否启用SSL安全连接</param>
+            <param name="certificate">安全证书</param>
+            <param name="certificateName">证书名字</param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Connect">
+            <summary>
+            Connect to server.
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Close">
+            <summary>
+            Close client connection.
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Send(SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo{`0})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="packageInfo"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.TrySend(SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo{`0})">
+            <summary>
+            Try send message.
+            </summary>
+            <param name="packageInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.TrySend(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Send(System.ArraySegment{System.Byte})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.TrySend(System.ArraySegment{System.Byte})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Send(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.TrySend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})">
+            <summary>
+            Send  message.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Dispose">
+            <summary>
+            dispose.
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.CheckDisposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Timeout">
+            <summary>
+            wait for ack timeout, unit is millisecond.
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.ReceiveBufferSize">
+            <summary>
+            max receive buffer byte count.
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.IsConnected">
+            <summary>
+            Whether media transmission client has connected or not.
+            </summary>
+        </member>
+        <member name="E:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.DataReceived">
+            <summary>
+            Data received event.
+            </summary>
+        </member>
+        <member name="E:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.Error">
+            <summary>
+            Error event of client socket.
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderProtocolClient`1.IsDisposed">
+            <summary>
+            whether disposed or not.
+            </summary>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.ClientErrorEventArgs">
+            <summary>
+            Error event arguments.
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.ClientErrorEventArgs.#ctor(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.ClientErrorEventArgs.Exception">
+            <summary>
+            exception information.
+            </summary>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.ClientDataReceivedEventArgs`1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.ClientDataReceivedEventArgs`1.#ctor(SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo{`0})">
+            <summary>
+            
+            </summary>
+            <param name="packageInfo"></param>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.ClientDataReceivedEventArgs`1.PackageInfo">
+            <summary>
+            package of received data
+            </summary>
+        </member>
+        <member name="T:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1">
+            <summary>
+            固定长度包头的数据包结构
+            </summary>
+            <typeparam name="TFixedHeader">数据包头结构类型</typeparam>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1.#ctor(System.String,`0,System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="header"></param>
+            <param name="payload"></param>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1.Key">
+            <summary>
+            唯一值 
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1.Header">
+            <summary>
+            数据包头结构对象
+            </summary>
+        </member>
+        <member name="P:SuperSocket.Extensions.Protocol.FixedHeaderPackageInfo`1.Payload">
+            <summary>
+            载荷数据
+            </summary>
+        </member>
+    </members>
+</doc>

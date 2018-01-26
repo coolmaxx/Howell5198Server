@@ -1,0 +1,3839 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Howell.Net.DeviceService</name>
+    </assembly>
+    <members>
+        <member name="T:Howell.Net.DeviceService.ViewPoint">
+            <summary>
+            视角
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ViewPoint.Angle">
+            <summary>
+            水平方面的旋转角度，0°位于摄像机组的中间位置，比如： 3摄像机，0°位于摄像机2正中6摄像机，0°位于摄像机3与4相接处，摄像机1正中是-150°，摄像机4正中是30°
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ViewPoint.Distance">
+            <summary>
+            距离画面的距离，与放大率成反比，1表示单视频全屏显示
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ViewPoint.Height">
+            <summary>
+            垂直方向的偏移，+1表示图像的上边缘，-1表示图像的下边缘
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ViewPoint.Fixed">
+            <summary>
+            是否默认固定视角，默认：false
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ViewPoint.Rows">
+            <summary>
+            视频分行显示，视频行数[1,2], 默认：1
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Page.PageIndex">
+            <summary>
+            页码 (必选，页码从1开始，如果返回时0表示没有可用记录)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Page.PageSize">
+            <summary>
+            分页大小 (必选，建议：每页最多不要超过50条)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Page.PageCount">
+            <summary>
+            总页数 (必选，默认填0)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Page.RecordCount">
+            <summary>
+            当前页的记录数目 (必选，默认填0)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Page.TotalRecordCount">
+            <summary>
+            总的记录条数 (必选，默认填0)
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVR">
+            <summary>
+            NVR信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Id">
+            <summary>
+            唯一表示符 Y/N
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Manufacturer">
+            <summary>
+            厂商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Model">
+            <summary>
+            设备型号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Firmware">
+            <summary>
+            固件版本信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.SerialNumber">
+            <summary>
+            设备序列号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.PointOfSale">
+            <summary>
+            零售商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Information">
+            <summary>
+            设备描述 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Username">
+            <summary>
+            登录设备的用户名
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Password">
+            <summary>
+            登录设备的密码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.ProtocolType">
+            <summary>
+            协议类型，Howell5198
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.Uri">
+            <summary>
+            设备访问地址 tcp://ip:port/
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.ExistedInDatabase">
+            <summary>
+            是否已存在与数据库中(只读) 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.NetworkInterface">
+            <summary>
+            网络IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.ChannelCount">
+            <summary>
+            编码通道数量(只读)	N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVR.IsOnline">
+            <summary>
+            是否在线(只读)	N/Y
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRList">
+            <summary>
+            NVR信息列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRList.NVR">
+            <summary>
+            NVR列表
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.IDeviceNetworkContract">
+            <summary>
+            设备网络服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/Network</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.IDeviceNetworkContract.GetNetworkInterfaces">
+            <summary>
+            查询网口信息列表
+            </summary>
+            <returns>返回网口信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.IDeviceNetworkContract.GetNetworkInterface(System.String)">
+            <summary>
+            查询网口信息列表
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回网口信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.IDeviceNetworkContract.GetIPAddress(System.String)">
+            <summary>
+            查询网口的IP地址
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回网口的IP地址</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.IDeviceNetworkContract.SetIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改网口的IP地址
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.IDeviceNetworkContract.SetInternalPort(System.String)">
+            <summary>
+            修改内部网口信息
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.DeviceGPUClient">
+            <summary>
+            GPU信息读取客户端
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DeviceClientBase`1">
+            <summary>
+            客户端基类
+            </summary>
+            <typeparam name="TChannel"></typeparam>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceClientBase`1.#ctor(System.String)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceClientBase`1.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceClientBase`1.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceClientBase`1.SetClientCredential(System.String,System.String,System.String,System.String)">
+            <summary>
+            设置客户端认证信息
+            </summary>
+            <param name="username"></param>
+            <param name="sessionId"></param>
+            <param name="domain"></param>
+            <param name="verifySession">认证Session信息，来自用户认证的加密字符串，字母全部小写</param>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceClientBase`1.Timeout">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.IDeviceGPUContract">
+            <summary>
+            设备GPU服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/GPUs</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.GetGPUs">
+            <summary>
+            查询GPU列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.GetGPU(System.String)">
+            <summary>
+            查询指定GPU信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <returns>返回指定GPU信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.GetDisplayDevices(System.String)">
+            <summary>
+            查询指定GPU下的显示设备信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <returns>返回指定GPU下的显示设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.GetDisplayDevice(System.String,System.String)">
+            <summary>
+            查询指定GPU的指定显示设备信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <returns>返回显示设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.GetEncodingChannel(System.String,System.String)">
+            <summary>
+            查询显示设备对应的编码通道
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <returns>返回编码通道信息，如果没有绑定则返回Null。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.IDeviceGPUContract.SetEncodingChannel(System.String,System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannelIdentifier)">
+            <summary>
+            设置显示设备对应的编码通道
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <param name="identifier">编码通道</param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.#ctor(System.String)">
+            <summary>
+            创建GPU信息读取客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建GPU信息读取客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建GPU信息读取客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.GetGPUs">
+            <summary>
+            查询GPU列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.GetGPU(System.String)">
+            <summary>
+            查询指定GPU信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <returns>返回指定GPU信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.GetDisplayDevices(System.String)">
+            <summary>
+            查询指定GPU下的显示设备信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <returns>返回指定GPU下的显示设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.GetDisplayDevice(System.String,System.String)">
+            <summary>
+            查询指定GPU的指定显示设备信息
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <returns>返回显示设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.GetEncodingChannel(System.String,System.String)">
+            <summary>
+            查询显示设备对应的编码通道
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <returns>返回编码通道信息，如果没有绑定则返回Null。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.GPU.DeviceGPUClient.SetEncodingChannel(System.String,System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannelIdentifier)">
+            <summary>
+            设置显示设备对应的编码通道
+            </summary>
+            <param name="gpuId">GPU唯一标识符</param>
+            <param name="displayId">显示设备唯一标识符</param>
+            <param name="identifier">编码通道</param>
+            <returns></returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.DecodingUnit">
+            <summary>
+            解码单元信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.Id">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.Position">
+            <summary>
+            左上角位置
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.Resolution">
+            <summary>
+            分辨率
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.PanoCameraId">
+            <summary>
+            解码的全景相机ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.DecodingUnit.DisplayDeviceId">
+            <summary>
+            对应的显示设备唯一标识符
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRsClient">
+            <summary>
+            设备NVR信息客户端
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract">
+            <summary>
+            NVR信息契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/NVRs</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRCapabilitiesList(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取NVR型号与能力
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR型号与能力</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.CheckNVRNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的NVR
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.BeginSearch">
+            <summary>
+            开始搜索NVR
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetSearchResult">
+            <summary>
+            获取搜索到的NVR
+            </summary>
+            <returns>返回NVR，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.EndSearch">
+            <summary>
+            停止搜索NVR
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRs(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            查询NVR列表
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.CreateNVR(Howell.Net.DeviceService.NVRs.NVR)">
+            <summary>
+            创建NVR
+            </summary>
+            <param name="nvr">NVR信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVR(System.String)">
+            <summary>
+            查询指定的NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回指定的NVR</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.SetNVR(System.String,Howell.Net.DeviceService.NVRs.NVR)">
+            <summary>
+            修改指定的NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvr">NVR</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.DeleteNVR(System.String)">
+            <summary>
+            删除NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRIPAddress(System.String)">
+            <summary>
+            查询指定的NVR的IP地址
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回指定的NVR</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.SetNVRIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改指定的NVR的IP地址
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.Reboot(System.String)">
+            <summary>
+            重启NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRChannels(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取NVR下的录像通道列表
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR下的录像通道列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRChannel(System.String,System.String)">
+            <summary>
+            获取NVR下的录像通道信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <returns>返回NVR下的录像通道</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.GetNVRChannelStorageAssociation(System.String,System.String)">
+            <summary>
+            获取NVR下的录像通道信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <returns>返回NVR通道关联的录像信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.IDeviceNVRsContract.SetNVRChannelStorageAssociation(System.String,System.String,Howell.Net.DeviceService.NVRs.NVRStorageAssociation)">
+            <summary>
+            设置NVR通道关联的录像信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <param name="storageAssociation">NVR通道关联的录像信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.#ctor(System.String)">
+            <summary>
+            创建设备NVR信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建设备NVR信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建设备NVR信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRCapabilitiesList(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取NVR型号与能力
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR型号与能力</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.CheckNVRNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的NVR
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.BeginSearch">
+            <summary>
+            开始搜索NVR
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetSearchResult">
+            <summary>
+            获取搜索到的NVR
+            </summary>
+            <returns>返回NVR，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.EndSearch">
+            <summary>
+            停止搜索NVR
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRs(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            查询NVR列表
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.CreateNVR(Howell.Net.DeviceService.NVRs.NVR)">
+            <summary>
+            创建NVR
+            </summary>
+            <param name="nvr">NVR信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVR(System.String)">
+            <summary>
+            查询指定的NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回指定的NVR</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.SetNVR(System.String,Howell.Net.DeviceService.NVRs.NVR)">
+            <summary>
+            修改指定的NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvr">NVR</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.DeleteNVR(System.String)">
+            <summary>
+            删除NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRIPAddress(System.String)">
+            <summary>
+            查询指定的NVR的IP地址
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <returns>返回指定的NVR</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.SetNVRIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改指定的NVR的IP地址
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.Reboot(System.String)">
+            <summary>
+            重启NVR
+            </summary>
+            <param name="nvrId">NVRID</param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRChannels(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取NVR下的录像通道列表
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回NVR下的录像通道列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRChannel(System.String,System.String)">
+            <summary>
+            获取NVR下的录像通道信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <returns>返回NVR下的录像通道</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.GetNVRChannelStorageAssociation(System.String,System.String)">
+            <summary>
+            获取NVR下的录像通道信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <returns>返回NVR通道关联的录像信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.NVRs.NVRsClient.SetNVRChannelStorageAssociation(System.String,System.String,Howell.Net.DeviceService.NVRs.NVRStorageAssociation)">
+            <summary>
+            设置NVR通道关联的录像信息
+            </summary>
+            <param name="nvrId">NVRID</param>
+            <param name="nvrChannelId">NVR录像通道ID</param>
+            <param name="storageAssociation">NVR通道关联的录像信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRChannel">
+            <summary>
+            NVR通道信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannel.Id">
+            <summary>
+            唯一标识符 N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannel.Channel">
+            <summary>
+            通道号[1-n]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannel.IsRecording">
+            <summary>
+            是否正在录像
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannel.StorageAssociation">
+            <summary>
+            存储关联
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRChannelList">
+            <summary>
+            NVR通道信息列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannelList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRChannelList.NVRChannel">
+            <summary>
+            NVR通道信息列表
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRStorageAssociation">
+            <summary>
+            NVR存储关联数据
+            如果没有绑定设备则，PanoCameraId,BuildInCameraId,IPAddress,Port 都为空
+            如果绑定的设备，但不是系统内的全景摄像机，则只有IPAddress,Port值有效。
+            如果绑定的设备是系统内的全景摄像机，则全部有效。
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRStorageAssociation.PanoCameraId">
+            <summary>
+            绑定的全景摄像机ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRStorageAssociation.BuildInCameraId">
+            <summary>
+            绑定的内置摄像机ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRStorageAssociation.IPAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRStorageAssociation.Port">
+            <summary>
+            端口号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRStorageAssociation.IsConflict">
+            <summary>
+            是否和其他的NVR通道冲突
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.CPUPerformance">
+            <summary>
+            CPU状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.Name">
+            <summary>
+            名称|描述
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.Utilization">
+            <summary>
+            使用百分比[0,100] 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.NumberOfCores">
+            <summary>
+            核数量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.Frequency">
+            <summary>
+            CPU主频，单位：GHz
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.Temperature">
+            <summary>
+            温度，单位：摄氏度
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.CPUPerformance.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract">
+            <summary>
+            设备网络服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/EncodingDevices</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.BeginSearch">
+            <summary>
+            开始搜索本地编码设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetSearchResult">
+            <summary>
+            获取搜索到的编码设备信息
+            </summary>
+            <returns>返回编码设备信息，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.EndSearch">
+            <summary>
+            停止搜索本地编码设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.CheckEncodingDeviceNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的编码设备
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetEncodingDevices">
+            <summary>
+            查询编码设备列表
+            </summary>
+            <returns>返回编码设备列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.CreateEncodingDevice(Howell.Net.DeviceService.EncodingDevices.EncodingDevice)">
+            <summary>
+            创建编码设备
+            </summary>
+            <param name="encodingDevice">编码设备信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetEncodingDevice(System.String)">
+            <summary>
+            查询指定的编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回指定的编码设备</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.SetEncodingDevice(System.String,Howell.Net.DeviceService.EncodingDevices.EncodingDevice)">
+            <summary>
+            修改指定的编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingDevice">编码设备</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.DeleteEncodingDevice(System.String)">
+            <summary>
+            删除编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetEncodingChannels(System.String)">
+            <summary>
+            查询指定编码设备下的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回编码通道信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.CreateEncodingChannel(System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannel)">
+            <summary>
+            创建指定编码设备下的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannel">编码通道信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetEncodingChannel(System.String,System.String)">
+            <summary>
+            获取指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <returns>返回编码通道信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.SetEncodingChannel(System.String,System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannel)">
+            <summary>
+            设置指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <param name="encodingChannel">编码通道信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.DeleteEncodingChannel(System.String,System.String)">
+            <summary>
+            删除指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.GetIPAddress(System.String)">
+            <summary>
+            获取编码设备的IP地址
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回编码设备的IP地址</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.SetIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改编码设备的IP地址
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.Reboot(System.String)">
+            <summary>
+            重启编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.FactoryDefault(System.String)">
+            <summary>
+            编码设备恢复出厂值
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.IEncodingDeviceContract.Upgrade(System.String,System.IO.Stream)">
+            <summary>
+            升级设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="stream">升级包的二进制数据。</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.IDeviceSystemContract">
+            <summary>
+            设备系统服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/System</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetActivation">
+            <summary>
+            获取服务器激活信息
+            </summary>
+            <returns>返回服务器激活信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.Activate(System.IO.Stream)">
+            <summary>
+            激活服务器
+            POST 返回 HTTP 200 OK 表示激活成功， 返回HTTP 403表示激活失败。其他错误号表示激活文件不正确。
+            GET 返回 HTTP 404 表示没有激活码信息
+            </summary>
+            <param name="stream">激活文件数据</param>
+            <returns>返回服务器激活信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetVersion">
+            <summary>
+            获取服务版本信息
+            </summary>
+            <returns>返回服务版本信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.Reboot">
+            <summary>
+            重启服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.Shutdown">
+            <summary>
+            关闭服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.FactoryDefault">
+            <summary>
+            关闭服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetConfigurationData">
+            <summary>
+            获取用户配置信息
+            </summary>
+            <returns>返回用户配置信息的二进制流</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.SetConfigurationData(System.IO.Stream)">
+            <summary>
+            设置用户配置信息
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetDeviceInfo">
+            <summary>
+            获取设备信息
+            </summary>
+            <returns>返回设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetDeviceStatus">
+            <summary>
+            查询设备状态
+            </summary>
+            <returns>返回设备状态</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.ImportConfiguration(System.IO.Stream)">
+            <summary>
+            导入配置信息
+            </summary>
+            <param name="binaryStream">配置信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.ExportConfiguration">
+            <summary>
+            导出配置信息
+            </summary>
+            <returns>返回配置信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetTime">
+            <summary>
+            获取系统时间信息
+            </summary>
+            <returns>返回系统时间信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.SetTime(Howell.Net.DeviceService.SystemTime)">
+            <summary>
+            设置系统时间信息
+            </summary>
+            <param name="time">系统时间信息</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetLocalTime">
+            <summary>
+            获取本地时间
+            </summary>
+            <returns>本地时间</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.SetLocalTime(System.String)">
+            <summary>
+            设置本地时间
+            </summary>
+            <param name="localTime">本地时间</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetNTPServers">
+            <summary>
+            获取NTP服务器列表
+            </summary>
+            <returns>返回NTP服务器列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.CreateNTPServer(Howell.Net.DeviceService.NTPServer)">
+            <summary>
+            删除NTP服务器
+            </summary>
+            <param name="ntpServer">NTP服务器</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.GetNTPServer(System.String)">
+            <summary>
+            获取NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <returns>返回NTP服务器信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.SetNTPServer(System.String,Howell.Net.DeviceService.NTPServer)">
+            <summary>
+            修改NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <param name="ntpServer">NTP服务器</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.IDeviceSystemContract.DeleteNTPServer(System.String)">
+            <summary>
+            删除NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Resolution">
+            <summary>
+            分辨率
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Resolution.Width">
+            <summary>
+            宽度，单位：Pixel
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Resolution.Height">
+            <summary>
+            高度，单位：Pixel
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ServiceVersion">
+            <summary>
+            服务版本
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ServiceVersion.Version">
+            <summary>
+            版本号 1.0.1
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ServiceVersion.BuildDate">
+            <summary>
+            编译时间
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ServiceVersion.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.FanPerformance">
+            <summary>
+            风扇状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.FanPerformance.Speed">
+            <summary>
+            转速 单位：转/秒
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.FanPerformance.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ServiceModel.Dispatcher.DeviceServiceQueryStringConverter">
+            <summary>
+            数据服务查询字符串转换器
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.ServiceModel.Dispatcher.DeviceServiceQueryStringConverter.Int32Regex">
+            <summary>
+            Int32的正则表达式
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.ServiceModel.Dispatcher.DeviceServiceQueryStringConverter.CanConvert(System.Type)">
+            <summary>
+            确定能否在指定类型和字符串表示形式之间进行转换。
+            </summary>
+            <param name="type">要转换的 System.Type。</param>
+            <returns>一个用于指定能否转换类型的值。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.ServiceModel.Dispatcher.DeviceServiceQueryStringConverter.ConvertStringToValue(System.String,System.Type)">
+            <summary>
+            将查询字符串参数转换为指定类型。
+            </summary>
+            <param name="parameter">参数和值的字符串形式。</param>
+            <param name="parameterType">参数转换的目标 System.Type。</param>
+            <returns>已转换的参数。</returns>
+            <exception cref="T:System.FormatException">提供的字符串的格式不正确。</exception>
+        </member>
+        <member name="M:Howell.Net.DeviceService.ServiceModel.Dispatcher.DeviceServiceQueryStringConverter.ConvertValueToString(System.Object,System.Type)">
+            <summary>
+            将参数转换为查询字符串表示形式。
+            </summary>
+            <param name="parameter">要转换的参数。</param>
+            <param name="parameterType">要转换的参数的 System.Type。</param>
+            <returns>参数名称和值。</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract">
+            <summary>
+            设备全景摄像机服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/PanoCameras</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetPanoCameraCapabilitiesList(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            查询全景摄像机型号与能力
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <param name="model">型号</param>
+            <param name="sharp">摄像机外形 1:球机 2:枪机 3:半球 4:车载</param>
+            <param name="buildInCameraNumber">内置摄像机数量</param>
+            <param name="sensorArrangement">Sensor排列方式 1: 水平方向按装 2: 垂直方向按装</param>
+            <param name="visibleAngle">可视角度，单位：度 180,240,300,360</param>
+            <param name="fishEye">是否附带鱼眼摄像机</param>
+            <param name="hasWiper">是否附带雨刷</param>
+            <returns>返回全景摄像机型号与能力</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.CheckPanoCameraNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的全景相机
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.BeginSearch">
+            <summary>
+            开始搜索全景摄像机
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetSearchResult">
+            <summary>
+            获取搜索到的全景摄像机信息
+            </summary>
+            <returns>返回全景摄像机信息，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.EndSearch">
+            <summary>
+            停止搜索全景摄像机设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetPanoCameras(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            查询全景摄像机列表
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回全景摄像机列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.CreatePanoCamera(Howell.Net.DeviceService.PanoCameras.PanoCamera)">
+            <summary>
+            创建全景摄像机
+            </summary>
+            <param name="panoCamera">全景摄像机信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetPanoCamera(System.String)">
+            <summary>
+            查询指定的全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回指定的全景摄像机</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetPanoCamera(System.String,Howell.Net.DeviceService.PanoCameras.PanoCamera)">
+            <summary>
+            修改指定的全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="panoCamera">全景摄像机</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.DeletePanoCamera(System.String)">
+            <summary>
+            删除全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetDefaultViewPoint(System.String)">
+            <summary>
+            获取全景摄像机默认视角信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回默认视角信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetDefaultViewPoint(System.String,Howell.Net.DeviceService.ViewPoint)">
+            <summary>
+            修改全景摄像机默认视角信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="viewPoint">默认视角信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.TurnWiper(System.String,System.Int32)">
+            <summary>
+            转动雨刷
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="turns">转动圈数[1,5]</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetBuildInCameras(System.String)">
+            <summary>
+            获取指定全景摄像机下的内置相机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回内置相机信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.CreateBuildInCamera(System.String,Howell.Net.DeviceService.PanoCameras.BuildInCamera)">
+            <summary>
+            创建指定全景摄像机下的内置相机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCamera">内置相机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetBuildInCamera(System.String,System.String)">
+            <summary>
+            获取指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置相机信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetBuildInCamera(System.String,System.String,Howell.Net.DeviceService.PanoCameras.BuildInCamera)">
+            <summary>
+            修改指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="buildInCamera">内置摄像机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.DeleteBuildInCamera(System.String,System.String)">
+            <summary>
+            删除指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetBuildInCameraIPAddress(System.String,System.String)">
+            <summary>
+            获取内置摄像机的IP信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的IP信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetBuildInCameraIPAddress(System.String,System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            设置内置摄像机的IP信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="ipAddress">内置摄像机的IP信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.Reboot(System.String,System.String)">
+            <summary>
+            重启内置摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetBuildInCameraMain(System.String,System.String)">
+            <summary>
+            获取内置摄像机的主摄像机标记信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的IP信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetBuildInCameraMain(System.String,System.String,System.Boolean)">
+            <summary>
+            设置内置摄像机的主摄像机标记信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="mainCamera">主摄像机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetBuildInCameraStorageAssociation(System.String,System.String)">
+            <summary>
+            获取内置摄像机的存储关联关系
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的存储关联关系</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetBuildInCameraStorageAssociation(System.String,System.String,Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation)">
+            <summary>
+            修改内置摄像机的存储关联关系
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="storageAssociation">存储关联关系</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.GetOSD(System.String)">
+            <summary>
+            获取全景摄像机的OSD信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回OSD信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.IDevicePanoCamerasContract.SetOSD(System.String,Howell.Net.DeviceService.PanoCameras.OSD)">
+            <summary>
+            设置全景摄像机的OSD信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="osd">OSD信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.EncodingDevices.EncodingDevice">
+            <summary>
+            编码设备
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Id">
+            <summary>
+            唯一表示符 Y/N
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Manufacturer">
+            <summary>
+            厂商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Model">
+            <summary>
+            设备型号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Firmware">
+            <summary>
+            固件版本信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.SerialNumber">
+            <summary>
+            设备序列号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.PointOfSale">
+            <summary>
+            零售商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Information">
+            <summary>
+            设备描述 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Username">
+            <summary>
+            登录设备的用户名
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Password">
+            <summary>
+            登录设备的密码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.ProtocolType">
+            <summary>
+            协议类型，Howell5198
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.Uri">
+            <summary>
+            设备访问地址 tcp://ip:port/
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.ExistedInDatabase">
+            <summary>
+            是否已存在与数据库中(只读) 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.NetworkInterface">
+            <summary>
+            网络IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.ChannelCount">
+            <summary>
+            编码通道数量(只读)	N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.EncodingChannel">
+            <summary>
+            编码通道列
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingDevice.IsOnline">
+            <summary>
+            是否在线(只读)	N/Y
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.EncodingDevices.EncodingChannel">
+            <summary>
+            显示设备编码通道
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannel.Id">
+            <summary>
+            唯一标识符 Y/N
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannel.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannel.Channel">
+            <summary>
+            编码通道的通道号[1,n]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannel.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.DeviceNetworkClient">
+            <summary>
+            网络信息客户端
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.#ctor(System.String)">
+            <summary>
+            创建网络信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建网络信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建网络信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.GetNetworkInterfaces">
+            <summary>
+            查询网口信息列表
+            </summary>
+            <returns>返回网口信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.GetNetworkInterface(System.String)">
+            <summary>
+            查询网口信息列表
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回网口信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.GetIPAddress(System.String)">
+            <summary>
+            查询网口的IP地址
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回网口的IP地址</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.SetIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改网口的IP地址
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Network.DeviceNetworkClient.SetInternalPort(System.String)">
+            <summary>
+            修改内部网口信息
+            </summary>
+            <param name="networkInterfaceId">网口信息唯一标识符</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient">
+            <summary>
+            编码设备信息管理客户端
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.#ctor(System.String)">
+            <summary>
+            创建编码设备信息管理客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建编码设备信息管理客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建编码设备信息管理客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.BeginSearch">
+            <summary>
+            开始搜索本地编码设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetSearchResult">
+            <summary>
+            获取搜索到的编码设备信息
+            </summary>
+            <returns>返回编码设备信息，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.EndSearch">
+            <summary>
+            停止搜索本地编码设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.CheckEncodingDeviceNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的编码设备
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetEncodingDevices">
+            <summary>
+            查询编码设备列表
+            </summary>
+            <returns>返回编码设备列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.CreateEncodingDevice(Howell.Net.DeviceService.EncodingDevices.EncodingDevice)">
+            <summary>
+            创建编码设备
+            </summary>
+            <param name="encodingDevice">编码设备信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetEncodingDevice(System.String)">
+            <summary>
+            查询指定的编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回指定的编码设备</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.SetEncodingDevice(System.String,Howell.Net.DeviceService.EncodingDevices.EncodingDevice)">
+            <summary>
+            修改指定的编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingDevice">编码设备</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.DeleteEncodingDevice(System.String)">
+            <summary>
+            删除编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetEncodingChannels(System.String)">
+            <summary>
+            查询指定编码设备下的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回编码通道信息列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.CreateEncodingChannel(System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannel)">
+            <summary>
+            创建指定编码设备下的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannel">编码通道信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetEncodingChannel(System.String,System.String)">
+            <summary>
+            获取指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <returns>返回编码通道信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.SetEncodingChannel(System.String,System.String,Howell.Net.DeviceService.EncodingDevices.EncodingChannel)">
+            <summary>
+            设置指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <param name="encodingChannel">编码通道信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.DeleteEncodingChannel(System.String,System.String)">
+            <summary>
+            删除指定的编码设备的编码通道信息
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="encodingChannelId">编码通道ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.GetIPAddress(System.String)">
+            <summary>
+            获取编码设备的IP地址
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回编码设备的IP地址</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.SetIPAddress(System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            修改编码设备的IP地址
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="ipAddress">IP地址</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.Reboot(System.String)">
+            <summary>
+            重启编码设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.FactoryDefault(System.String)">
+            <summary>
+            编码设备恢复出厂值
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.EncodingDevices.EncodingDeviceClient.Upgrade(System.String,System.IO.Stream)">
+            <summary>
+            升级设备
+            </summary>
+            <param name="encodingDeviceId">编码设备ID</param>
+            <param name="stream">升级包的二进制数据。</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.EncodingDevices.EncodingChannelIdentifier">
+            <summary>
+            编码通道唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannelIdentifier.DeviceId">
+            <summary>
+            编码设备唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.EncodingDevices.EncodingChannelIdentifier.ChannelId">
+            <summary>
+            编码通道唯一标识符
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract">
+            <summary>
+            解码拼接单元服务契约
+            </summary>
+            <remarks>http://host:8800/howell/ver10/panoramic/Components/DecodingUnits</remarks>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetDecodingUnits">
+            <summary>
+            查询解码单元列表
+            </summary>
+            <returns>返回解码单元列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetDecodingUnit(System.String)">
+            <summary>
+            查询解码单元
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回解码单元</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.SetPanoCamera(System.String,System.String)">
+            <summary>
+            切换解码单元显示的全景摄像机
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetStatus(System.String)">
+            <summary>
+            获取解码单元的播放器状态
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回播放器状态</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetViewPoint(System.String)">
+            <summary>
+            获取解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回全景摄像机视角</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.SetViewPoint(System.String,Howell.Net.DeviceService.ViewPoint)">
+            <summary>
+            修改解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="viewPoint">全景摄像机视角</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.SetViewPointFixed(System.String,System.Boolean)">
+            <summary>
+            锁定或解锁解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="isFixed">TRUE= 锁定 FALSE= 解锁</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.SetViewPointRows(System.String,System.Int32)">
+            <summary>
+            修改解码单元显示的全景摄像机的显示列数量
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="rows">1：单行显示，2：多行显示 注意：只有视角是360度的才支持Rows=2的模式</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetRotatingSpeed(System.String)">
+            <summary>
+            获取解码单元播放器视频水平旋转速度
+            速度单位： 度/秒 0：表示不转动， 负值表示逆时针转动
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回水平旋转速度</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.SetRotatingSpeed(System.String,System.Int32)">
+            <summary>
+            设置解码单元播放器视频水平旋转速度
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="rotatingSpeed">速度单位： 度/秒 0：表示不转动， 负值表示逆时针转动</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.GetPosition(System.String)">
+            <summary>
+            获取播放器进度 
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回归一化的进度[0,1]  0: 表示文件开始位置 1: 表示文件结束位置</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Seek(System.String,System.Double)">
+            <summary>
+            定位播放器进度 
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="position">归一化的进度[0,1] 0: 表示文件开始位置 1: 表示文件结束位置</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Start(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            开始播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="beginTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Stop(System.String)">
+            <summary>
+            停止播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Pause(System.String)">
+            <summary>
+            暂停播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Resume(System.String)">
+            <summary>
+            恢复播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.OneByOne(System.String)">
+            <summary>
+            单帧进
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.IDeviceDecodingUnitsContract.Snapshot(System.String)">
+            <summary>
+            抓图
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DeviceInfo">
+            <summary>
+            设备信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.Id">
+            <summary>
+            设备唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.SerialNumber">
+            <summary>
+            设备序列号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.Model">
+            <summary>
+            设备型号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.FirmwareVersion">
+            <summary>
+            固件版本号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.FirmwareReleasedDate">
+            <summary>
+            固件发布日期
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.HardwareVersion">
+            <summary>
+            硬件版本号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceInfo.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ServiceModel.Configuration.DeviceServiceWebHttpBehaviorElement">
+            <summary>
+            数据服务的WEB编程模型配置元素
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.ServiceModel.Configuration.DeviceServiceWebHttpBehaviorElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ServiceModel.Configuration.DeviceServiceWebHttpBehaviorElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.SystemTime">
+            <summary>
+            系统时间
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.SystemTime.TimeMode">
+            <summary>
+            时间同步模式
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.SystemTime.LocalTime">
+            <summary>
+            本地时间
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.SystemTime.TimeZoneName">
+            <summary>
+            时区名称
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.TimeMode">
+            <summary>
+            系统校时模式
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.TimeMode.Manual">
+            <summary>
+            手动设置
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.TimeMode.NTP">
+            <summary>
+            NTP校时	
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.MemoryPerformance">
+            <summary>
+            内存状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.MemoryPerformance.Usage">
+            <summary>
+            使用百分比[0,100] 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.MemoryPerformance.TotalSize">
+            <summary>
+            内存大小，单位：MB
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.MemoryPerformance.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities">
+            <summary>
+            全景摄像机能力
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.Model">
+            <summary>
+            全景摄像机型号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.Shape">
+            <summary>
+            摄像机外形
+            1:球机
+            2:枪机
+            3:半球
+            4:车载
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.BuildInCameraNumber">
+            <summary>
+            内置摄像机数量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.SensorArrangement">
+            <summary>
+            Sensor排列方式
+            1: 水平方向按装
+            2: 垂直方向按装
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.VisibleAngle">
+            <summary>
+            可视角度，单位：度 如：180,240,300,360
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.FishEyeCameraNumber">
+            <summary>
+            内置鱼眼摄像机数量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.FishEye">
+            <summary>
+            是否附带鱼眼摄像机
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilities.HasWiper">
+            <summary>
+            是否附带雨刷
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilitiesList">
+            <summary>
+            全景摄像机能力列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilitiesList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraCapabilitiesList.PanoCameraCapabilities">
+            <summary>
+            全景摄像机能力列表
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient">
+            <summary>
+            设备下的解码器信息客户端
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.#ctor(System.String)">
+            <summary>
+            创建设备下的解码器信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建设备下的解码器信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建设备下的解码器信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetDecodingUnits">
+            <summary>
+            查询解码单元列表
+            </summary>
+            <returns>返回解码单元列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetDecodingUnit(System.String)">
+            <summary>
+            查询解码单元
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回解码单元</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.SetPanoCamera(System.String,System.String)">
+            <summary>
+            切换解码单元显示的全景摄像机
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetStatus(System.String)">
+            <summary>
+            获取解码单元的播放器状态
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回播放器状态</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetViewPoint(System.String)">
+            <summary>
+            获取解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回全景摄像机视角</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.SetViewPoint(System.String,Howell.Net.DeviceService.ViewPoint)">
+            <summary>
+            修改解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="viewPoint">全景摄像机视角</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.SetViewPointFixed(System.String,System.Boolean)">
+            <summary>
+            锁定或解锁解码单元显示的全景摄像机视角
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="isFixed">TRUE= 锁定 FALSE= 解锁</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.SetViewPointRows(System.String,System.Int32)">
+            <summary>
+            修改解码单元显示的全景摄像机的显示列数量
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="rows">1：单行显示，2：多行显示 注意：只有视角是360度的才支持Rows=2的模式</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetRotatingSpeed(System.String)">
+            <summary>
+            获取解码单元播放器视频水平旋转速度
+            速度单位： 度/秒 0：表示不转动， 负值表示逆时针转动
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回水平旋转速度</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.SetRotatingSpeed(System.String,System.Int32)">
+            <summary>
+            设置解码单元播放器视频水平旋转速度
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="rotatingSpeed">速度单位： 度/秒 0：表示不转动， 负值表示逆时针转动</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.GetPosition(System.String)">
+            <summary>
+            获取播放器进度 
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回归一化的进度[0,1]  0: 表示文件开始位置 1: 表示文件结束位置</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Seek(System.String,System.Double)">
+            <summary>
+            定位播放器进度 
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="position">归一化的进度[0,1] 0: 表示文件开始位置 1: 表示文件结束位置</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Start(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            开始播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="beginTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Stop(System.String)">
+            <summary>
+            停止播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Pause(System.String)">
+            <summary>
+            暂停播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Resume(System.String)">
+            <summary>
+            恢复播放
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.OneByOne(System.String)">
+            <summary>
+            单帧进
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DecodingUnits.DecodingUnitsClient.Snapshot(System.String)">
+            <summary>
+            抓图
+            </summary>
+            <param name="unitId">解码单元ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.FaultCode">
+            <summary>
+            错误码
+            </summary>    
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.OK">
+            <summary>
+            无错误信息
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.LoginFailure">
+            <summary>
+            登录失败：未知的用户名或错误密码。
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.InsufficientSecurityPermission">
+            <summary>
+            没有足够的安全权限
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.ResourceNotFound">
+            <summary>
+            资源未找到
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.FormatIncorrect">
+            <summary>
+            数据格式不正确
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.ResourceAlreadyExists">
+            <summary>
+            资源已存在
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.ResourceBeingUsed">
+            <summary>
+            无法删除正则使用的资源
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.SelfDeletionError">
+            <summary>
+            自我删除错误
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.NotFirstTimeLogin">
+            <summary>
+            非首次登录
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.NotSupported">
+            <summary>
+            不支持的操作
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.DeviceError">
+            <summary>
+            设备出错
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.InvalidOperation">
+            <summary>
+            无效的操作
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.ExistingAssociation">
+            <summary>
+            关联关系已存在
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.Nonunique">
+            <summary>
+            不唯一，无法通过参数确定唯一项
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.NoReachableCamera">
+            <summary>
+            无法找到可达的摄像机
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.UniqueResourceExisted">
+            <summary>
+            唯一性资源已存在
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.SystemInfoNotExisted">
+            <summary>
+            系统信息资源不存在
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.IdentityFormatIllegal">
+            <summary>
+            标识符(Id)格式非法
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.IdentityExisted">
+            <summary>
+            标示符(Id)已存在
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.UsernameDuplicated">
+            <summary>
+            重复的用户名
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.IdentityMismatched">
+            <summary>
+            设备Id与通道Id不匹配
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.UserLoggedIn">
+            <summary>
+            用户已登录
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.MD5">
+            <summary>
+            MD5码匹配错误
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.RequestError">
+            <summary>
+            请求出错, 由于语法格式有误，服务器无法理解此请求。不作修改，客户程序就无法重复此请求。 
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.Unauthorized">
+            <summary>
+            未授权
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.FaultCode.ServerInternal">
+            <summary>
+            服务器内部错误
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Fault">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Fault.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Fault.#ctor(Howell.Net.DeviceService.FaultCode)">
+            <summary>
+            
+            </summary>
+            <param name="faultCode"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Fault.#ctor(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="faultCode"></param>
+            <param name="faultReason"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.Fault.#ctor(System.Int32,System.String,Howell.Net.DeviceService.ExceptionData[])">
+            <summary>
+            构造
+            </summary>
+            <param name="faultCode"></param>
+            <param name="faultReason"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.FaultCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.FaultReason">
+            <summary>
+            错误原因
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.Exception">
+            <summary>
+            内部错误信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.Id">
+            <summary>
+            在创建对象时服务器返回的唯一标示符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.Session">
+            <summary>
+            会话唯一标识符，有时候也会写在Id字段上
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Fault.Time">
+            <summary>
+            系统当前时间
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ExceptionData">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ExceptionData.Message">
+            <summary>
+            错误信息描述 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ExceptionData.ExceptionType">
+            <summary>
+            异常对象的完整类型
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.IPAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPAddress.IPVersion">
+            <summary>
+            IP版本
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPAddress.AddressingType">
+            <summary>
+            IP网络地址获取方式
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPAddress.IPv4Address">
+            <summary>
+            IPv4地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPAddress.IPv6Address">
+            <summary>
+            IPv6地址
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.IPv4Address">
+            <summary>
+            IPv4地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv4Address.Address">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv4Address.SubnetMask">
+            <summary>
+            子网掩码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv4Address.DefaultGateway">
+            <summary>
+            默认网关
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv4Address.PrimaryDNS">
+            <summary>
+            主DNS地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv4Address.SecondaryDNS">
+            <summary>
+            次DNS地址
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.IPv6Address">
+            <summary>
+            IPv6地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv6Address.Address">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv6Address.BitMaskLength">
+            <summary>
+            子网前缀长度
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv6Address.DefaultGateway">
+            <summary>
+            默认网关
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv6Address.PrimaryDNS">
+            <summary>
+            主DNS地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.IPv6Address.SecondaryDNS">
+            <summary>
+            次DNS地址
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.SnapshotResult">
+            <summary>
+            抓图结果
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.SnapshotResult.FaultCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.SnapshotResult.FaultReason">
+            <summary>
+            错误原因
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.SnapshotResult.SnapshotPicture">
+            <summary>
+            抓图图片信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.SnapshotPicture">
+            <summary>
+            抓图图片信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.SnapshotPicture.BuildInId">
+            <summary>
+            内置摄像机唯一标识符
+            0：为全景拼接处理后的图片
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.SnapshotPicture.Uri">
+            <summary>
+            图片访问地址, http://ip;port/anyway.jpg
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DeviceSystemClient">
+            <summary>
+            数据管理服务客户端
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.#ctor(System.String)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建数据管理服务客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetActivation">
+            <summary>
+            获取服务器激活信息
+            </summary>
+            <returns>返回服务器激活信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.Activate(System.IO.Stream)">
+            <summary>
+            激活服务器
+            POST 返回 HTTP 200 OK 表示激活成功， 返回HTTP 403表示激活失败。其他错误号表示激活文件不正确。
+            GET 返回 HTTP 404 表示没有激活码信息
+            </summary>
+            <param name="stream">激活文件数据</param>
+            <returns>返回服务器激活信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetVersion">
+            <summary>
+            获取服务版本信息
+            </summary>
+            <returns>返回服务版本信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.Reboot">
+            <summary>
+            重启服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.Shutdown">
+            <summary>
+            关闭服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.FactoryDefault">
+            <summary>
+            关闭服务器
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetConfigurationData">
+            <summary>
+            获取用户配置信息
+            </summary>
+            <returns>返回用户配置信息的二进制流</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.SetConfigurationData(System.IO.Stream)">
+            <summary>
+            设置用户配置信息
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetDeviceInfo">
+            <summary>
+            获取设备信息
+            </summary>
+            <returns>返回设备信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetDeviceStatus">
+            <summary>
+            查询设备状态
+            </summary>
+            <returns>返回设备状态</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.ImportConfiguration(System.IO.Stream)">
+            <summary>
+            导入配置信息
+            </summary>
+            <param name="binaryStream">配置信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.ExportConfiguration">
+            <summary>
+            导出配置信息
+            </summary>
+            <returns>返回配置信息</returns>        
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetTime">
+            <summary>
+            获取系统时间信息
+            </summary>
+            <returns>返回系统时间信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.SetTime(Howell.Net.DeviceService.SystemTime)">
+            <summary>
+            设置系统时间信息
+            </summary>
+            <param name="time">系统时间信息</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetLocalTime">
+            <summary>
+            获取本地时间
+            </summary>
+            <returns>本地时间</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.SetLocalTime(System.String)">
+            <summary>
+            设置本地时间
+            </summary>
+            <param name="localTime">本地时间</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetNTPServers">
+            <summary>
+            获取NTP服务器列表
+            </summary>
+            <returns>返回NTP服务器列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.CreateNTPServer(Howell.Net.DeviceService.NTPServer)">
+            <summary>
+            删除NTP服务器
+            </summary>
+            <param name="ntpServer">NTP服务器</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.GetNTPServer(System.String)">
+            <summary>
+            获取NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <returns>返回NTP服务器信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.SetNTPServer(System.String,Howell.Net.DeviceService.NTPServer)">
+            <summary>
+            修改NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <param name="ntpServer">NTP服务器</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.DeviceSystemClient.DeleteNTPServer(System.String)">
+            <summary>
+            删除NTP服务器信息
+            </summary>
+            <param name="ntpServerId">NTP服务器唯一标识符</param>
+            <returns>返回错误应答</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ServiceModel.Description.DeviceServiceWebHttpBehavior">
+            <summary>
+            数据服务的WEB编程模型
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.ServiceModel.Description.DeviceServiceWebHttpBehavior.GetQueryStringConverter(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.BuildInCamera">
+            <summary>
+            内置摄像机信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Id">
+            <summary>
+            内置摄像机唯一标识符	N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Manufacturer">
+            <summary>
+            厂商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Model">
+            <summary>
+            设备型号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Firmware">
+            <summary>
+            固件版本信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.SerialNumber">
+            <summary>
+            设备序列号  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.PointOfSale">
+            <summary>
+            零售商信息  (只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Information">
+            <summary>
+            设备描述 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Username">
+            <summary>
+            登录设备的用户名
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Password">
+            <summary>
+            登录设备的密码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.ProtocolType">
+            <summary>
+            协议类型，Howell5198
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.Uri">
+            <summary>
+            设备访问地址 tcp://ip:port/
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.ExistedInDatabase">
+            <summary>
+            是否已存在与数据库中(只读) 
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.BuildInId">
+            <summary>
+            内置ID [1,n]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.IsMainCamera">
+            <summary>
+            是否为主摄像机	N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.IsFishEyeCamera">
+            <summary>
+            是否为鱼眼摄像机 N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.LiveFromNVR">
+            <summary>
+            从NVR连接预览
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.NetworkInterface">
+            <summary>
+            网络IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.StorageAssociation">
+            <summary>
+            关联的NVR存储数据
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.BuildInCamera.IsOnline">
+            <summary>
+            是否在线(只读)	N/Y
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation">
+            <summary>
+            全景摄像机存储关联信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation.NVRId">
+            <summary>
+            绑定的NVR ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation.NVRChannelId">
+            <summary>
+            绑定的NVR通道ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation.Channel">
+            <summary>
+            通道编号[1,n]
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.ActivationKey">
+            <summary>
+            激活信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ActivationKey.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ActivationKey.ExpiredTime">
+            <summary>
+            有效期
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ActivationKey.SerialNumber">
+            <summary>
+            序列码
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.ActivationKey.IsExpired">
+            <summary>
+            是否已过期
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NTPServer">
+            <summary>
+            NTP服务器信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NTPServer.Id">
+            <summary>
+            NTP服务器唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NTPServer.HostName">
+            <summary>
+            NTP服务器或主机名
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NTPServer.PollInterval">
+            <summary>
+            校时间隔时间，单位：秒
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NTPServerList">
+            <summary>
+            NTP服务器信息列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NTPServerList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NTPServerList.NTPServer">
+            <summary>
+            NTP服务器信息
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DeviceStatus">
+            <summary>
+            设备状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.CurrentTime">
+            <summary>
+            当前时间
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.SystemUpTime">
+            <summary>
+            系统启动到现在的秒数
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.CPU">
+            <summary>
+            CPU状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.GPU">
+            <summary>
+            GPU状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.Memory">
+            <summary>
+            内存状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DeviceStatus.Fan">
+            <summary>
+            风扇状态
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Position">
+            <summary>
+            位置信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Position.X">
+            <summary>
+            X轴坐标，单位：Pixel
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Position.Y">
+            <summary>
+            X轴坐标，单位：Pixel
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCamera">
+            <summary>
+            全景摄像机
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.Id">
+            <summary>
+            全景摄像机唯一标识符	N/Y
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.Model">
+            <summary>
+            型号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.ExistedInDatabase">
+            <summary>
+            是否已存在与数据库中(只读)
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.GroupId">
+            <summary>
+            全景摄像机分组ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.WiperCameraBuildInId">
+            <summary>
+            雨刷对应的内置摄像机ID，如果不支持雨刷，该值为0	
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.MainCameraBuildInId">
+            <summary>
+            主摄像机对应的内置ID，如果没有主摄像机，该值为0
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.BuildInCamera">
+            <summary>
+            内置摄像机信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.DefaultViewPoint">
+            <summary>
+            默认视点
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.IsAllOnline">
+            <summary>
+            是否所有内建摄像机都在线 Y/N
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCamera.IsCompleted">
+            <summary>
+            内置信息是否完整	Y/N
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCameraList">
+            <summary>
+            全景摄像机列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.PanoCameraList.PanoCamera">
+            <summary>
+            全景摄像机列表
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.GPUDisplayDevice">
+            <summary>
+            GPU显示设备
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.Id">
+            <summary>
+            显示设备唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.Name">
+            <summary>
+            显示设备
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.ConnectionType">
+            <summary>
+            监视器连接接口类型
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.IsActive">
+            <summary>
+            是否激活输出
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.IsConnected">
+            <summary>
+            是否有监视器连接
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.OutputId">
+            <summary>
+            输出ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.MonitorType">
+            <summary>
+            连接的监视器类型
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.Resolution">
+            <summary>
+            显示分辨率
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.Position">
+            <summary>
+            显示位置
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.SourceId">
+            <summary>
+            Windows CCD display source identification
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.IsGDIPrimary">
+            <summary>
+            是否为主显示
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.RefreshRate">
+            <summary>
+            刷新率，单位：Hz
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.Rotation">
+            <summary>
+            旋转角度，0，90，180，270
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDisplayDevice.EncodingChannel">
+            <summary>
+            绑定的编码设备ID
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.MonitorConnectionType">
+            <summary>
+            监视器接口类型
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.Unknown">
+            <summary>
+            未知类型
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.VGA">
+            <summary>
+            VGA
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.Component">
+            <summary>
+            Component
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.SVideo">
+            <summary>
+            SVideo
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.HDMI">
+            <summary>
+            HDMI
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.DVI">
+            <summary>
+            DVI
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.LVDS">
+            <summary>
+            LVDS
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.DisplayPort">
+            <summary>
+            DisplayPort
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.MonitorConnectionType.Composite">
+            <summary>
+            Composite
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.ConnectedMonitorType">
+            <summary>
+            连接的监视器类型
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.ConnectedMonitorType.Unknown">
+            <summary>
+            未知类型
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.ConnectedMonitorType.CRT">
+            <summary>
+            模拟
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.ConnectedMonitorType.DFP">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.GPU.ConnectedMonitorType.TV">
+            <summary>
+            TV
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Network.NetworkInterface">
+            <summary>
+            网络接口信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.Id">
+            <summary>
+            网络接口唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.Name">
+            <summary>
+            网口名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.IPAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.SpeedDuplex">
+            <summary>
+            网口速率 M/bps
+            </summary>        
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.WorkMode">
+            <summary>
+            网口工作模式
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.MTU">
+            <summary>
+            最大传输单元长度
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.Internal">
+            <summary>
+            是否为内部交换网口
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Network.NetworkInterface.PhysicalAddress">
+            <summary>
+            MAC地址，00-00-00-00-00-00
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient">
+            <summary>
+            全景摄像机信息客户端
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.#ctor(System.String)">
+            <summary>
+            创建全景摄像机信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.#ctor(System.ServiceModel.EndpointAddress)">
+            <summary>
+            创建全景摄像机信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.#ctor(System.ServiceModel.EndpointAddress,System.ServiceModel.Channels.Binding)">
+            <summary>
+            创建全景摄像机信息客户端
+            </summary>
+            <param name="remoteAddress"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetPanoCameraCapabilitiesList(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            查询全景摄像机型号与能力
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <param name="model">型号</param>
+            <param name="sharp">摄像机外形 1:球机 2:枪机 3:半球 4:车载</param>
+            <param name="buildInCameraNumber">内置摄像机数量</param>
+            <param name="sensorArrangement">Sensor排列方式 1: 水平方向按装 2: 垂直方向按装</param>
+            <param name="visibleAngle">可视角度，单位：度 180,240,300,360</param>
+            <param name="fishEye">是否附带鱼眼摄像机</param>
+            <param name="hasWiper">是否附带雨刷</param>
+            <returns>返回全景摄像机型号与能力</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.CheckPanoCameraNetwork(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            检测服务器是否可以连接指定IP的全景相机
+            </summary>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="port">端口号</param>
+            <param name="protocolType">协议类型</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.BeginSearch">
+            <summary>
+            开始搜索全景摄像机
+            </summary>
+            <returns>返回操作结果</returns>        
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetSearchResult">
+            <summary>
+            获取搜索到的全景摄像机信息
+            </summary>
+            <returns>返回全景摄像机信息，如果没有新的设备则返回404错误，如果没有创建搜索对象则返回403。</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.EndSearch">
+            <summary>
+            停止搜索全景摄像机设备
+            </summary>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetSearchedIPAddress(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            修改搜索到的设备IP地址
+            </summary>
+            <param name="physicalAddress">物理地址 00-00-00-00-00-00</param>
+            <param name="ipAddress">设备的IP地址</param>
+            <param name="submask">子网掩码</param>
+            <param name="gateway">默认网关</param>
+            <param name="port">端口号</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetPanoCameras(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            查询全景摄像机列表
+            </summary>
+            <param name="pageIndex">页码[1-n]</param>
+            <param name="pageSize">分页大小[1-100]</param>
+            <returns>返回全景摄像机列表</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.CreatePanoCamera(Howell.Net.DeviceService.PanoCameras.PanoCamera)">
+            <summary>
+            创建全景摄像机
+            </summary>
+            <param name="panoCamera">全景摄像机信息</param>
+            <returns>返回操作结果，如果成功将同时返回创建的设备ID</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetPanoCamera(System.String)">
+            <summary>
+            查询指定的全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回指定的全景摄像机</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetPanoCamera(System.String,Howell.Net.DeviceService.PanoCameras.PanoCamera)">
+            <summary>
+            修改指定的全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="panoCamera">全景摄像机</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.DeletePanoCamera(System.String)">
+            <summary>
+            删除全景摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetDefaultViewPoint(System.String)">
+            <summary>
+            获取全景摄像机默认视角信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回默认视角信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetDefaultViewPoint(System.String,Howell.Net.DeviceService.ViewPoint)">
+            <summary>
+            修改全景摄像机默认视角信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="viewPoint">默认视角信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.TurnWiper(System.String,System.Int32)">
+            <summary>
+            转动雨刷
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="turns">转动圈数[1,5]</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetBuildInCameras(System.String)">
+            <summary>
+            获取指定全景摄像机下的内置相机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回内置相机信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.CreateBuildInCamera(System.String,Howell.Net.DeviceService.PanoCameras.BuildInCamera)">
+            <summary>
+            创建指定全景摄像机下的内置相机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCamera">内置相机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetBuildInCamera(System.String,System.String)">
+            <summary>
+            获取指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置相机信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetBuildInCamera(System.String,System.String,Howell.Net.DeviceService.PanoCameras.BuildInCamera)">
+            <summary>
+            修改指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="buildInCamera">内置摄像机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.DeleteBuildInCamera(System.String,System.String)">
+            <summary>
+            删除指定的内置摄像机信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetBuildInCameraIPAddress(System.String,System.String)">
+            <summary>
+            获取内置摄像机的IP信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的IP信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetBuildInCameraIPAddress(System.String,System.String,Howell.Net.DeviceService.Network.IPAddress)">
+            <summary>
+            设置内置摄像机的IP信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="ipAddress">内置摄像机的IP信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.Reboot(System.String,System.String)">
+            <summary>
+            重启内置摄像机
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetBuildInCameraMain(System.String,System.String)">
+            <summary>
+            获取内置摄像机的主摄像机标记信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的IP信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetBuildInCameraMain(System.String,System.String,System.Boolean)">
+            <summary>
+            设置内置摄像机的主摄像机标记信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="mainCamera">主摄像机信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetBuildInCameraStorageAssociation(System.String,System.String)">
+            <summary>
+            获取内置摄像机的存储关联关系
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <returns>返回内置摄像机的存储关联关系</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetBuildInCameraStorageAssociation(System.String,System.String,Howell.Net.DeviceService.PanoCameras.PanoCameraStorageAssociation)">
+            <summary>
+            修改内置摄像机的存储关联关系
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="buildInCameraId">内置相机ID</param>
+            <param name="storageAssociation">存储关联关系</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.GetOSD(System.String)">
+            <summary>
+            获取全景摄像机的OSD信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <returns>返回OSD信息</returns>
+        </member>
+        <member name="M:Howell.Net.DeviceService.PanoCameras.PanoCamerasClient.SetOSD(System.String,Howell.Net.DeviceService.PanoCameras.OSD)">
+            <summary>
+            设置全景摄像机的OSD信息
+            </summary>
+            <param name="panoCameraId">全景摄像机ID</param>
+            <param name="osd">OSD信息</param>
+            <returns>返回操作结果</returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.PanoCameras.OSD">
+            <summary>
+            OSD信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.Enabled">
+            <summary>
+            是否显示OSD字符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.TimestampEnabled">
+            <summary>
+            是否显示时间字符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.FontColor">
+            <summary>
+            OSD字体颜色
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.FontSize">
+            <summary>
+            字体大小，单位:PT
+            八号=5磅=6px
+            七号=5.5磅=7px
+            小六=6.5磅=8px
+            六号=7.5磅=10px
+            小五=9磅=12px
+            五号=10.5磅=14px
+            小四=12磅=16px
+            四号=14磅=18px
+            小三=15磅=20px
+            三号=16磅=21px
+            小二=18磅=24px
+            二号=22磅=29px
+            小一=24磅=32px
+            一号=26磅=34px
+            小初=36磅=48px
+            初号=42磅=56px
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.DisplayText">
+            <summary>
+            显示的OSD名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.Position">
+            <summary>
+            OSD名称坐标，负值为右下边距
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.PanoCameras.OSD.TimestampPosition">
+            <summary>
+            时标的坐标，负值为右下边距
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.PhysicalGPU">
+            <summary>
+            物理GPU信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.Id">
+            <summary>
+            GPU唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.Name">
+            <summary>
+            GPU名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.BusId">
+            <summary>
+            总线ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.BusSlotId">
+            <summary>
+            总线插槽ID
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.GPUBusType">
+            <summary>
+            总线插槽类型 PCI，PCIExpress
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.DriverVersion">
+            <summary>
+            驱动版本号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.Temperature">
+            <summary>
+            温度，单位：摄氏度
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.DynamicPerformance">
+            <summary>
+            动态性能
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.PhysicalGPU.DisplayDevice">
+            <summary>
+            GPU上的显示设备
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.GPU.GPUDynamicPerformance">
+            <summary>
+            GPU状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.Name">
+            <summary>
+            GPU名称
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.GPU">
+            <summary>
+            GPU使用百分比 [0,100]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.FrameBuffer">
+            <summary> 
+            帧BUFFER使用百分比 [0,100]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.VideoEngine">
+            <summary>
+            视频渲染引擎使用百分比 [0,100]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.BusInterface">
+            <summary>
+            总线使用百分比 [0,100]
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.GPU.GPUDynamicPerformance.Temperature">
+            <summary>
+            温度，单位：摄氏度
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.Color">
+            <summary>
+            颜色
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Color.A">
+            <summary>
+            不透明度分量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Color.R">
+            <summary>
+            红色分量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Color.G">
+            <summary>
+            绿色分量
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.Color.B">
+            <summary>
+            蓝色分量
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRCapabilities">
+            <summary>
+            NVR能力
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRCapabilities.Model">
+            <summary>
+            NVR型号
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRCapabilities.Shape">
+            <summary>
+            NVR外形
+            4:车载
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRCapabilities.SignalTag">
+            <summary>
+            是否支持录像信号标记
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.NVRs.NVRCapabilitiesList">
+            <summary>
+            NVR能力列表
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRCapabilitiesList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.NVRs.NVRCapabilitiesList.NVRCapabilities">
+            <summary>
+            NVR能力列表
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.CertificateValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.CertificateValidator.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.CertificateValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell.Net.DeviceService.CertificateValidator.Validate(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            
+            </summary>
+            <param name="certificate"></param>
+        </member>
+        <member name="M:Howell.Net.DeviceService.CertificateValidator.ValidateRemoteCertificate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="sslPolicyErrors"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.PlayerStatus">
+            <summary>
+            播放器状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.PlayerStatus.Seekable">
+            <summary>
+            是否可定位
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.PlayerStatus.State">
+            <summary>
+            播放器状态
+            </summary>
+        </member>
+        <member name="P:Howell.Net.DeviceService.DecodingUnits.PlayerStatus.Duration">
+            <summary>
+            时间跨度，单位：秒，0表示非文件预览。
+            </summary>
+        </member>
+        <member name="T:Howell.Net.DeviceService.DecodingUnits.PlayerState">
+            <summary>
+            播放器状态
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Unknown">
+            <summary>
+            未知状态
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Opening">
+            <summary>
+            正在打开
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Buffering">
+            <summary>
+            正在缓存
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Playing">
+            <summary>
+            播放中
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Paused">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Stopped">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Ended">
+            <summary>
+            文件结束
+            </summary>
+        </member>
+        <member name="F:Howell.Net.DeviceService.DecodingUnits.PlayerState.Error">
+            <summary>
+            出错
+            </summary>
+        </member>
+    </members>
+</doc>

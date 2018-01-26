@@ -1,0 +1,3965 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Howell5198</name>
+    </assembly>
+    <members>
+        <member name="T:Howell5198.Howell5198Client">
+            <summary>
+            5198客户端程序
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.#ctor(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Connect(System.String,System.String)">
+            <summary>
+            连接服务器并登陆
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Close">
+            <summary>
+            连接客户端
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetColor(System.Int32)">
+            <summary>
+            获取色彩
+            </summary>
+            <param name="channelno">通道号</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetColor(Howell5198.Protocols.ColorInfo)">
+            <summary>
+            设置色彩
+            </summary>
+            <param name="setColorRequest"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetOsdChannel(System.Int32)">
+            <summary>
+            获取通道名称
+            </summary>
+            <param name="channelno">通道号</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetOsdChannel(Howell5198.Protocols.OsdChannelInfo)">
+            <summary>
+            设置通道名称
+            </summary>
+            <param name="setOsdChannelRequest"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetOsdDate(System.Int32)">
+            <summary>
+            获取通道日期
+            </summary>
+            <param name="channelno">通道号</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetOsdDate(Howell5198.Protocols.OsdDateInfo)">
+            <summary>
+            设置通道日期
+            </summary>
+            <param name="setOsdDateRequest">OsdDateInfo</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetVideoQuality(System.Int32)">
+            <summary>
+            获取图像质量
+            </summary>
+            <param name="channelno">通道号</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetVideoQuality(Howell5198.Protocols.VideoQualityInfo)">
+            <summary>
+            设置图像质量
+            </summary>
+            <param name="setOsdChannelRequest"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetStreamType(System.Int32)">
+            <summary>
+            获取码流类型
+            </summary>
+            <param name="channelno">通道号</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetStreamType(Howell5198.Protocols.StreamTypeInfo)">
+            <summary>
+            设置码流类型
+            </summary>
+            <param name="setStreamTypeRequest"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetNetInfo">
+            <summary>
+            获取网络
+            </summary>
+            <returns>GetNetInfoResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetNetInfo(Howell5198.Protocols.NetInfo)">
+            <summary>
+            设置网络
+            </summary>
+            <param name="setNetInfoRequest"></param>
+            <returns>SetNetInfoResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetSystemTime">
+            <summary>
+            获取时间
+            </summary>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetSystemTime(Howell5198.Protocols.SystemTimeInfo)">
+            <summary>
+            设置时间
+            </summary>
+            <param name="setSystemTimeRequest"></param>
+            <returns>SetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.RestartDevice">
+            <summary>
+            重启设备
+            </summary>
+            <returns>RestartDeviceResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.CloseDevice">
+            <summary>
+            关闭设备
+            </summary>
+            <returns>CloseDeviceResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.ResetDevice">
+            <summary>
+            重置设备
+            </summary>
+            <returns>ResetDeviceResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetRs232Cfg(Howell5198.Protocols.GetRs232CfgRequest)">
+            <summary>
+            获取串口模式
+            </summary>
+            <returns>Rs232CfgInfo</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetRs232Cfg(Howell5198.Protocols.Rs232CfgInfo)">
+            <summary>
+            设置串口模式
+            </summary>
+            <param name="setRs232CfgRequest"></param>
+            <returns>SetRs232CfgResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetPtzRs232Cfg(System.Int32)">
+            <summary>
+            获取PTZ设置
+            </summary>
+            <returns>GetPtzRs232CfgResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetPtzRs232Cfg(Howell5198.Protocols.PtzRs232CfgInfo)">
+            <summary>
+            设置PTZ设置
+            </summary>
+            <param name="setPtzRs232CfgRequest"></param>
+            <returns>SetPtzRs232CfgResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.PtzControl(Howell5198.Protocols.PtzControlRequest)">
+            <summary>
+            PTZ控制
+            </summary>
+            <param name="ptzControlRequest"></param>
+            <returns>PtzControlResponse</returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.CreateStream(System.Int32,System.Int32)">
+            <summary>
+            创建流对象
+            </summary>
+            <param name="channelno">通道号</param>
+            <param name="type">0:主码流 1:子码流</param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SearchFile(Howell5198.Protocols.SearchFileRequest)">
+            <summary>
+            搜索获得回放文件列表
+            </summary>
+            <param name="searchFileRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetFile(Howell5198.Protocols.GetFileRequest)">
+            <summary>
+            获取回放文件流
+            </summary>
+            <param name="getFileRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetFileInfo(Howell5198.Protocols.GetFileInfoRequest)">
+            <summary>
+            获取回放文件信息
+            </summary>
+            <param name="getFileInfoRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetNetHead(Howell5198.Protocols.GetNetHeadRequest)">
+            <summary>
+            获取预览视频信息
+            </summary>
+            <param name="getNetHeadRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetDevCfg">
+            <summary>
+            获取设备信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetMotionSet(System.Int32)">
+            <summary>
+            获取移动侦测
+            </summary>
+            <param name="channelno"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetMotionSet(Howell5198.Protocols.SetMotionRequest)">
+            <summary>
+            设置移动侦测
+            </summary>
+            <param name="setMotionRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SyncTime(Howell5198.Protocols.SyncTimeRequest)">
+            <summary>
+            同步时间
+            </summary>
+            <param name="syncTimeRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetUser">
+            <summary>
+            获取用户列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.UpdateUser(Howell5198.Protocols.UpdateUserRequest)">
+            <summary>
+            更改用户列表
+            </summary>
+            <param name="updateUserRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.CaptureJpeg(Howell5198.Protocols.CaptureRequest)">
+            <summary>
+            抓图
+            </summary>
+            <param name="captureRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetNtpInfo">
+            <summary>
+            获取NTP服务器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetNtpInfo(Howell5198.Protocols.NtpInfo)">
+            <summary>
+            设置NTP服务器
+            </summary>
+            <param name="ntpInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetPanoCameraList(Howell5198.Protocols.tQueryString)">
+            <summary>
+            获取全景摄像机列表
+            </summary>
+            <param name="queryString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.AddPanoCamera(Howell5198.Protocols.tPanoCamera)">
+            <summary>
+            创建全景摄像机
+            </summary>
+            <param name="panoCamera"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetPanoCamera(System.String)">
+            <summary>
+            获取指定全景摄像机信息
+            </summary>
+            <param name="panoCameraId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetPanoCamera(Howell5198.Protocols.tPanoCamera)">
+            <summary>
+            修改或创建指定全景摄像机信息
+            </summary>
+            <param name="panoCamera"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.DeletePanoCamera(System.String)">
+            <summary>
+            删除指定全景摄像机信息
+            </summary>
+            <param name="panoCameraId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetServiceVersion">
+            <summary>
+            获取服务程序版本信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetDeviceInfo">
+            <summary>
+            查询设备信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetDeviceStatus">
+            <summary>
+            查询设备状态
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetNetworkInterface">
+            <summary>
+            查询网口信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetDecodingUnitList">
+            <summary>
+            查询解码单元列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetDecodingUnit(System.String)">
+            <summary>
+            查询解码单元
+            </summary>
+            <param name="decodingUnitId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetRotatingSpeed(System.String)">
+            <summary>
+            获取解码单元播放器视频水平旋转速度
+            </summary>
+            <param name="decodingUnitId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetRotatingSpeed(Howell5198.Protocols.tRotatingSpeed)">
+            <summary>
+            设置解码单元播放器视频水平旋转速度
+            </summary>
+            <param name="rotatingSpeed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SwitchPanoCamera(Howell5198.Protocols.SwitchPanoCameraRequest)">
+            <summary>
+            切换解码单元显示的全景摄像机
+            </summary>
+            <param name="switchPanoCameraRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetViewPoint(System.String)">
+            <summary>
+            获取解码单元显示的全景摄像机视角
+            </summary>
+            <param name="decodingUnitId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetViewPoint(Howell5198.Protocols.SetViewPointRequest)">
+            <summary>
+            修改解码单元显示的全景摄像机视角
+            </summary>
+            <param name="setViewPointRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetViewPointFixed(Howell5198.Protocols.SetViewPointFixedRequest)">
+            <summary>
+            锁定或解锁解码单元显示的全景摄像机视角
+            </summary>
+            <param name="setViewPointRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.SetViewPointRows(Howell5198.Protocols.SetViewPointRowsRequest)">
+            <summary>
+            修改解码单元显示的全景摄像机的显示列数量
+            </summary>
+            <param name="setViewPointRowsRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.GetPlayerStatus(System.String)">
+            <summary>
+            获取解码单元的播放器状态
+            </summary>
+            <param name="decodingUnitId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.OneByOne(Howell5198.Protocols.OneByOneRequest)">
+            <summary>
+            单帧进
+            </summary>
+            <param name="oneByOneRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Pause(Howell5198.Protocols.PauseRequest)">
+            <summary>
+            暂停播放
+            </summary>
+            <param name="pauseRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Resume(Howell5198.Protocols.ResumeRequest)">
+            <summary>
+            恢复播放
+            </summary>
+            <param name="resumeRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Seek(Howell5198.Protocols.SeekRequest)">
+            <summary>
+            定位播放器进度
+            </summary>
+            <param name="seekRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Dispose">
+            <summary>
+            dispose MTServer.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Client.CheckDisposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.IsConnected">
+            <summary>
+            是否已连接到服务器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.Timeout">
+            <summary>
+            超时的毫秒值
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.IPAddress">
+            <summary>
+            目标IP地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.Port">
+            <summary>
+            目标端口
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.Identity">
+            <summary>
+            用户自定义标示
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Client.Connected">
+            <summary>
+            客户端建立连接
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Client.Closed">
+            <summary>
+            客户端关闭连接
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Client.IsDisposed">
+            <summary>
+            whether disposed or not.
+            </summary>
+        </member>
+        <member name="T:Howell5198.StreamDataReceivedEventArgs">
+            <summary>
+            接收单个用户发送的音频数据的事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamDataReceivedEventArgs.#ctor(Howell5198.Protocols.FramePayload)">
+            <summary>
+            
+            </summary>
+            <param name="framepayload"></param>
+        </member>
+        <!-- 对于成员“P:Howell5198.StreamDataReceivedEventArgs.FrameType”忽略有格式错误的 XML 注释 -->
+        <member name="P:Howell5198.StreamDataReceivedEventArgs.Data">
+            <summary>
+            流数据
+            </summary>
+        </member>
+        <member name="T:Howell5198.FileDataReceivedEventArgs">
+            <summary>
+            接收文件数据的事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.FileDataReceivedEventArgs.#ctor(Howell5198.Protocols.GetFileResponse)">
+            <summary>
+            
+            </summary>
+            <param name="dialogId"></param>
+            <param name="sender"></param>
+            <param name="groupId"></param>
+            <param name="data"></param>
+        </member>
+        <member name="P:Howell5198.FileDataReceivedEventArgs.FileData">
+            <summary>
+            文件数据
+            </summary>
+        </member>
+        <member name="T:Howell5198.WaitingPackageInfo">
+            <summary>
+            等待数据包
+            </summary>
+        </member>
+        <member name="M:Howell5198.WaitingPackageInfo.#ctor(System.UInt32)">
+            <summary>
+            
+            </summary>
+            <param name="sequence"></param>
+        </member>
+        <member name="M:Howell5198.WaitingPackageInfo.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.WaitingPackageInfo.WaitHandle">
+            <summary>
+            等待句柄
+            </summary>
+        </member>
+        <member name="P:Howell5198.WaitingPackageInfo.Sequence">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:Howell5198.WaitingPackageInfo.Payload">
+            <summary>
+            载荷内容
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.Connected">
+            <summary>
+            流会话是否在连接中
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.StartReceive">
+            <summary>
+            开始获取流数据
+            <returns>请求流是否成功</returns>
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.StopReceive">
+            <summary>
+            停止获取流数据
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.Dispose">
+            <summary>
+            dispose MTServer.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Stream.CheckDisposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Stream.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Stream.Type">
+            <summary>
+            流类型，0:主码流,1:子码流
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Stream.Client">
+            <summary>
+            该Stream所属的Client对象
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Stream.Timeout">
+            <summary>
+            超时的毫秒值
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Stream.StreamDataReceived">
+            <summary>
+            接收到单个用户发送的流数据
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Stream.IsDisposed">
+            <summary>
+            whether disposed or not.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.Connected">
+            <summary>
+            流会话是否在连接中
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.StartReceive">
+            <summary>
+            开始获取流数据
+            <returns>请求流是否成功</returns>
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.StopReceive">
+            <summary>
+            停止获取流数据
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.Dispose">
+            <summary>
+            dispose MTServer.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198FileStream.CheckDisposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.Beg">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.End">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.Type">
+            <summary>
+            0=all 1=normal file 2=mot file 3=alarm 4=mot alarm 5=ipcam lost 6=analyze metadata
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.Client">
+            <summary>
+            该Stream所属的Client对象
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.Timeout">
+            <summary>
+            超时的毫秒值
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198FileStream.FileDataReceived">
+            <summary>
+            接收到单个用户发送的流数据
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198FileStream.IsDisposed">
+            <summary>
+            whether disposed or not.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.#ctor(System.Int32,Howell5198.IHowell5198ServerAppInstance)">
+            <summary>
+            创建语言对讲服务器对象
+            </summary>
+            <param name="port">本地端口号</param>
+            <param name="appInstance">协议逻辑实现</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.#ctor(System.Int32,Howell5198.IHowell5198ServerAppInstance,System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            创建语言对讲服务器对象
+            </summary>
+            <param name="port">本地端口号</param>
+            <param name="appInstance">协议逻辑实现</param>
+            <param name="maxConnectionNumber">最大连接客户端上限</param>
+            <param name="ssl">是否启用SSL安全连接</param>
+            <param name="certFilePath">证书路径</param>
+            <param name="certPassword">证书密码</param>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.Start">
+            <summary>
+            启动服务
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.Stop">
+            <summary>
+            停止服务
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.Dispose">
+            <summary>
+            dispose MTServer.
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Server.CheckDisposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Server.IsStarted">
+            <summary>
+            服务是否已启动
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Server.StreamCount">
+            <summary>
+            来自客户端的流连接总数
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Server.AliveInterval">
+            <summary>
+            会话心跳间隔时间，单位：秒
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Server.SessionRegistered">
+            <summary>
+            会话注册成功
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Server.SessionClosed">
+            <summary>
+            协议会话关闭事件
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Server.Error">
+            <summary>
+            错误信息事件
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Server.StreamSessionRegistered">
+            <summary>
+            发送流事件
+            </summary>
+        </member>
+        <member name="E:Howell5198.Howell5198Server.StreamSessionClosed">
+            <summary>
+            流会话关闭事件
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Server.IsDisposed">
+            <summary>
+            whether disposed or not.
+            </summary>
+        </member>
+        <member name="T:Howell5198.SessionRegisteredEventArgs">
+            <summary>
+            协议会话注册事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.SessionRegisteredEventArgs.#ctor(Howell5198.Howell5198Session)">
+            <summary>
+            对讲会话注册事件参数
+            </summary>
+            <param name="session">会话信息</param>
+        </member>
+        <member name="P:Howell5198.SessionRegisteredEventArgs.Session">
+            <summary>
+            协议会话对象
+            </summary>
+        </member>
+        <member name="P:Howell5198.SessionRegisteredEventArgs.StreamSession">
+            <summary>
+            流会话对象
+            </summary>
+        </member>
+        <member name="T:Howell5198.StreamSessionRegisteredEventArgs">
+            <summary>
+            流会话注册事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSessionRegisteredEventArgs.#ctor(Howell5198.StreamSession)">
+            <summary>
+            发送流事件参数
+            </summary>
+            <param name="session">会话信息</param>
+            <param name="channelno">通道号</param>
+            <param name="type">0:主码流 1:子码流</param>
+        </member>
+        <member name="P:Howell5198.StreamSessionRegisteredEventArgs.Session">
+            <summary>
+            会话对象
+            </summary>
+        </member>
+        <member name="T:Howell5198.SessionClosedEventArgs">
+            <summary>
+            协议会话关闭事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.SessionClosedEventArgs.#ctor(Howell5198.Howell5198Session,System.String)">
+            <summary>
+            对讲会话注册事件参数
+            </summary>
+            <param name="session">会话信息</param>
+            <param name="closeReason">关闭原因</param>
+        </member>
+        <member name="P:Howell5198.SessionClosedEventArgs.Session">
+            <summary>
+            会话对象
+            </summary>
+        </member>
+        <member name="P:Howell5198.SessionClosedEventArgs.CloseReason">
+            <summary>
+            关闭原因
+            </summary>
+        </member>
+        <member name="T:Howell5198.StreamSessionClosedEventArgs">
+            <summary>
+            流会话关闭事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSessionClosedEventArgs.#ctor(Howell5198.StreamSession,System.String)">
+            <summary>
+            对讲会话注册事件参数
+            </summary>
+            <param name="session">会话信息</param>
+            <param name="closeReason">关闭原因</param>
+        </member>
+        <member name="P:Howell5198.StreamSessionClosedEventArgs.StreamSession">
+            <summary>
+            流会话对象
+            </summary>
+        </member>
+        <member name="P:Howell5198.StreamSessionClosedEventArgs.CloseReason">
+            <summary>
+            关闭原因
+            </summary>
+        </member>
+        <member name="T:Howell5198.ErrorEventArgs">
+            <summary>
+            错误信息事件参数
+            </summary>
+        </member>
+        <member name="M:Howell5198.ErrorEventArgs.#ctor(System.Exception)">
+            <summary>
+            错误信息事件参数
+            </summary>
+            <param name="exception">异常对象</param>
+        </member>
+        <member name="P:Howell5198.ErrorEventArgs.Exception">
+            <summary>
+            异常对象
+            </summary>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.Login(Howell5198.Protocols.LoginRequest)">
+            <summary>
+            登陆
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="type">暂时未使用</param>
+            <param name="logName">用户名</param>
+            <param name="logPassword">密码</param>
+            <param name="clientUserID">暂时未使用</param>
+            <returns>服务器应答</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetServerInfo">
+            <summary>
+            获取服务器信息
+            </summary>
+            <returns>服务器应答</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetStream(Howell5198.StreamSession)">
+            <summary>
+            获取实时编码数据
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="channelno">通道号</param>
+            <param name="type">0:主码流 1:子码流</param>
+            <returns>服务器应答</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetColor(Howell5198.Howell5198Session,System.Int32)">
+            <summary>
+            获取色彩
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="channelno">通道号</param>
+            <returns>帧数据</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetColor(Howell5198.Howell5198Session,Howell5198.Protocols.ColorInfo)">
+            <summary>
+            设置色彩
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setColorRequest"></param>
+            <returns>GetColorResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetOsdChannel(Howell5198.Howell5198Session,Howell5198.Protocols.GetOsdChannelRequest)">
+            <summary>
+            获取通道名称
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="getOsdChannelRequest"></param>
+            <returns>GetOsdChannelResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetOsdChannel(Howell5198.Howell5198Session,Howell5198.Protocols.OsdChannelInfo)">
+            <summary>
+            设置通道名称
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setOsdChannelRequest"></param>
+            <returns>SetOsdChannelResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetOsdDate(Howell5198.Howell5198Session,Howell5198.Protocols.GetOsdDateRequest)">
+            <summary>
+            获取通道日期
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="getOsdDateRequest"></param>
+            <returns>GetOsdDateResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetOsdDate(Howell5198.Howell5198Session,Howell5198.Protocols.OsdDateInfo)">
+            <summary>
+            设置通道日期
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setOsdDateRequest"></param>
+            <returns>SetOsdDateResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetVideoQuality(Howell5198.Howell5198Session,Howell5198.Protocols.GetVideoQualityRequest)">
+            <summary>
+            获取图像质量
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="getVideoQualityRequest"></param>
+            <returns>GetVideoQualityResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetVideoQuality(Howell5198.Howell5198Session,Howell5198.Protocols.VideoQualityInfo)">
+            <summary>
+            设置图像质量
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setVideoQualityRequest"></param>
+            <returns>SetVideoQualityResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetStreamType(Howell5198.Howell5198Session,Howell5198.Protocols.GetStreamTypeRequest)">
+            <summary>
+            获取码流类型
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="getStreamTypeRequest"></param>
+            <returns>GetStreamTypeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetStreamType(Howell5198.Howell5198Session,Howell5198.Protocols.StreamTypeInfo)">
+            <summary>
+            设置码流类型
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setStreamTypeRequest"></param>
+            <returns>SetStreamTypeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetNetInfo(Howell5198.Howell5198Session)">
+            <summary>
+            获取网络
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetNetInfoResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetNetInfo(Howell5198.Howell5198Session,Howell5198.Protocols.NetInfo)">
+            <summary>
+            设置网络
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setNetInfoRequest"></param>
+            <returns>SetNetInfoResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetSystemTime(Howell5198.Howell5198Session)">
+            <summary>
+            获取时间
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetSystemTime(Howell5198.Howell5198Session,Howell5198.Protocols.SystemTimeInfo)">
+            <summary>
+            设置时间
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setSystemTimeRequest"></param>
+            <returns>SetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.RestartDevice(Howell5198.Howell5198Session)">
+            <summary>
+            重启设备
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.CloseDevice(Howell5198.Howell5198Session)">
+            <summary>
+            关闭设备
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.ResetDevice(Howell5198.Howell5198Session)">
+            <summary>
+            重置设备
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetRs232Cfg(Howell5198.Howell5198Session,Howell5198.Protocols.GetRs232CfgRequest)">
+            <summary>
+            获取串口模式
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetRs232Cfg(Howell5198.Howell5198Session,Howell5198.Protocols.Rs232CfgInfo)">
+            <summary>
+            设置串口模式
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setSystemTimeRequest"></param>
+            <returns>SetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetPtzRs232Cfg(Howell5198.Howell5198Session,Howell5198.Protocols.GetPtzRs232CfgRequest)">
+            <summary>
+            获取PTZ设置
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <returns>GetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetPtzRs232Cfg(Howell5198.Howell5198Session,Howell5198.Protocols.PtzRs232CfgInfo)">
+            <summary>
+            设置PTZ设置
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="setSystemTimeRequest"></param>
+            <returns>SetSystemTimeResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.PtzControl(Howell5198.Howell5198Session,Howell5198.Protocols.PtzControlRequest)">
+            <summary>
+            PTZ命令控制
+            </summary>
+            <param name="session">请求对象的会话信息</param>
+            <param name="ptzControlRequest"></param>
+            <returns>PtzControlResponse</returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SearchFile(Howell5198.Howell5198Session,Howell5198.Protocols.SearchFileRequest)">
+            <summary>
+            搜索获得回放文件列表
+            </summary>
+            <param name="session"></param>
+            <param name="searchFileRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetFile(Howell5198.StreamSession,Howell5198.Protocols.GetFileRequest)">
+            <summary>
+            获取回放文件
+            </summary>
+            <param name="session"></param>
+            <param name="getFileRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetFileInfo(Howell5198.Howell5198Session,Howell5198.Protocols.GetFileInfoRequest)">
+            <summary>
+            回放获取文件信息
+            </summary>
+            <param name="session"></param>
+            <param name="getFileInfoRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetNetHead(Howell5198.Howell5198Session,Howell5198.Protocols.GetNetHeadRequest)">
+            <summary>
+            预览获取视频信息
+            </summary>
+            <param name="session"></param>
+            <param name="getNetHeadRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetDeviceConfig(Howell5198.Howell5198Session)">
+            <summary>
+            获取设备配置信息
+            </summary>
+            <param name="?"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.GetMotionSet(Howell5198.Howell5198Session,Howell5198.Protocols.GetMotionRequest)">
+            <summary>
+            获取移动侦测配置
+            </summary>
+            <param name="session"></param>
+            <param name="getMotionRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SetMotionSet(Howell5198.Howell5198Session,Howell5198.Protocols.SetMotionRequest)">
+            <summary>
+            设置移动侦测配置
+            </summary>
+            <param name="session"></param>
+            <param name="setMotionRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.IHowell5198ServerAppInstance.SyncTime(Howell5198.Howell5198Session,Howell5198.Protocols.SyncTimeRequest)">
+            <summary>
+            同步时间
+            </summary>
+            <param name="session"></param>
+            <param name="syncTimeRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Howell5198.ProtocolHeader">
+            <summary>
+            5198协议头结构
+            </summary>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.Validated">
+            <summary>
+            协议头是否有效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.GetPayloadLength">
+            <summary>
+            获取载荷数据字节长度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.SetPayloadLength(System.Int32)">
+            <summary>
+            设置载荷数据字节长度
+            </summary>
+            <param name="payloadLength"></param>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.GetFixedHeaderLength">
+            <summary>
+            获取协议头字节长度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            从数组中读取头结构
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.ProtocolHeader.GetBytes">
+            <summary>
+            将头结构转换为数组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.proType">
+            <summary>
+            协议类型
+            </summary>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.proVersion">
+            <summary>
+            主版本号
+            </summary>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.dataLen">
+            <summary>
+            数据长度，不包含协议头的长度
+            </summary>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.proMinVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.errornum">
+            <summary>
+            错误类型:服务器发给客户端的错误码
+            </summary>
+        </member>
+        <member name="P:Howell5198.ProtocolHeader.Reserved">
+            <summary>
+            保留 120字节
+            </summary>
+        </member>
+        <member name="T:Howell5198.COMMAND">
+            <summary>
+            协议命令
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Login">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Main_stream">
+             <summary>
+            获取实时编码数据
+             </summary>
+        </member>
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_color”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_osddate”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_osdchannel”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Howell5198.COMMAND.Restart_device”忽略有格式错误的 XML 注释 -->
+        <member name="F:Howell5198.COMMAND.SearchFile">
+            <summary>
+            获取文件列表
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetFile">
+            <summary>
+            请求下载文件
+            </summary>
+        </member>
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_videoquality”忽略有格式错误的 XML 注释 -->
+        <member name="F:Howell5198.COMMAND.Reset">
+             <summary>
+            恢复默认值
+             </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.ForceIFrame">
+            <summary>
+            强制I帧
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Ptzcontrol">
+             <summary>
+            PTZ命令控制
+             </summary>
+        </member>
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_streamtype”忽略有格式错误的 XML 注释 -->
+        <member name="F:Howell5198.COMMAND.Serverinfo">
+             <summary>
+            tServerInfo信息前的协议类型
+             </summary>
+        </member>
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_systemtime”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_netinfo”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_ptzrs232cfg”忽略有格式错误的 XML 注释 -->
+        <member name="F:Howell5198.COMMAND.GetFileInfo">
+            <summary>
+            回放获取文件信息
+            </summary>
+        </member>
+        <!-- 对于成员“F:Howell5198.COMMAND.Get_rs232cfg”忽略有格式错误的 XML 注释 -->
+        <member name="F:Howell5198.COMMAND.Get_SubChannelSet">
+            <summary>
+            字码流设置
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Get_MotionRowcols">
+            <summary>
+            扩展移动侦测信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetNetHead">
+            <summary>
+            预览获取视频信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.RegisterAlarm">
+            <summary>
+            发送需要接收报警信息协议
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetDeviceCfg">
+            <summary>
+            获取设备配置信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetWindowNumber">
+            <summary>
+            获取远程服务器窗口数目，可调用GetDevCfg来达到类似功能
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetMotionRecord">
+            <summary>
+            移动侦测
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.NetStat">
+            <summary>
+            获取网络状况，若网络异常的话返回失败
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Get_ntpinfo">
+            <summary>
+            NTP
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetPanoCameraList">
+            <summary>
+            获取全景摄像机列表
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.AddPanoCamera">
+            <summary>
+            创建全景摄像机
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetPanoCamera">
+            <summary>
+            获取指定全景摄像机信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SetPanoCamera">
+            <summary>
+            修改或创建指定全景摄像机信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.DeletePanoCamera">
+            <summary>
+            删除指定全景摄像机信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetServiceVersion">
+            <summary>
+            获取服务程序版本信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetDeviceInfo">
+            <summary>
+            查询设备信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetDeviceStatus">
+            <summary>
+            查询设备状态
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetNetworkInterface">
+            <summary>
+            查询网口信息
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetDecodingUnitList">
+            <summary>
+            查询解码单元列表
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetDecodingUnit">
+            <summary>
+            查询解码单元
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetRotatingSpeed">
+            <summary>
+            获取解码单元播放器视频水平旋转速度
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SetRotatingSpeed">
+            <summary>
+            设置解码单元播放器视频水平旋转速度
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SwitchPanoCamera">
+            <summary>
+            切换解码单元显示的全景摄像机
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetViewPoint">
+            <summary>
+            获取解码单元显示的全景摄像机视角
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SetViewPoint">
+            <summary>
+            修改解码单元显示的全景摄像机视角
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SetViewPointFixed">
+            <summary>
+            锁定或解锁解码单元显示的全景摄像机视角
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.SetViewPointRows">
+            <summary>
+            修改解码单元显示的全景摄像机的显示列数量
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.GetPlayerStatus">
+            <summary>
+            获取解码单元的播放器状态
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.OneByOne">
+            <summary>
+            单帧进
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Pause">
+            <summary>
+            暂停播放
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Resume">
+            <summary>
+            恢复播放
+            </summary>
+        </member>
+        <member name="F:Howell5198.COMMAND.Seek">
+            <summary>
+            定位播放器进度
+            </summary>
+        </member>
+        <member name="T:Howell5198.ResultCode">
+            <summary>
+            应答结果常量
+            </summary>
+        </member>
+        <member name="F:Howell5198.ResultCode.OK">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Howell5198.ResultCode.Silent">
+            <summary>
+            发送成功，被屏蔽
+            </summary>
+        </member>
+        <member name="F:Howell5198.ResultCode.Priority">
+            <summary>
+            权限不足
+            </summary>
+        </member>
+        <member name="F:Howell5198.ResultCode.NotFound">
+            <summary>
+            未找到资源
+            </summary>
+        </member>
+        <member name="F:Howell5198.ResultCode.ServerInternalError">
+            <summary>
+            服务器内部错误
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.IBytesSerialize.GetLength">
+            <summary>
+            获取结构长度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.IBytesSerialize.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            读取数据
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.IBytesSerialize.GetBytes">
+            <summary>
+            写入数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamResponse.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamResponse.GetBytes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.StreamResponse.Success">
+            <summary>
+            该值为0表明请求成功，如果为-1表明请求失败。如果请求成功，服务器会不停的发送协议头+帧类型+帧数据
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.CaptureRequest.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.CaptureRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.CaptureRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.CaptureRequest.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.CaptureRequest.Stream">
+            <summary>
+            0:主码流  1:子码流，当前只支持子码流
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.CaptureRequest.Type">
+            <summary>
+            0:JPG 1:BMP,当前只支持JPEG
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.CaptureRequest.Quality">
+            <summary>
+            5-100
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.CaptureRequest.Reserve">
+            <summary>
+            16个Int32的保留信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.CapturenResponse.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.CapturenResponse.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.CapturenResponse.PicData">
+            <summary>
+            jpeg格式的图片buf
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetColorRequest">
+             <summary>
+            获取色彩
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamRequest.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.StreamRequest.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.ColorInfo">
+             <summary>
+            色彩信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.ColorInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.ColorInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.ColorInfo.GetBytes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ColorInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ColorInfo.Brightness">
+            <summary>
+            亮度0-255
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ColorInfo.Contrast">
+            <summary>
+            对比度0-127
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ColorInfo.Saturation">
+            <summary>
+            饱和度0-127
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ColorInfo.Hue">
+            <summary>
+            色相0-255
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetColorResponse">
+             <summary>
+            设置色彩的应答
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SetColorResponse.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SetColorResponse.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.SetColorResponse.Success">
+            <summary>
+            该值为0表明请求成功，否则请求失败
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnitList.DecodingUnit_count">
+            <summary>
+            解码单元的数量
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnitList.DecodingUnits">
+            <summary>
+            DecodingUnit_count个连续的tDecodingUnit数据
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tDecodingUnit.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tDecodingUnit.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Id">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Name_enabled">
+            <summary>
+            是否包含名称,0为false，非0为true
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Position_enabled">
+            <summary>
+            是否包含左上角位置
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Resolution_enabled">
+            <summary>
+            是否包含分辨率
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.PanoCameraId_enabled">
+            <summary>
+            是否包含解码的全景相机ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.DisplayDeviceId_enabled">
+            <summary>
+            是否包含解对应的显示设备唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Position">
+            <summary>
+            左上角位置
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.Resolution">
+            <summary>
+            分辨率
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.PanoCameraId">
+            <summary>
+            解码的全景相机ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnit.DisplayDeviceId">
+            <summary>
+            对应的显示设备唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tPosition.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tPosition.X">
+            <summary>
+            X轴坐标，单位：Pixel
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPosition.Y">
+            <summary>
+            Y轴坐标，单位：Pixel
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tResolution.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tResolution.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tResolution.Height">
+             <summary>
+            高度，单位：Pixel
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tResolution.Width">
+            <summary>
+            宽度，单位：Pixel
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tDecodingUnitId.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tDecodingUnitId.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tDecodingUnitId.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tRotatingSpeed.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tRotatingSpeed.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tRotatingSpeed.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tRotatingSpeed.RotatingSpeed">
+            <summary>
+            速度单位： 度/秒 0：表示不转动， 负值表示逆时针转动
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SwitchPanoCameraRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SwitchPanoCameraRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.SwitchPanoCameraRequest.DecodingUnitId">
+            <summary>
+            解码单元ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SwitchPanoCameraRequest.PanoCameraId">
+            <summary>
+            全景摄像机ID
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointRequest.DecodingUnitId">
+            <summary>
+            解码单元ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointRequest.ViewPoint">
+            <summary>
+            全景摄像机视角
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointFixedRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointFixedRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointFixedRequest.DecodingUnitId">
+            <summary>
+            解码单元ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointFixedRequest.IsFixed">
+            <summary>
+            非零为锁定，零为解锁
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointRowsRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SetViewPointRowsRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointRowsRequest.DecodingUnitId">
+            <summary>
+            解码单元ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SetViewPointRowsRequest.Rows">
+            <summary>
+            1：单行显示，2：多行显示 注意：只有视角是360度的才支持Rows=2的模式
+            </summary>
+        </member>
+        <!-- 对于成员“P:Howell5198.Protocols.tPlayerStatus.Seekable”忽略有格式错误的 XML 注释 -->
+        <member name="P:Howell5198.Protocols.tPlayerStatus.State">
+            <summary>
+            播放器状态
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPlayerStatus.Duration">
+            <summary>
+            媒体总时长
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.OneByOneRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.OneByOneRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.OneByOneRequest.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.PauseRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.PauseRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.PauseRequest.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.ResumeRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.ResumeRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.ResumeRequest.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SeekRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SeekRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.SeekRequest.DecodingUnitId">
+            <summary>
+            解码单元唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SeekRequest.Position">
+            <summary>
+            归一化的进度[0,1] 0: 表示文件开始位置 1: 表示文件结束位置
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.DeviceConfig.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.DeviceConfig.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="T:Howell5198.Protocols.RestartDeviceResponse">
+            <summary>
+            重启设备的应答
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.CloseDeviceResponse">
+            <summary>
+            关闭设备的应答
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.ResetDeviceResponse">
+            <summary>
+            重置设备的应答
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tNetworkInterface.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tNetworkInterface.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.Id">
+            <summary>
+            网口ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.Name">
+            <summary>
+            网口名称
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.Address">
+            <summary>
+            IPV4地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.SubnetMask">
+            <summary>
+            子网掩码
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.SpeedDuplex">
+            <summary>
+            网口速率 M/bps
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.MTU">
+            <summary>
+            最大传输单元长度
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tNetworkInterface.PhysicalAddress">
+            <summary>
+            MAC地址，00-00-00-00-00-00
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.tServiceVersion">
+            <summary>
+            服务程序版本信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tServiceVersion.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tServiceVersion.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tServiceVersion.Version">
+            <summary>
+            版本号 1.0.1
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tServiceVersion.BuildDate">
+            <summary>
+            编译时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tServiceVersion.Company">
+            <summary>
+            公司名
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tDeviceInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tDeviceInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.Id">
+            <summary>
+            设备唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.SerialNumber">
+            <summary>
+            设备序列号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.Model">
+            <summary>
+            设备型号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.FirmwareVersion">
+            <summary>
+            固件版本号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.FirmwareReleasedDate">
+            <summary>
+            固件发布日期
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.HardwareVersion">
+            <summary>
+            硬件版本号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.Description_enabled">
+            <summary>
+            是否包含描述信息,0为false
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceInfo.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tDeviceStatus.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tDeviceStatus.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.CurrentTime">
+            <summary>
+            当前时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.SystemUpTime">
+            <summary>
+            系统启动到现在的秒数
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.CPU_enabled">
+            <summary>
+            是否包含CPU状态,0为false
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.Memory_enabled">
+            <summary>
+            是否包含内存状态,0为false
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.CPU">
+            <summary>
+            CPU状态
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tDeviceStatus.Memory">
+            <summary>
+            内存状态
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tCPUPerformance.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tCPUPerformance.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- 对于成员“P:Howell5198.Protocols.tCPUPerformance.Name”忽略有格式错误的 XML 注释 -->
+        <member name="P:Howell5198.Protocols.tCPUPerformance.Utilization">
+            <summary>
+            使用百分比 [0,100]
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tMemoryPerformance.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tMemoryPerformance.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tMemoryPerformance.Usage">
+            <summary>
+            使用百分比[0,100]
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tMemoryPerformance.TotalSize">
+            <summary>
+            内存大小，单位：MB
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tMemoryPerformance.Description">
+            <summary>
+            描述信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.toolclass.WirteStringToBuf(System.String,System.Int32,System.Byte[]@,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="strvalue">要写入buf的字符串</param>
+            <param name="bytesize">协议中给字符串预留的空间长度</param>
+            <param name="targetbuf">要写入的buf</param>
+            <param name="offset">偏移量</param>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginRequest.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginRequest.Type">
+            <summary>
+            暂时未使用
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginRequest.UserName">
+            <summary>
+            用户名（最大长度32个单字节）
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginRequest.Password">
+            <summary>
+            密码（最大长度32个单字节）
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginRequest.ClientUserID">
+            <summary>
+            客户端用户ID(暂时未使用)
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginRequest.Reserved">
+            <summary>
+            32个Int32的保留信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.LoginResponse">
+            <summary>
+            登录应答
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginResponse.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginResponse.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.LoginResponse.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.LoginResponse.Success">
+            <summary>
+            该值为0表明登录成功，并继续发送tServerInfo信息，如果为-1表明登录失败，不发任何信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.ServerInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.ServerInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.ServerInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.ServerInfo.SlotCount">
+            <summary>
+            通道总数
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ServerInfo.SverVersion">
+            <summary>
+            服务器版本
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ServerInfo.NetVersion">
+            <summary>
+            网络版本
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.ServerInfo.Reserver">
+            <summary>
+            32个Int32的保留信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.Motion">
+            <summary>
+            移动侦测
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.Motion.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.Motion.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.Motion.Slot">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Motion.Lev">
+            <summary>
+            0最高-5最低，6关闭
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Motion.RecDelay">
+            <summary>
+            0-6:10s,20s,30s,1m,2m,5m,10m
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Motion.Data">
+            <summary>
+            从低位往高位为0-21
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.MotionEx.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.MotionEx.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.MotionEx.Slot">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.MotionEx.Lev">
+            <summary>
+            0最高-5最低，6关闭
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.MotionEx.RecDelay">
+            <summary>
+            0-6:10s,20s,30s,1m,2m,5m,10m
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.MotionEx.Data">
+            <summary>
+            128 * 128 / 8=2048
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.MotionEx.Type">
+            <summary>
+            处理方式,处理方式的"或"结果,参照AlarmHandleType
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.NetInfo">
+            <summary>
+            网络信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.NetInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.NetInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.NetInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.Port">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SDvrIp">
+            <summary>
+            dvr ip地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SDvrMaskIp">
+            <summary>
+            dvr 子网掩码
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.Gateway">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.ByMACAddr">
+            <summary>
+            服务器的物理地址,6个Int32
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.Dns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SMultiCastIP">
+            <summary>
+            多播组地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.DwPPPOE">
+            <summary>
+            0-不启用,1-启用
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SPPPoEUser">
+            <summary>
+            /PPPoE用户名
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SPPPoEPassword">
+            <summary>
+            /PPPoE密码,16个char
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.SPPPoEIP">
+            <summary>
+            PPPoE IP地址(只读)
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NetInfo.Reserve">
+            <summary>
+            32个Int32的保留信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetNetInfoResponse">
+            <summary>
+            设置网络的应答
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetOsdChannelRequest">
+             <summary>
+            获取通道名称
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.OsdChannelInfo">
+             <summary>
+            通道名称信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.OsdChannelInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdChannelInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdChannelInfo.IsEnable">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdChannelInfo.Left">
+            <summary>
+            0-703
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdChannelInfo.Top">
+            <summary>
+            0-575
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdChannelInfo.Name">
+            <summary>
+            通道名称（最大长度32个单字节）
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetOsdChannelResponse">
+             <summary>
+            设置通道名称的应答
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetOsdDateRequest">
+             <summary>
+            获取通道日期
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.OsdDateInfo">
+             <summary>
+            通道日期信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.OsdDateInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.OsdDateInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.OsdDateInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.IsEnable">
+            <summary>
+            是否显示
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.Left">
+            <summary>
+            0-703
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.Top">
+            <summary>
+            0-575
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.Type">
+            <summary>
+            无效
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.OsdDateInfo.IsShowWeek">
+            <summary>
+            是否显示日期
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetOsdDateResponse">
+             <summary>
+            设置通道日期的应答
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tQueryString.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tQueryString.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tQueryString.PageIndex_enabled">
+            <summary>
+            是否包含页码
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tQueryString.PageSize_enabled">
+            <summary>
+            是否包含分页大小
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tQueryString.PageIndex">
+            <summary>
+            页码[1-n]
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tQueryString.PageSize">
+            <summary>
+            分页大小[1-100]
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCameraList.Page_enabled">
+            <summary>
+            是否包含分页信息，如果没有分页信息，则表示一次性获取所有的结果
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCameraList.Page">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCameraList.PanoCamera_count">
+            <summary>
+            全景摄像机的数量
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPage.PageIndex">
+            <summary>
+            页码 1.2.3 …..
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPage.PageSize">
+            <summary>
+            分页大小
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPage.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPage.RecordCount">
+            <summary>
+            当前页的记录数目
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPage.TotalRecordCount">
+            <summary>
+            总记录数目
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tPanoCamera.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tPanoCamera.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.Id_enabled">
+            <summary>
+            是否包含全景摄像机唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.Id">
+            <summary>
+            全景摄像机唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.Model">
+            <summary>
+            型号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.ExistedInDatabase_enabled">
+            <summary>
+            是否包含ExistedInDatabase
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.ExistedInDatabase">
+            <summary>
+            是否已存在与数据库中
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.GroupId">
+            <summary>
+            全景摄像机分组ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.WiperCameraBuildInId">
+            <summary>
+            雨刷对应的内置摄像机ID，如果不支持雨刷，该值为0
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.MainCameraBuildInId">
+            <summary>
+            主摄像机对应的内置ID，如果没有主摄像机，该值为0
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.BuildInCamera_count">
+            <summary>
+            内置摄像机信息个数
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.BuildInCameras">
+            <summary>
+            BuildInCamera_count个连续tBuildInCamera
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.DefaultViewPoint">
+            <summary>
+            默认视点
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.IsAllOnline">
+            <summary>
+            是否所有内建摄像机都在线,只在Id_enabled为true时有效
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCamera.IsCompleted">
+            <summary>
+            内置信息是否完整,只在Id_enabled为true时有效
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tBuildInCamera.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tBuildInCamera.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.Id_enabled">
+            <summary>
+            是否包含唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.Id">
+            <summary>
+            唯一标识符
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.ProtocolType">
+            <summary>
+            协议类型，Howell5198
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.Uri">
+            <summary>
+            设备访问地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.BuildInId">
+            <summary>
+            内置ID [1,n]
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.IsMainCamera">
+            <summary>
+            是否为主摄像机,只在Id_enabled为true时有效
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.IsFishEyeCamera">
+            <summary>
+            是否为鱼眼摄像机,只在Id_enabled为true时有效
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tBuildInCamera.IsOnline">
+            <summary>
+            是否在线,只在Id_enabled为true时有效
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tViewPoint.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tViewPoint.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tViewPoint.Angle">
+            <summary>
+            水平方面的旋转角度，0°位于摄像机组的中间位置，比如:3摄像机，0°位于摄像机2正中;6摄像机，0°位于摄像机3与4相接处，摄像机1正中是-150°，摄像机4正中是30°
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tViewPoint.Distance">
+            <summary>
+            距离画面的距离，与放大率成反比，1表示单视频全屏显示
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tViewPoint.Height">
+            <summary>
+            垂直方向的偏移，+1表示图像的上边缘，-1表示图像的下边缘
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tViewPoint.Fixed">
+            <summary>
+            是否默认固定视角，默认：false
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tViewPoint.Rows">
+            <summary>
+            视频分行显示，视频行数[1,2],默认：1
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tFault.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tFault.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tFault.FaultCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.tFault.FaultReason">
+            <summary>
+            错误原因
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.tPanoCameraId.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.tPanoCameraId.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.tPanoCameraId.PanoCameraId">
+            <summary>
+            全景摄像机唯一标识符
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.RecFile.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.RecFile.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.RecFile.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.RecFile.Beg">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.RecFile.End">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.RecFile.Type">
+             <summary>
+            0=all 1=normal file 2=mot file 3=alarm 4=mot alarm 5=ipcam lost 6=analyze metadata
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SearchFileRequest">
+            <summary>
+            搜索文件的请求
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SearchFileResponse">
+            <summary>
+            搜索文件的应答
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetFileRequest">
+            <summary>
+            获取文件的请求
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetFileResponse">
+            <summary>
+            获取文件的应答
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.GetFileResponse.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileResponse.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileResponse.Type">
+            <summary>
+            0=head  1=video data
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileResponse.Datalen">
+            <summary>
+            数据长度
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileResponse.Buffer">
+            <summary>
+            录像文件数据
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.GetFileInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.GetFileInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileInfo.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileInfo.Beg">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileInfo.End">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileInfo.FileFormatType">
+            <summary>
+            文件编码格式类型，参见HW_DEVICE_TYPE
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetFileInfo.Reserved">
+            <summary>
+            30个Int32的保留信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.GetNetHead.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.GetNetHead.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.GetNetHead.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetNetHead.IsSub">
+            <summary>
+            是否为子码流
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetNetHead.Buf">
+            <summary>
+            保存返回HW头的BUFFER
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.GetNetHead.Len">
+            <summary>
+            Buf中有效数据的长度
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.TimeLabel.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.TimeLabel.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.TimeLabel.Beg">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.TimeLabel.End">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.TimeLabel.FileLen">
+            <summary>
+            录像文件的长度
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetRs232CfgRequest">
+            <summary>
+            获取串口模式
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.GetRs232CfgRequest.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.GetRs232CfgRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.GetRs232CfgRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.GetRs232CfgRequest.Rs232_no">
+            <summary>
+            串口号
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.Rs232CfgInfo">
+             <summary>
+            串口模式信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.Rs232CfgInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.Rs232CfgInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.Rs232CfgInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Rs232_no">
+            <summary>
+            串口号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Rate">
+             <summary>
+            波特率(bps)，0－50，1－75，2－110，3－150，4－300，5－600，6－1200，7－2400，8－4800，9－9600，10－19200， 11－38400，12－57600，13－76800，14－115.2k
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Data_bit">
+            <summary>
+            数据位  0-5位 1-6位 2-7位 3-8位
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Stop_bit">
+            <summary>
+            停止位0-1位 1-2位
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Parity">
+            <summary>
+            0-无校验 1-奇校验 2-偶校验
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Flow_control">
+            <summary>
+            0-无 1-软流控 2-硬流控
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Work_mode">
+            <summary>
+            工作模式 0-云台(PTZ控制) 1-报警接收 2-透明通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Annunciator_type">
+             <summary>
+            0-Howell 1-VISTA 120 ...
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.Rs232CfgInfo.Reserved">
+            <summary>
+            32个Int32的保留信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetRs232CfgResponse">
+             <summary>
+            设置串口模式的应答
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetPtzRs232CfgRequest">
+             <summary>
+            获取PTZ设置
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.PtzRs232CfgInfo">
+             <summary>
+            PTZ设置信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzRs232CfgInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzRs232CfgInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzRs232CfgInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Rs232_no">
+            <summary>
+            串口号
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Rate">
+             <summary>
+            波特率(bps)，0－50，1－75，2－110，3－150，4－300，5－600，6－1200，7－2400，8－4800，9－9600，10－19200， 11－38400，12－57600，13－76800，14－115.2k
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Data_bit">
+            <summary>
+            数据位  0-5位 1-6位 2-7位 3-8位
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Stop_bit">
+            <summary>
+            停止位0-1位 1-2位
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Parity">
+            <summary>
+            0-无校验 1-奇校验 2-偶校验
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Flow_control">
+            <summary>
+            0-无 1-软流控 2-硬流控
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Protocol">
+            <summary>
+            协议类型，参照ProtocolType
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Address">
+             <summary>
+            地址 0-255
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzRs232CfgInfo.Reserved">
+            <summary>
+            32个Int32的保留信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetPtzRs232CfgResponse">
+             <summary>
+            设置PTZ设置的应答
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.PtzControlRequest">
+             <summary>
+            PTZ命令控制
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzControlRequest.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzControlRequest.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.PtzControlRequest.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.ControlType">
+             <summary>
+            0-direct 1- len 2-AUTO zoom in,3-preset
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Cmd">
+             <summary>
+            
+             </summary> 
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Presetno">
+            <summary>
+            预置点号或方向移动的速度(0-64)
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Left">
+            <summary>
+            RECT.left
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Top">
+             <summary>
+            RECT.top
+             </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Right">
+            <summary>
+            RECT.right
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.PtzControlRequest.Bottom">
+             <summary>
+            RECT.bottom
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.PtzControlResponse">
+             <summary>
+            PTZ命令控制的应答
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.FramePayload">
+             <summary>
+            帧类型 + 帧数据
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.FramePayload.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.FramePayload.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.FramePayload.GetBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Protocols.FramePayload.FrameType">
+            <summary>
+            帧类型
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.FramePayload.FrameData">
+            <summary>
+            帧数据
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.HW_MediaInfo">
+            <summary>
+            HW头
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Media_fourcc">
+            <summary>
+            "HKMI": 0x484B4D49 Hikvision Media Information,"HWMI":0x48574D49
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Au_bits">
+            <summary>
+            8,16...
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Au_sample">
+            <summary>
+            Kbps 8,16,64
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Au_channel">
+            <summary>
+            1,2
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Hd_ver">
+            <summary>
+            版本，如果为1,必须正确填写w,h,fr
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.HW_MediaInfo.Fr">
+            <summary>
+            实际帧率
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.GetStreamTypeRequest">
+             <summary>
+            获取码流类型
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.StreamTypeInfo">
+             <summary>
+            码流类型信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamTypeInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamTypeInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.StreamTypeInfo.GetBytes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.StreamTypeInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.StreamTypeInfo.Type">
+             <summary>
+            1- video, 2-audio,3-both
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetStreamTypeResponse">
+             <summary>
+            设置码流类型的应答
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SubChannelSet">
+            <summary>
+            字码流设置
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.Used">
+            <summary>
+            是否启用子码流，0-不启用 1-启用,当不启用，下面参数无效
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.EncodeType">
+            <summary>
+            0-CIF,1-D1,2-720p 3-1080p,0xff-qcif
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.QualityLev">
+            <summary>
+            0-最好,1-次好，2-较好，3一般
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.MaxBps">
+            <summary>
+            0-不限,1-较小 2-大 3-较大 4-最大，CIF(2000,400,600,800,1000),D1(4000,800,1000,1400,1600),qcif(600,100,200,300,400)
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.Vbr">
+            <summary>
+            0-cbr 1-vbr
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.Framerate">
+            <summary>
+            0-全帧率 1-24 实际帧率
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SubChannelSet.Reserve">
+            <summary>
+            256个int
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SystemTimeInfo">
+            <summary>
+            获取时间的应答
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.SystemTimeInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.SystemTimeInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.SystemTimeInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WYear">
+            <summary>
+            年
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WMonth">
+            <summary>
+            月
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WDayOfWeek">
+            <summary>
+            星期,0=星期日,1=星期一...
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WDay">
+            <summary>
+            日
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WHour">
+            <summary>
+            时
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WMinute">
+            <summary>
+            分
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WSecond">
+            <summary>
+            秒
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.SystemTimeInfo.WMilliseconds">
+            <summary>
+            毫秒
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetSystemTimeResponse">
+            <summary>
+            设置时间的应答
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.NtpInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.NtpInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.NtpInfo.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.SvrIp">
+            <summary>
+            ntp ip地址
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.Cycletime">
+            <summary>
+            校时间隔
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.Port">
+            <summary>
+            本地端口，不是NTP服务器端口，设置为0最好
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.Timezone">
+            <summary>
+            64个字节
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.NtpServerId">
+            <summary>
+            32个字节
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.NtpInfo.Reserve">
+            <summary>
+            24个Int32的保留信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.GetNetSyncTimeResponse.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.GetNetSyncTimeResponse.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.NetSyncTime.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.NetSyncTime.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.NetSyncTime.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="P:Howell5198.Protocols.NetSyncTime.Reserve">
+            <summary>
+            32个字节
+            </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.User.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.User.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.DavinciUser.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.DavinciUser.GetBytes">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="T:Howell5198.Protocols.GetVideoQualityRequest">
+             <summary>
+            获取图像质量
+             </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.VideoQualityInfo">
+             <summary>
+            图像质量信息
+             </summary>
+        </member>
+        <member name="M:Howell5198.Protocols.VideoQualityInfo.GetLength">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Protocols.VideoQualityInfo.FromBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:Howell5198.Protocols.VideoQualityInfo.GetBytes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.Slot">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.EncodeType">
+            <summary>
+            0-CIF, 1-D1 2-720p
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.QualityLev">
+            <summary>
+            0-最好,1-次好，2-较好，3一般
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.MaxBps">
+            <summary>
+            0-不限,1-较小 2-大 3-较大 4-最大，CIF(2000,400,600,800,1000),D1(4000,800,1000,1400,1600),720p(8000,2000,2500,3000,4000)
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.Vbr">
+            <summary>
+            /0-cbr 1-vbr
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.Framerate">
+            <summary>
+            0-全帧率 1-24 实际帧率
+            </summary>
+        </member>
+        <member name="P:Howell5198.Protocols.VideoQualityInfo.Reserved">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Howell5198.Protocols.SetVideoQualityResponse">
+             <summary>
+            设置图像质量的应答
+             </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.Send(System.UInt32,System.UInt32,System.Byte[])">
+            <summary>
+            发送数据包
+            </summary>
+            <typeparam name="TPayload"></typeparam>
+            <param name="sequence"></param>
+            <param name="command"></param>
+            <param name="payload"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.TrySend(System.UInt32,System.UInt32,System.Byte[])">
+            <summary>
+            尝试发送数据包
+            </summary>
+            <param name="command"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Howell5198.Howell5198Session.ProtocolSession">
+            <summary>
+            协议会话信息
+            </summary>
+        </member>
+        <member name="T:Howell5198.SessionContext">
+            <summary>
+            会话上下文对象
+            </summary>
+        </member>
+        <member name="M:Howell5198.SessionContext.#ctor(System.String,System.String,System.String)">
+            <summary>
+            会话上下文对象
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="isStreamSession">是否为流的会话</param>
+            <param name="isStreamSession">会话ID</param>
+        </member>
+        <member name="P:Howell5198.SessionContext.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Howell5198.SessionContext.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Howell5198.SessionContext.SessionID">
+            <summary>
+            会话ID
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSession.Send(Howell5198.Protocols.FramePayload)">
+            <summary>
+            发送数据包
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSession.TrySend(Howell5198.Protocols.FramePayload)">
+            <summary>
+            尝试发送数据包
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.StreamSession.SendFile(Howell5198.Protocols.GetFileResponse)">
+            <summary>
+            发送回放数据包
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSession.TrySendFile(Howell5198.Protocols.GetFileResponse)">
+            <summary>
+            尝试发送回放数据包
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSession.Close">
+            <summary>
+            主动关闭session
+            </summary>
+        </member>
+        <member name="P:Howell5198.StreamSession.ProtocolSession">
+            <summary>
+            协议会话信息
+            </summary>
+        </member>
+        <member name="M:Howell5198.StreamSessionContext.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            会话上下文对象
+            </summary>
+            <param name="sessionID">唯一标识</param>
+            <param name="channelNo">通道号</param>
+            <param name="type">流类型，0:主码流 1:子码流 2:回放流</param>
+        </member>
+        <member name="P:Howell5198.StreamSessionContext.SessionID">
+            <summary>
+            会话ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.StreamSessionContext.ChannelNo">
+            <summary>
+            通道号
+            </summary>
+        </member>
+        <member name="P:Howell5198.StreamSessionContext.Type">
+            <summary>
+            0:主码流 1:子码流  2:回放文件流
+            </summary>
+        </member>
+    </members>
+</doc>

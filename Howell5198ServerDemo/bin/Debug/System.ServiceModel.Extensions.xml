@@ -1,0 +1,1782 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.ServiceModel.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.ServiceModel.Web.IncomingWebRequestContextExtensions">
+            <summary>
+            IncomingWebRequestContext扩展函数
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.IncomingWebRequestContextExtensions.GetDigestHeader(System.ServiceModel.Web.IncomingWebRequestContext)">
+            <summary>
+            获取当前Web请求信息中的Digest验证信息内容
+            </summary>
+            <param name="context">Web操作上下文</param>
+            <returns>返回Digest验证信息内容，否则返回null.</returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.IncomingWebRequestContextExtensions.GetCookieValue(System.ServiceModel.Web.IncomingWebRequestContext)">
+            <summary>
+            获取HTTP请求的Cookie
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.IncomingWebRequestContextExtensions.GetCookieItemValue(System.ServiceModel.Web.IncomingWebRequestContext,System.String)">
+            <summary>
+            获取HTTP请求的Cookie子项
+            </summary>
+            <param name="context"></param>
+            <param name="keyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.IncomingWebRequestContextExtensions.GetAcceptTypes(System.ServiceModel.Web.IncomingWebRequestContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.OutgoingWebResponseContextExtensions">
+            <summary>
+            OutgoingWebResponseContext扩展函数
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpContentFormatterMimeTypeAttribute">
+            <summary>
+            Http格式化器对应的MIME类型
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterMimeTypeAttribute.#ctor(System.Type,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <param name="mimeTypes"></param>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpContentFormatterMimeTypeAttribute.MimeTypes">
+            <summary>
+            MIME 类型
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpContentFormatterMimeTypeAttribute.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpContentFormatterBehavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterBehavior.#ctor(System.ServiceModel.Dispatcher.FormatterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="direction"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <param name="dispatchOperation"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <param name="clientOperation"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterBehavior.Validate(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpCachePolicyBehavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCachePolicyBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCachePolicyBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCachePolicyBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCachePolicyBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpCachePolicyBehavior.Duration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpCachePolicyBehavior.Cacheability">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.NonceTimeStampParser">
+            <summary>
+            This class is responsible for parsing the date time stamp that is received 
+            from the client.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.WsdlDocumentationAttribute">
+            <summary>
+            WSDL 文档注释属性
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.WsdlDocumentationAttribute.#ctor(System.Xml.XmlElement)">
+            <summary>
+            This constructor takes an XmlElement if the sample 
+            were to be modified to import the documentation element
+            as XML. This sample does not use this constructor.
+            </summary>
+            <param name="wsdlDocElement"></param>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.HttpCookieAuthenticationElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpCookieAuthenticationElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpCookieAuthenticationElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpCookieAuthenticationElement.CookieAuthenticationName">
+            <summary>
+            用户认证视图
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.OpaqueGenerator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.MethodExtractor">
+            <summary>
+            This class is responsible for extracting the HTTP method from the 
+            incoming message.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.IPAddressExtractor">
+            <summary>
+            This class is responsible for extracting the ip-address from the header of the 
+            incoming message.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.ClientDigestAuthenticationInterceptor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.ClientDigestAuthenticationInterceptor.BeforeSendRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.IClientChannel)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="channel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.ClientDigestAuthenticationInterceptor.AfterReceiveReply(System.ServiceModel.Channels.Message@,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.ClientDigestAuthenticationInterceptor.AuthScheme">
+            <summary>
+            认证名称
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior">
+            <summary>
+            HTTP客户端摘要认证终结点行为
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="authScheme"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpClientDigestAuthenticationEndPointBehavior.AuthScheme">
+            <summary>
+            认证方式
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.HttpCachePolicyElement">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpCachePolicyElement.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpCachePolicyElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpCachePolicyElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpCachePolicyElement.Duration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpCachePolicyElement.Cacheability">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestHeader">
+            <summary>
+            This class is responsible for generating the HTTP header in the response
+            of a Digest Authenticated server.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.GenerateHeaderString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.Set(System.ServiceModel.Web.Security.HeaderKeyValue)">
+            <summary>
+            
+            </summary>
+            <param name="headerKeyValue"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.CreateHeader">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.AddRealm(System.Text.StringBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestHeader.AddQop(System.Text.StringBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Scheme">
+            <summary>
+            Digest Scheme
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Cnonce">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Nonce">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Opaque">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Algoritm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Qop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Stale">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Realm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Domain">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Uri">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Response">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.Method">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.DigestHeader.NounceCounter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestAuthenticationInterceptor">
+            <summary>
+            This class connects to the extension point of WCF, the RequestInterceptor. 
+            RequestInterceptor is a class that processes each request that is sent 
+            to the WCF service.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.AuthorizationPolicyFactory">
+            <summary>
+            This class is responsible for creating a authorization policy based on the 
+            given credentials.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpContentFormatterConfigurationAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpContentFormatterConfigurationAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="defaultMimeType"></param>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpContentFormatterConfigurationAttribute.DefaultMimeType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.ConfigurationManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.ConfigurationManager.GetServiceBehaviorElement(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="behaviorConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.ConfigurationManager.GetServiceSection">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.ConfigurationManager.GetServiceElement(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.ConfigurationManager.GetBindingsSection">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.BehaviorExtensionElementExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.ResponseMessageFactory">
+            <summary>
+            This class is responsible for creating the http response message when a 
+            client does not send the appropriate authentication header.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.HeaderKeyValue">
+            <summary>
+            Class to hold a key and a value from the incoming message header.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.HeaderKeyValue.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.HeaderKeyValue.Key">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.Security.HeaderKeyValue.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.GZipMessageEncodingElement">
+            <summary>
+            This class enables the user to configure the CompactMesssageEncoder with the configuration file.
+            It's derived from ConfigurationElement
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Configuration.GZipMessageEncodingElement._properties">
+            <summary>
+            Stores the available properties of this ConfigurationElement.
+            It's initialized in the Properties property.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.GZipMessageEncodingElement.CreateBindingElement">
+            <summary>
+            Creates an instance of the binding element
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.GZipMessageEncodingElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+            <summary>
+            Apply the configuration file to the binding element
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.GZipMessageEncodingElement.BindingElementType">
+            <summary>
+            Gets the type of the binding element. 
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.GZipMessageEncodingElement.Properties">
+            <summary>
+            Gets the collection of properties. 
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.GZipMessageEncodingElement.TextMessageEncodingElement">
+            <summary>
+            Get the TextMessageEncodingElement configuration 
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.GZipMessageEncodingElement.BinaryMessageEncodingElement">
+            <summary>
+            Get the BinaryMessageEncodingElement configuration 
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.CookieAuthentication">
+            <summary>
+            客户端Cookie认证对象
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.CookieAuthentication.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.CookieAuthentication.Validate(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            用户方法认证
+            </summary>
+            <param name="userName"></param>
+            <param name="sessionId"></param>
+            <param name="method"></param>
+            <param name="url"></param>
+            <param name="verifySession"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpCookieAuthenticationInspector">
+            <summary>
+            Http协议Cookie方式认证
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationInspector.#ctor(System.ServiceModel.Web.CookieAuthentication)">
+            <summary>
+            
+            </summary>
+            <param name="authentication"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationInspector.AfterReceiveRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpRequestMessageProperty,System.ServiceModel.IClientChannel,System.ServiceModel.InstanceContext)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="httpRequest"></param>
+            <param name="channel"></param>
+            <param name="instanceContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationInspector.BeforeSendReply(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpResponseMessageProperty,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="httpResponse"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior">
+            <summary>
+             HTTP客户端Cookie认证终结点行为
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="sessionId"></param>
+            <param name="domain"></param>
+            <param name="verifySession"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationClientEndPointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.HttpContentClientFormatter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentClientFormatter.HttpContentClientFormatterProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentClientFormatter.HttpContentClientFormatterAccept">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentClientFormatter.#ctor(System.ServiceModel.Dispatcher.HttpContentFormatterFactory,System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.IClientMessageFormatter,System.ServiceModel.Dispatcher.FormatterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="formatterFactory"></param>
+            <param name="operationDescription"></param>
+            <param name="originalFormatter"></param>
+            <param name="direction"></param>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.MD5Encoder">
+            <summary>
+            This class is responsible for encoding or hashing a string using the
+            MD5 algorithm.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.HttpOptionsElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpOptionsElement.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpOptionsElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpOptionsElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.Base64Converter">
+            <summary>
+            This class is responsible for encoding and decoding a base64 string.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Channels.JsonContentTypeMapper">
+            <summary>
+            Json类型的ContentType映射器
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.JsonContentTypeMapper.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.JsonContentTypeMapper.GetMessageFormatForContentType(System.String)">
+            <summary>
+            转换函数
+            </summary>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior">
+            <summary>
+            HttpIgnoreDefaultXmlNamespaceBehavior Processor
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.HttpDigestAuthenticationElement">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <!--<extensions>
+            <behaviorExtensions>
+              <add name="HttpDigestAuthentication" type="System.ServiceModel.Configuration.HttpDigestAuthenticationElement, System.ServiceModel.Extensions" />
+            </behaviorExtensions>
+            </extensions>-->
+            </remarks>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.MembershipProviderName">
+            <summary>
+            用户成员供应类对象类型名称
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.Realm">
+            <summary>
+            作用领域
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.AuthScheme">
+            <summary>
+            用户认证视图
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.SessionTimeout">
+            <summary>
+            会话的超时时间
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpDigestAuthenticationElement.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.AuthorizationStringExtractor">
+            <summary>
+            This class is responsible for extracting the authentication 
+            string from the http message header.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior.#ctor(System.ServiceModel.Web.CookieAuthentication)">
+            <summary>
+            
+            </summary>
+            <param name="authentication"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpCookieAuthenticationEndPointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.HttpContentFormatterContext">
+            <summary>
+            Http内容格式化上下文
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentFormatterContext.#ctor(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.HttpContentFormat)">
+            <summary>
+            Http内容格式化上下文
+            </summary>
+            <param name="message">消息内容</param>
+            <param name="format">内容格式</param>
+        </member>
+        <member name="P:System.ServiceModel.Dispatcher.HttpContentFormatterContext.Message">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Dispatcher.HttpContentFormatterContext.Format">
+            <summary>
+            内容格式
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.IHttpContentFormatter">
+            <summary>
+            Http内容格式化器接口
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.IHttpContentFormatter.Deserialize(System.ServiceModel.Dispatcher.HttpContentFormatterContext,System.Type)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="context"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.IHttpContentFormatter.Serialize(System.Object,System.Type)">
+            <summary>
+            序列化
+            </summary>
+            <param name="data"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.IHttpContentFormatter.GetCotentFormat">
+            <summary>
+            获取内容格式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Description.ContractDescriptionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.ContractDescriptionExtensions.LoadContractBehaviors(System.ServiceModel.Description.ContractDescription,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="contract"></param>
+            <param name="behaviorConfiguration"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.ContractDescriptionExtensions.FindBehavior``2(System.ServiceModel.Description.ContractDescription,System.Func{``1,``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TBehavior"></typeparam>
+            <typeparam name="TAttribute"></typeparam>
+            <param name="contract"></param>
+            <param name="convert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Description.ContractDescriptionExtensions.GetAttribute``1(System.ServiceModel.Description.ContractDescription)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="contract"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Description.ContractDescriptionExtensions.GetAttributes``1(System.ServiceModel.Description.ContractDescription)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="contract"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.NonceGenerator">
+            <summary>
+            This class is responsible for generating a unique nonce.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestHeaderExtractor">
+            <summary>
+            This class is responsible for extracting and decoding the 
+            credentials from the encoded authorization string.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.OperationDescriptionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.OperationDescriptionExtensions.GetRequestMessageParts(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Description.OperationDescriptionExtensions.GetWebUriTemplate(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Description.OperationDescriptionExtensions.GetWebUriTemplateQuerystring(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Description.OperationDescriptionExtensions.GetRawWebUriTemplate(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            
+            </summary>
+            <param name="operationDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Collections.Specialized.NameValueCollectionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.Collections.Specialized.NameValueCollectionExtensions.ToEnumerable(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.FormatterDirection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.FormatterDirection.Both">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.FormatterDirection.Incomming">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.FormatterDirection.Outgoing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.ServiceHostTools">
+            <summary>
+            System.ServiceModel.ServiceHost 工具类
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.ServiceHostTools.GetBaseAddresses(System.String)">
+            <summary>
+            根据本地主机的IP地址获取所有可能的基地址
+            </summary>
+            <param name="baseAddressFormat">基地址格式</param>
+            <returns>返回所有可能的基地址</returns>
+        </member>
+        <member name="T:System.ServiceModel.Description.RequestMessagePartDescription">
+            <summary>
+            请求信息描述
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.RequestMessagePartDescription.#ctor(System.ServiceModel.Description.MessagePartDescription,System.ServiceModel.Description.RequestMessagePartDescription.MessagePartType,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="messagePart"></param>
+            <param name="partType"></param>
+            <param name="alias"></param>
+        </member>
+        <member name="P:System.ServiceModel.Description.RequestMessagePartDescription.PartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Description.RequestMessagePartDescription.Alias">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.RequestMessagePartDescription.MessagePartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestQop">
+            <summary>
+            This enumeration is used by client to specify the quality of protection (Qop) that
+            is whishes to use.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.EnumWithToString">
+            <summary>
+            Helper class to be able to create an enumeration with 
+            a name and a separate description.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.EnumWithToString.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.EnumWithToString.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestQop.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestQop.Auth">
+            <summary>
+            Auth
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestQop.AuthInt">
+            <summary>
+            Auth-int
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestQop.Token">
+            <summary>
+            Token
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.DigestQop.Parse(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncoderFactory._encoder">
+            <summary>
+            Stores the compact message encoder
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncoderFactory._innerFactory">
+            <summary>
+            Stores the message encoder factory of the inner encoder
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoderFactory.#ctor(System.ServiceModel.Channels.MessageEncoderFactory)">
+            <summary>
+            Construct a compact message encoder factory
+            </summary>
+            <param name="innerFactory">The inner encoder factory</param>o
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncoderFactory.Encoder">
+            <summary>
+            Get the compress message encoder
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncoderFactory.MessageVersion">
+            <summary>
+            Get the message version
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Configuration.HttpIgnoreDefaultXmlNamespaceElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpIgnoreDefaultXmlNamespaceElement.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Configuration.HttpIgnoreDefaultXmlNamespaceElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Configuration.HttpIgnoreDefaultXmlNamespaceElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.PrivateHashEncoder">
+            <summary>
+            The nonce that is returned by the server contains a public part and a private
+            part. This class is responsible for creating the private part of the nonce. The 
+            private part is based on a timestamp, the ip-address of the client and a private
+            key.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.NonceValidator">
+            <summary>
+            This class is responsible for validating the nonce that is returned from the client. It should
+            be the same as the nonce sent by the server and it should not be too old (Stale).
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Channels.BindingFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.BindingFactory.CreateRESTBinding">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpIgnoreDefaultXmlNamespaceInspector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpIgnoreDefaultXmlNamespaceInspector.#ctor(System.ServiceModel.Description.HttpIgnoreDefaultXmlNamespaceBehavior)">
+            <summary>
+            
+            </summary>
+            <param name="behavior"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpIgnoreDefaultXmlNamespaceInspector.AfterReceiveRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpRequestMessageProperty,System.ServiceModel.IClientChannel,System.ServiceModel.InstanceContext)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="httpRequest"></param>
+            <param name="channel"></param>
+            <param name="instanceContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpIgnoreDefaultXmlNamespaceInspector.BeforeSendReply(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpResponseMessageProperty,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="httpResponse"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="T:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior">
+            <summary>
+            HTTP摘要认证终结点行为
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior.#ctor(System.Web.Security.MembershipProvider,System.String,System.String,System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="membershipProvider"></param>
+            <param name="realm"></param>
+            <param name="authScheme"></param>
+            <param name="sessionTimeout"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            Implements a modification or extension of the client across an endpoint.
+            </summary>
+            <param name="endpoint">The endpoint that is to be customized.</param>
+            <param name="clientRuntime">The client runtime to be customized.</param>
+        </member>
+        <member name="M:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Implement to pass data at runtime to bindings to support custom behavior.
+            </summary>
+            <param name="endpoint">The endpoint to modify.</param>
+            <param name="bindingParameters">The objects that binding elements require to support the behavior.</param>
+        </member>
+        <member name="M:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            Implements a modification or extension of the service across an endpoint.
+            </summary>
+            <param name="endpoint">The endpoint that exposes the contract.</param>
+            <param name="endpointDispatcher">The endpoint dispatcher to be modified or extended.</param>
+        </member>
+        <member name="M:System.ServiceModel.Description.Security.DigestAuthenticationEndPointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            Implement to confirm that the endpoint meets some intended criteria.
+            </summary>
+            <param name="endpoint">The endpoint to validate.</param>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpClientDigestAuthenticationElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpClientDigestAuthenticationElement.CreateBehavior">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpClientDigestAuthenticationElement.BehaviorType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpClientDigestAuthenticationElement.AuthScheme">
+            <summary>
+            用户认证视图
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncodingBindingElement._baseBindingElement">
+            <summary>
+            Stores the base binding element so clones can use it.
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncodingBindingElement._innerBindingElement">
+            <summary>
+            Stores the inner binding element
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.#ctor(System.ServiceModel.Channels.GZipMessageEncodingBindingElement)">
+            <summary>
+            Constructor, used with the Clone method
+            </summary>
+            <param name="originalBindingElement"></param>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.SetInnerBindingElement(System.ServiceModel.Channels.MessageEncodingBindingElement)">
+            <summary>
+            Sets e inner binding element
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+            <summary>
+            Builds the channel factory stack on the client that creates a specified type of channel for a specified context. 
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+            <summary>
+            Builds the channel listener on the service that accepts a specified type of channel for a specified context.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.CreateMessageEncoderFactory">
+            <summary>
+            Create the CompactMessageEncoderFactory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.Clone">
+            <summary>
+            Clone the CompactMessageEncodingBindingElement
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)">
+            <summary>
+            Returns a typed object requested, if present, from the appropriate layer in the binding element stack. 
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.InnerBindingElement">
+            <summary>
+            Returns the inner binding element
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncodingBindingElement.MessageVersion">
+            <summary>
+            Get/Set the message version
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Channels.GZipMessageEncoder">
+            <summary>
+            A message encoder class that compacts the message size by compressing it.
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncoder._contentType">
+            <summary>
+            Stores the content type name of the message
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Channels.GZipMessageEncoder._innerEncoder">
+            <summary>
+            Holds the inner message encoder (binary or text)
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoder.#ctor(System.ServiceModel.Channels.MessageEncoder)">
+            <summary>
+            Initialize the message encoder with an inner encoder
+            </summary>
+            <param name="innerEncoder">Binary or Text message encoder to use as an inner encoder</param>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoder.ReadMessage(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager,System.String)">
+            <summary>
+            Decompress and desearialize array of bytes into a message. 
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoder.WriteMessage(System.ServiceModel.Channels.Message,System.Int32,System.ServiceModel.Channels.BufferManager,System.Int32)">
+            <summary>
+            Searialize and compress a message into an array of bytes
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoder.CompressBuffer(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager,System.Int32)">
+            <summary>
+            Compress a buffer
+            </summary>
+            <param name="buffer"></param>
+            <param name="bufferManager"></param>
+            <param name="messageOffset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Channels.GZipMessageEncoder.DecompressBuffer(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager)">
+            <summary>
+            Decompress a buffer
+            </summary>
+            <param name="buffer"></param>
+            <param name="bufferManager"></param>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncoder.ContentType">
+            <summary>
+            Get the content type of the message
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncoder.MediaType">
+            <summary>
+            Get the media type of the encoder
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Channels.GZipMessageEncoder.MessageVersion">
+            <summary>
+            Get the message version of the encoder
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpDigestAuthenticator">
+            <summary>
+            HTTP 摘要认证器
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpDigestAuthenticator.IsStale(System.String)">
+            <summary>
+            Nonce是否已无效或过期
+            </summary>
+            <param name="nonce"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpDigestAuthenticator.GetPassword(System.String)">
+            <summary>
+            根据用户名获取密码
+            </summary>
+            <param name="username">用户名信息</param>
+            <returns>返回密码</returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpDigestAuthenticator.AddNonce(System.String,System.String,System.String)">
+            <summary>
+            有新的用户使用摘要信息登录
+            </summary>
+            <param name="username">用户名</param>
+            <param name="nonce">随机数值</param>
+            <param name="clientIPAddress">客户端的IP地址信息</param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpDigestAuthenticator.RemoveNonce(System.String)">
+            <summary>
+            由于用户的Session过期时移除信息
+            </summary>
+            <param name="nonce"></param>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpDigestAuthenticator.Timeout">
+            <summary>
+            Nonce的超时时间
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.HttpContentFormatterFactory">
+            <summary>
+            Http 协议内容格式化器工厂
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentFormatterFactory.#ctor(System.Collections.Generic.Dictionary{System.String,System.Type},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="formatters"></param>
+            <param name="defaultContentType"></param>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentFormatterFactory.CreateFormatter(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentFormatterFactory.CreateFormatter(System.String[],System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="contentTypes"></param>
+            <param name="resolvedContentType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpContentFormatterAttribute">
+            <summary>
+            Http内容格式化器属性信息
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.AuthDigestEncoder">
+            <summary>
+            This class is responsible for encoding a response when the selected
+            algorithm is Auth.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestEncoderBase">
+            <summary>
+            Base class for encoding the username and password of a user. For each algorithm Auth and None
+            a derived class is created that handles the specialties of that protocol.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.WsdlDocumentationImporter">
+            <summary>
+            WsdlDocumentationImporter
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpCachePolicyMessageInspector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCachePolicyMessageInspector.#ctor(System.ServiceModel.Description.HttpCachePolicyBehavior)">
+            <summary>
+            
+            </summary>
+            <param name="behavior"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCachePolicyMessageInspector.AfterReceiveRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpRequestMessageProperty,System.ServiceModel.IClientChannel,System.ServiceModel.InstanceContext)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="httpRequest"></param>
+            <param name="channel"></param>
+            <param name="instanceContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCachePolicyMessageInspector.BeforeSendReply(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpResponseMessageProperty,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="httpResponse"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCachePolicyMessageInspector.GetCacheabilityString(System.Web.HttpCacheability)">
+            <summary>
+            
+            </summary>
+            <param name="cacheability"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.PrincipalAuthorizationPolicy">
+            <summary>
+            This class implements a principal authorization policy and is attached to 
+            the incoming request when positively validated.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestHeaderFactory">
+            <summary>
+            This class is responsible for generating the digest header that is send to the 
+            client from the server. The default algorithm return is Auth.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestEncoders">
+            <summary>
+            This class holds a list with all available encoders so that they 
+            can easily and quickly be selected based on the requested protocol in the 
+            incoming message from the client.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DefaultDigestEncoder">
+            <summary>
+            This class is responsible for encoding a response when the selected
+            algorithm is None. This is used the case when the client does not 
+            support the Auth algorithm. 
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.HttpContentDispatchFormatterProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.HttpContentDispatchFormatterAccept">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.#ctor(System.ServiceModel.Dispatcher.HttpContentFormatterFactory,System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.IDispatchMessageFormatter,System.ServiceModel.Dispatcher.FormatterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="formatterFactory"></param>
+            <param name="operationDescription"></param>
+            <param name="originalFormatter"></param>
+            <param name="direction"></param>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.DeserializeRequest(System.ServiceModel.Channels.Message,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.SerializeReply(System.ServiceModel.Channels.MessageVersion,System.Object[],System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="messageVersion"></param>
+            <param name="parameters"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Dispatcher.HttpContentDispatchFormatter.Serialize(System.Object,System.Type,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="result"></param>
+            <param name="responseType"></param>
+            <param name="contentTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Dispatcher.HttpContentFormat">
+            <summary>
+            Http 内容格式
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentFormat.Binary">
+            <summary>
+            二进制
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentFormat.Xml">
+            <summary>
+            Xml格式
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Dispatcher.HttpContentFormat.Json">
+            <summary>
+            Json格式
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.ServiceSecurityContextFactory">
+            <summary>
+            This class is responsible for creating the service security context that is attached
+            to the incoming message after it is positively validated.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.HeaderKeyValueSplitter">
+            <summary>
+            This class is responsible for splitting a single key value string from 
+            the incoming message header.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestHeaderParser">
+            <summary>
+            This class is responsible for parsing and creating the digest header that is available
+            in the incoming message.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestAuthenticationManager">
+            <summary>
+            This class acts as the workhorse of the application. It validates the incoming messages, creates the required
+            security context and sends invalid messages when the client does not authenticate properly.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpOptionsBehavior">
+            <summary>
+            Http OPTIONS Method Processor
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpOptionsBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpOptionsBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpOptionsBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDispatcher"></param>
+        </member>
+        <member name="M:System.ServiceModel.Description.HttpOptionsBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            
+            </summary>
+            <param name="endpoint"></param>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector">
+            <summary>
+            HTTP Cookie客户端认证转换器
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="sessionId"></param>
+            <param name="domain"></param>
+            <param name="verifySession"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.AfterReceiveReply(System.ServiceModel.Channels.Message@,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.BeforeSendRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.IClientChannel)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="channel"></param>
+            <returns></returns>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.SessionId">
+            <summary>
+            会话Id
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.Domain">
+            <summary>
+            作用域
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Web.HttpCookieAuthenticationClientInspector.VerifySession">
+            <summary>
+             认证信息
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.RequestInterceptorFactory">
+            <summary>
+            This class is responsible for creating the RequestInterceptor that attach the new
+            functionality to WCF.
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.Security.RequestInterceptorFactory.Create(System.Web.Security.MembershipProvider,System.String,System.String,System.String,System.TimeSpan)">
+            <summary>
+            Create Digest Authentication Interceptor
+            </summary>
+            <param name="membershipProvider"></param>
+            <param name="realm"></param>
+            <param name="privateKey"></param>
+            <param name="authScheme"></param>
+            <param name="sessionTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestValidator">
+            <summary>
+            This class is responsible for validating the digest from the incoming message.
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.HttpOptionsMessageInspector">
+            <summary>
+            用于Firefox之类的浏览器Options的应答
+            </summary>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpOptionsMessageInspector.#ctor(System.ServiceModel.Description.HttpOptionsBehavior)">
+            <summary>
+            
+            </summary>
+            <param name="behavior"></param>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpOptionsMessageInspector.AfterReceiveRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpRequestMessageProperty,System.ServiceModel.IClientChannel,System.ServiceModel.InstanceContext)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="httpRequest"></param>
+            <param name="channel"></param>
+            <param name="instanceContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ServiceModel.Web.HttpOptionsMessageInspector.BeforeSendReply(System.ServiceModel.Channels.Message@,System.ServiceModel.Channels.HttpResponseMessageProperty,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="reply"></param>
+            <param name="httpResponse"></param>
+            <param name="correlationState"></param>
+        </member>
+        <member name="T:System.ServiceModel.Description.HttpContentFormatterConfigurationBehavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:System.ServiceModel.Description.HttpContentFormatterConfigurationBehavior.FormatterFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:System.ServiceModel.Web.Security.DigestAlgorithm">
+            <summary>
+            This enum is used to specify the algorithm that is used by
+            the server to encode the messages.
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestAlgorithm.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestAlgorithm.MD5">
+            <summary>
+            MD5
+            </summary>
+        </member>
+        <member name="F:System.ServiceModel.Web.Security.DigestAlgorithm.MD5Sess">
+            <summary>
+            MD5-sess
+            </summary>
+        </member>
+    </members>
+</doc>

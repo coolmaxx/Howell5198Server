@@ -77,6 +77,8 @@
   <ItemGroup>
     <Compile Include="Howell5198Client.cs" />
     <Compile Include="Howell5198Server.cs" />
+    <Compile Include="Howell5198Session.cs" />
+    <Compile Include="IHowell5198ServerContract.cs" />
     <Compile Include="ProtocolHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocols\Alarm.cs" />

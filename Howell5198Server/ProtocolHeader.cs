@@ -132,7 +132,7 @@ namespace Howell5198
     /// <summary>
     /// 协议命令
     /// </summary>
-    public class COMMAND
+    public static class ProtocolType
     {
         /// <summary>
         /// 登录
@@ -382,6 +382,260 @@ namespace Howell5198
         public const UInt32 AlarmHeartbeat = 8;
         public const UInt32 Unknow = 0xff001024;
         public const UInt32 GetCapability= 0xff00008c;
+    }
+    /// <summary>
+    /// 错误号
+    /// </summary>
+    public static class ErrorNo
+    {
+        /// <summary>
+        /// 没有错误
+        /// </summary>
+        public const Int32 HW_NET_NOERROR = 0;
+        /// <summary>
+        /// 用户名密码错误
+        /// </summary>
+        public const Int32 HW_NET_PASSWORD_ERROR = 1;
+        /// <summary>
+        /// 权限不足
+        /// </summary>
+        public const Int32 HW_NET_NOENOUGHPRI = 2;
+        /// <summary>
+        /// 没有初始化
+        /// </summary>
+        public const Int32 HW_NET_NOINIT = 3;
+        /// <summary>
+        /// 通道号错误
+        /// </summary>
+        public const Int32 HW_NET_CHANNEL_ERROR = 4;
+        /// <summary>
+        /// 连接到DVR的客户端个数超过最大
+        /// </summary>
+        public const Int32 HW_NET_OVER_MAXLINK = 5;
+        /// <summary>
+        /// 版本不匹配
+        /// </summary>
+        public const Int32 HW_NET_VERSIONNOMATCH = 6;
+        /// <summary>
+        /// 连接服务器失败
+        /// </summary>
+        public const Int32 HW_NET_NETWORK_FAIL_CONNECT = 7;
+        /// <summary>
+        /// 向服务器发送失败
+        /// </summary>
+        public const Int32 HW_NET_NETWORK_SEND_ERROR = 8;
+        /// <summary>
+        /// 从服务器接收数据失败
+        /// </summary>
+        public const Int32 HW_NET_NETWORK_RECV_ERROR = 9;
+        /// <summary>
+        /// 从服务器接收数据超时
+        /// </summary>
+        public const Int32 HW_NET_NETWORK_RECV_TIMEOUT = 10;
+        /// <summary>
+        /// 传送的数据有误
+        /// </summary>
+        public const Int32 HW_NET_NETWORK_ERRORDATA = 11;
+        /// <summary>
+        /// 调用次序错误
+        /// </summary>
+        public const Int32 HW_NET_ORDER_ERROR = 12;
+        /// <summary>
+        /// 无此权限
+        /// </summary>
+        public const Int32 HW_NET_OPERNOPERMIT = 13;
+        /// <summary>
+        /// DVR命令执行超时
+        /// </summary>
+        public const Int32 HW_NET_COMMANDTIMEOUT = 14;
+        /// <summary>
+        /// 串口号错误
+        /// </summary>
+        public const Int32 HW_NET_ERRORSERIALPORT = 15;
+        /// <summary>
+        /// 报警端口错误
+        /// </summary>
+        public const Int32 HW_NET_ERRORALARMPORT = 16;
+        /// <summary>
+        /// 参数错误
+        /// </summary>
+        public const Int32 HW_NET_PARAMETER_ERROR = 17;
+        /// <summary>
+        /// 服务器通道处于错误状态
+        /// </summary>
+        public const Int32 HW_NET_CHAN_EXCEPTION = 18;
+        /// <summary>
+        /// 没有硬盘
+        /// </summary>
+        public const Int32 HW_NET_NODISK = 19;
+        /// <summary>
+        /// 硬盘号错误
+        /// </summary>
+        public const Int32 HW_NET_ERRORDISKNUM = 20;
+        /// <summary>
+        /// 服务器硬盘满
+        /// </summary>
+        public const Int32 HW_NET_DISK_FULL = 21;
+        /// <summary>
+        /// 服务器硬盘出错
+        /// </summary>
+        public const Int32 HW_NET_DISK_ERROR = 22;
+        /// <summary>
+        /// 服务器不支持
+        /// </summary>
+        public const Int32 HW_NET_NOSUPPORT = 23;
+        /// <summary>
+        /// 服务器忙
+        /// </summary>
+        public const Int32 HW_NET_BUSY = 24;
+        /// <summary>
+        /// 服务器修改不成功
+        /// </summary>
+        public const Int32 HW_NET_MODIFY_FAIL = 25;
+        /// <summary>
+        /// 密码输入格式不正确
+        /// </summary>
+        public const Int32 HW_NET_PASSWORD_FORMAT_ERROR = 26;
+        /// <summary>
+        /// 硬盘正在格式化，不能启动操作
+        /// </summary>
+        public const Int32 HW_NET_DISK_FORMATING = 27;
+        /// <summary>
+        /// DVR资源不足
+        /// </summary>
+        public const Int32 HW_NET_DVRNORESOURCE = 28;
+        /// <summary>
+        /// DVR操作失败
+        /// </summary>
+        public const Int32 HW_NET_DVROPRATEFAILED = 29;
+        /// <summary>
+        /// 打开PC声音失败
+        /// </summary>
+        public const Int32 HW_NET_OPENHOSTSOUND_FAIL = 30;
+        /// <summary>
+        /// 服务器语音对讲被占用
+        /// </summary>
+        public const Int32 HW_NET_DVRVOICEOPENED = 31;
+        /// <summary>
+        /// 时间输入不正确
+        /// </summary>
+        public const Int32 HW_NET_TIMEINPUTERROR = 32;
+        /// <summary>
+        /// 回放时服务器没有指定的文件
+        /// </summary>
+        public const Int32 HW_NET_NOSPECFILE = 33;
+        /// <summary>
+        /// 创建文件出错
+        /// </summary>
+        public const Int32 HW_NET_CREATEFILE_ERROR = 34;
+        /// <summary>
+        /// 打开文件出错
+        /// </summary>
+        public const Int32 HW_NET_FILEOPENFAIL = 35;
+        /// <summary>
+        /// 上次的操作还没有完成
+        /// </summary>
+        public const Int32 HW_NET_OPERNOTFINISH = 36;
+        /// <summary>
+        /// 获取当前播放的时间出错
+        /// </summary>
+        public const Int32 HW_NET_GETPLAYTIMEFAIL = 37;
+        /// <summary>
+        /// 播放出错
+        /// </summary>
+        public const Int32 HW_NET_PLAYFAIL = 38;
+        /// <summary>
+        /// 文件格式不正确
+        /// </summary>
+        public const Int32 HW_NET_FILEFORMAT_ERROR = 39;
+        /// <summary>
+        /// 路径错误
+        /// </summary>
+        public const Int32 HW_NET_DIR_ERROR = 40;
+        /// <summary>
+        /// 资源分配错误
+        /// </summary>
+        public const Int32 HW_NET_ALLOC_RESOUCE_ERROR = 41;
+        /// <summary>
+        /// 声卡模式错误
+        /// </summary>
+        public const Int32 HW_NET_AUDIO_MODE_ERROR = 42;
+        /// <summary>
+        /// 缓冲区太小
+        /// </summary>
+        public const Int32 HW_NET_NOENOUGH_BUF = 43;
+        /// <summary>
+        /// 创建SOCKET出错
+        /// </summary>
+        public const Int32 HW_NET_CREATESOCKET_ERROR = 44;
+        /// <summary>
+        /// 设置SOCKET出错
+        /// </summary>
+        public const Int32 HW_NET_SETSOCKET_ERROR = 45;
+        /// <summary>
+        /// 个数达到最大
+        /// </summary>
+        public const Int32 HW_NET_MAX_NUM = 46;
+        /// <summary>
+        /// 用户不存在
+        /// </summary>
+        public const Int32 HW_NET_USERNOTEXIST = 47;
+        /// <summary>
+        /// 写FLASH出错
+        /// </summary>
+        public const Int32 HW_NET_WRITEFLASHERROR = 48;
+        /// <summary>
+        /// DVR升级失败
+        /// </summary>
+        public const Int32 HW_NET_UPGRADEFAIL = 49;
+        /// <summary>
+        /// 解码卡已经初始化过
+        /// </summary>
+        public const Int32 HW_NET_CARDHAVEINIT = 50;
+        /// <summary>
+        /// 播放器中错误
+        /// </summary>
+        public const Int32 HW_NET_PLAYERFAILED = 51;
+        /// <summary>
+        /// 用户数达到最大
+        /// </summary>
+        public const Int32 HW_NET_MAX_USERNUM = 52;
+        /// <summary>
+        /// 获得客户端的IP地址或物理地址失败
+        /// </summary>
+        public const Int32 HW_NET_GETLOCALIPANDMACFAIL = 53;
+        /// <summary>
+        /// 该通道没有编码
+        /// </summary>
+        public const Int32 HW_NET_NOENCODEING = 54;
+        /// <summary>
+        /// IP地址不匹配
+        /// </summary>
+        public const Int32 HW_NET_IPMISMATCH = 55;
+        /// <summary>
+        /// MAC地址不匹配
+        /// </summary>
+        public const Int32 HW_NET_MACMISMATCH = 56;
+        /// <summary>
+        /// 升级文件语言不匹配
+        /// </summary>
+        public const Int32 HW_NET_UPGRADELANGMISMATCH = 57;
+        /// <summary>
+        /// 本地显卡不支持
+        /// </summary>
+        public const Int32 HW_NET_DDRAWDEVICENOSUPPORT = 58;
+        /// <summary>
+        /// 服务器升级资源被占用
+        /// </summary>
+        public const Int32 HW_NET_UPGRADEOCCUPIED = 59;
+        /// <summary>
+        /// 语音对讲已经存在
+        /// </summary>
+        public const Int32 HW_NET_VOICE_EXIST = 60;
+        /// <summary>
+        /// 预览个数达到最大
+        /// </summary>
+        public const Int32 HW_NET_MAX_LIVE_NUM = 61;
     }
     /// <summary>
     /// 应答结果常量

@@ -73,7 +73,7 @@ namespace Howell5198
                     {
                         Connected(this, new EventArgs());
                     }
-                    LoginResponse response = Send<LoginResponse>(COMMAND.Login, new LoginRequest()
+                    LoginResponse response = Send<LoginResponse>(ProtocolType.Login, new LoginRequest()
                     {
                         Type = 0,
                         UserName = userName,
@@ -81,7 +81,7 @@ namespace Howell5198
                         ClientUserID = 0
                     }.GetBytes());
                     if (response.Success != 0) throw new InvalidOperationException("Login failed");
-                    ServerInfo serverinfo = Send<ServerInfo>(COMMAND.Serverinfo, null);
+                    ServerInfo serverinfo = Send<ServerInfo>(ProtocolType.Serverinfo, null);
                     return serverinfo;
                 }
                 catch (Exception ex)
@@ -186,26 +186,6 @@ namespace Howell5198
         public event EventHandler Closed;
         #endregion
         #region Methods
- 
-        ///// <summary>
-        ///// 获取ServerInfo
-        ///// </summary>
-        ///// <param name="userName">用户名</param>
-        ///// <param name="password">密码</param>
-        //public LoginResponse Login(String userName, String password)
-        //{
-        //    CheckDisposed();
-        //    if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-        //    LoginResponse response = Send<LoginResponse>(COMMAND.Login, new LoginRequest()
-        //    {
-        //        Type = 0,
-        //        UserName = userName,
-        //        Password = password,
-        //        ClientUserID = 0
-        //    }.GetBytes());
-        //    if (response.Success != 0) throw new InvalidOperationException("Login failed");
-        //    return response;
-        //}
 
         /// <summary>
         /// 获取色彩
@@ -215,7 +195,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            ColorInfo response = Send<ColorInfo>(COMMAND.Get_color, new GetColorRequest()
+            ColorInfo response = Send<ColorInfo>(ProtocolType.Get_color, new GetColorRequest()
             {
                 ChannelNo = channelno
             }.GetBytes());
@@ -230,7 +210,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetColorResponse response = Send<SetColorResponse>(COMMAND.Set_color, setColorRequest.GetBytes());
+            SetColorResponse response = Send<SetColorResponse>(ProtocolType.Set_color, setColorRequest.GetBytes());
             return response;
         }
 
@@ -242,7 +222,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            OsdChannelInfo response = Send<OsdChannelInfo>(COMMAND.Get_osdchannel, new GetOsdChannelRequest()
+            OsdChannelInfo response = Send<OsdChannelInfo>(ProtocolType.Get_osdchannel, new GetOsdChannelRequest()
             {
                 ChannelNo = channelno
             }.GetBytes()); 
@@ -256,7 +236,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetOsdChannelResponse response = Send<SetOsdChannelResponse>(COMMAND.Set_osdchannel, setOsdChannelRequest.GetBytes());
+            SetOsdChannelResponse response = Send<SetOsdChannelResponse>(ProtocolType.Set_osdchannel, setOsdChannelRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -267,7 +247,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            OsdDateInfo response = Send<OsdDateInfo>(COMMAND.Get_osddate, new GetOsdDateRequest()
+            OsdDateInfo response = Send<OsdDateInfo>(ProtocolType.Get_osddate, new GetOsdDateRequest()
             {
                 ChannelNo = channelno
             }.GetBytes());
@@ -281,7 +261,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetOsdDateResponse response = Send<SetOsdDateResponse>(COMMAND.Set_osddate, setOsdDateRequest.GetBytes());
+            SetOsdDateResponse response = Send<SetOsdDateResponse>(ProtocolType.Set_osddate, setOsdDateRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -292,7 +272,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            VideoQualityInfo response = Send<VideoQualityInfo>(COMMAND.Get_videoquality, new GetVideoQualityRequest()
+            VideoQualityInfo response = Send<VideoQualityInfo>(ProtocolType.Get_videoquality, new GetVideoQualityRequest()
             {
                 ChannelNo = channelno
             }.GetBytes());
@@ -306,7 +286,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetVideoQualityResponse response = Send<SetVideoQualityResponse>(COMMAND.Set_videoquality, setVideoQualityRequest.GetBytes());
+            SetVideoQualityResponse response = Send<SetVideoQualityResponse>(ProtocolType.Set_videoquality, setVideoQualityRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -317,7 +297,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            StreamTypeInfo response = Send<StreamTypeInfo>(COMMAND.Get_streamtype, new GetStreamTypeRequest()
+            StreamTypeInfo response = Send<StreamTypeInfo>(ProtocolType.Get_streamtype, new GetStreamTypeRequest()
             {
                 ChannelNo = channelno
             }.GetBytes());
@@ -331,7 +311,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetStreamTypeResponse response = Send<SetStreamTypeResponse>(COMMAND.Set_streamtype, setStreamTypeRequest.GetBytes());
+            SetStreamTypeResponse response = Send<SetStreamTypeResponse>(ProtocolType.Set_streamtype, setStreamTypeRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -342,7 +322,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            NetInfo response = Send<NetInfo>(COMMAND.Get_netinfo, null);
+            NetInfo response = Send<NetInfo>(ProtocolType.Get_netinfo, null);
             return response;
         }
         /// <summary>
@@ -354,7 +334,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetNetInfoResponse response = Send<SetNetInfoResponse>(COMMAND.Set_netinfo, setNetInfoRequest.GetBytes());
+            SetNetInfoResponse response = Send<SetNetInfoResponse>(ProtocolType.Set_netinfo, setNetInfoRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -365,7 +345,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SystemTimeInfo response = Send<SystemTimeInfo>(COMMAND.Get_systemtime, null);
+            SystemTimeInfo response = Send<SystemTimeInfo>(ProtocolType.Get_systemtime, null);
             return response;
         }
         /// <summary>
@@ -377,7 +357,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetSystemTimeResponse response = Send<SetSystemTimeResponse>(COMMAND.Set_systemtime, setSystemTimeRequest.GetBytes());
+            SetSystemTimeResponse response = Send<SetSystemTimeResponse>(ProtocolType.Set_systemtime, setSystemTimeRequest.GetBytes());
             return response;
 
         }
@@ -389,7 +369,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            RestartDeviceResponse response = Send<RestartDeviceResponse>(COMMAND.Restart_device, null);
+            RestartDeviceResponse response = Send<RestartDeviceResponse>(ProtocolType.Restart_device, null);
             return response;
         }
         /// <summary>
@@ -400,7 +380,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            CloseDeviceResponse response = Send<CloseDeviceResponse>(COMMAND.Close_device, null);
+            CloseDeviceResponse response = Send<CloseDeviceResponse>(ProtocolType.Close_device, null);
             return response;
         }
         /// <summary>
@@ -411,7 +391,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            ResetDeviceResponse response = Send<ResetDeviceResponse>(COMMAND.Reset, null);
+            ResetDeviceResponse response = Send<ResetDeviceResponse>(ProtocolType.Reset, null);
             return response;
         }
         /// <summary>
@@ -422,7 +402,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            Rs232CfgInfo response = Send<Rs232CfgInfo>(COMMAND.Get_rs232cfg, getRs232CfgRequest.GetBytes());
+            Rs232CfgInfo response = Send<Rs232CfgInfo>(ProtocolType.Get_rs232cfg, getRs232CfgRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -434,7 +414,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetRs232CfgResponse response = Send<SetRs232CfgResponse>(COMMAND.Set_rs232cfg, setRs232CfgRequest.GetBytes());
+            SetRs232CfgResponse response = Send<SetRs232CfgResponse>(ProtocolType.Set_rs232cfg, setRs232CfgRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -445,7 +425,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            PtzRs232CfgInfo response = Send<PtzRs232CfgInfo>(COMMAND.Get_ptzrs232cfg, new GetPtzRs232CfgRequest()
+            PtzRs232CfgInfo response = Send<PtzRs232CfgInfo>(ProtocolType.Get_ptzrs232cfg, new GetPtzRs232CfgRequest()
             {
                 ChannelNo = channelno
             }.GetBytes()); 
@@ -460,7 +440,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetPtzRs232CfgResponse response = Send<SetPtzRs232CfgResponse>(COMMAND.Set_ptzrs232cfg, setPtzRs232CfgRequest.GetBytes());
+            SetPtzRs232CfgResponse response = Send<SetPtzRs232CfgResponse>(ProtocolType.Set_ptzrs232cfg, setPtzRs232CfgRequest.GetBytes());
             return response;
         } 
         /// <summary>
@@ -472,7 +452,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            PtzControlResponse response = Send<PtzControlResponse>(COMMAND.Ptzcontrol, ptzControlRequest.GetBytes());
+            PtzControlResponse response = Send<PtzControlResponse>(ProtocolType.Ptzcontrol, ptzControlRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -499,7 +479,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SearchFileResponse response = Send<SearchFileResponse>(COMMAND.SearchFile, searchFileRequest.GetBytes());
+            SearchFileResponse response = Send<SearchFileResponse>(ProtocolType.SearchFile, searchFileRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -520,7 +500,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            GetFileInfoResponse response = Send<GetFileInfoResponse>(COMMAND.GetFileInfo, getFileInfoRequest.GetBytes());
+            GetFileInfoResponse response = Send<GetFileInfoResponse>(ProtocolType.GetFileInfo, getFileInfoRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -532,7 +512,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            GetNetHeadResponse response = Send<GetNetHeadResponse>(COMMAND.GetNetHead, getNetHeadRequest.GetBytes());
+            GetNetHeadResponse response = Send<GetNetHeadResponse>(ProtocolType.GetNetHead, getNetHeadRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -543,7 +523,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            DeviceConfig response = Send<DeviceConfig>(COMMAND.GetDeviceCfg, null);
+            DeviceConfig response = Send<DeviceConfig>(ProtocolType.GetDeviceCfg, null);
             return response;
         }
         /// <summary>
@@ -555,7 +535,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            GetMotionResponse response = Send<GetMotionResponse>(COMMAND.GetMotionSet, new GetMotionRequest()
+            GetMotionResponse response = Send<GetMotionResponse>(ProtocolType.GetMotionSet, new GetMotionRequest()
             {
                 ChannelNo = channelno
             }.GetBytes());
@@ -570,7 +550,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetMotionResponse response = Send<SetMotionResponse>(COMMAND.SetMotionSet, setMotionRequest.GetBytes());
+            SetMotionResponse response = Send<SetMotionResponse>(ProtocolType.SetMotionSet, setMotionRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -582,7 +562,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SyncTimeResponse response = Send<SyncTimeResponse>(COMMAND.SyncTime, syncTimeRequest.GetBytes());
+            SyncTimeResponse response = Send<SyncTimeResponse>(ProtocolType.SyncTime, syncTimeRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -593,7 +573,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            DavinciUsers response = Send<DavinciUsers>(COMMAND.GetUser, null);
+            DavinciUsers response = Send<DavinciUsers>(ProtocolType.GetUser, null);
             return response;
         }
         /// <summary>
@@ -605,7 +585,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            UpdateUserResponse response = Send<UpdateUserResponse>(COMMAND.UpdateUser, updateUserRequest.GetBytes());
+            UpdateUserResponse response = Send<UpdateUserResponse>(ProtocolType.UpdateUser, updateUserRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -617,7 +597,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            CapturenResponse response = Send<CapturenResponse>(COMMAND.CaptureJpeg, captureRequest.GetBytes());
+            CapturenResponse response = Send<CapturenResponse>(ProtocolType.CaptureJpeg, captureRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -628,7 +608,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            NtpInfo response = Send<NtpInfo>(COMMAND.Get_ntpinfo, null);
+            NtpInfo response = Send<NtpInfo>(ProtocolType.Get_ntpinfo, null);
             return response;
         }
         /// <summary>
@@ -640,7 +620,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            SetNtpInfoResponse response = Send<SetNtpInfoResponse>(COMMAND.Set_ntpinfo, ntpInfo.GetBytes());
+            SetNtpInfoResponse response = Send<SetNtpInfoResponse>(ProtocolType.Set_ntpinfo, ntpInfo.GetBytes());
             return response;
         }
         /// <summary>
@@ -652,7 +632,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tPanoCameraList response = Send<tPanoCameraList>(COMMAND.GetPanoCameraList, queryString.GetBytes());
+            tPanoCameraList response = Send<tPanoCameraList>(ProtocolType.GetPanoCameraList, queryString.GetBytes());
             return response;
         }
         /// <summary>
@@ -664,7 +644,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.AddPanoCamera, panoCamera.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.AddPanoCamera, panoCamera.GetBytes());
             return response;
         }
         /// <summary>
@@ -677,7 +657,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tPanoCameraId panoId = new tPanoCameraId(panoCameraId);
-            tPanoCamera response = Send<tPanoCamera>(COMMAND.GetPanoCamera, panoId.GetBytes());
+            tPanoCamera response = Send<tPanoCamera>(ProtocolType.GetPanoCamera, panoId.GetBytes());
             return response;
         }
         /// <summary>
@@ -689,7 +669,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SetPanoCamera, panoCamera.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SetPanoCamera, panoCamera.GetBytes());
             return response;
         }
         /// <summary>
@@ -702,7 +682,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tPanoCameraId panoId = new tPanoCameraId(panoCameraId);
-            tFault response = Send<tFault>(COMMAND.DeletePanoCamera, panoId.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.DeletePanoCamera, panoId.GetBytes());
             return response;
         }
         /// <summary>
@@ -713,7 +693,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tServiceVersion response = Send<tServiceVersion>(COMMAND.GetServiceVersion, null);
+            tServiceVersion response = Send<tServiceVersion>(ProtocolType.GetServiceVersion, null);
             return response;
         }
         /// <summary>
@@ -724,7 +704,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tDeviceInfo response = Send<tDeviceInfo>(COMMAND.GetDeviceInfo, null);
+            tDeviceInfo response = Send<tDeviceInfo>(ProtocolType.GetDeviceInfo, null);
             return response;
         }
         /// <summary>
@@ -735,7 +715,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tDeviceStatus response = Send<tDeviceStatus>(COMMAND.GetDeviceStatus, null);
+            tDeviceStatus response = Send<tDeviceStatus>(ProtocolType.GetDeviceStatus, null);
             return response;
         }
         /// <summary>
@@ -746,7 +726,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tNetworkInterface response = Send<tNetworkInterface>(COMMAND.GetNetworkInterface, null);
+            tNetworkInterface response = Send<tNetworkInterface>(ProtocolType.GetNetworkInterface, null);
             return response;
         }
         /// <summary>
@@ -757,7 +737,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tDecodingUnitList response = Send<tDecodingUnitList>(COMMAND.GetDecodingUnitList, null);
+            tDecodingUnitList response = Send<tDecodingUnitList>(ProtocolType.GetDecodingUnitList, null);
             return response;
         }
         /// <summary>
@@ -770,7 +750,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tDecodingUnitId decodingId = new tDecodingUnitId() { DecodingUnitId = decodingUnitId };
-            tDecodingUnit response = Send<tDecodingUnit>(COMMAND.GetDecodingUnit, decodingId.GetBytes());
+            tDecodingUnit response = Send<tDecodingUnit>(ProtocolType.GetDecodingUnit, decodingId.GetBytes());
             return response;
         }
         /// <summary>
@@ -783,7 +763,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tDecodingUnitId decodingId = new tDecodingUnitId() { DecodingUnitId = decodingUnitId };
-            tRotatingSpeed response = Send<tRotatingSpeed>(COMMAND.GetRotatingSpeed, decodingId.GetBytes());
+            tRotatingSpeed response = Send<tRotatingSpeed>(ProtocolType.GetRotatingSpeed, decodingId.GetBytes());
             return response;
         }
         /// <summary>
@@ -795,7 +775,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SetRotatingSpeed, rotatingSpeed.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SetRotatingSpeed, rotatingSpeed.GetBytes());
             return response;
         }
         /// <summary>
@@ -807,7 +787,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SwitchPanoCamera, switchPanoCameraRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SwitchPanoCamera, switchPanoCameraRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -820,7 +800,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tDecodingUnitId decodingId = new tDecodingUnitId() { DecodingUnitId = decodingUnitId };
-            tViewPoint response = Send<tViewPoint>(COMMAND.GetViewPoint, decodingId.GetBytes());
+            tViewPoint response = Send<tViewPoint>(ProtocolType.GetViewPoint, decodingId.GetBytes());
             return response;
         }
         /// <summary>
@@ -832,7 +812,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SetViewPoint, setViewPointRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SetViewPoint, setViewPointRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -844,7 +824,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SetViewPointFixed, setViewPointFixedRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SetViewPointFixed, setViewPointFixedRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -856,7 +836,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.SetViewPointRows, setViewPointRowsRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.SetViewPointRows, setViewPointRowsRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -869,7 +849,7 @@ namespace Howell5198
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
             tDecodingUnitId decodingId = new tDecodingUnitId() { DecodingUnitId = decodingUnitId };
-            tPlayerStatus response = Send<tPlayerStatus>(COMMAND.GetPlayerStatus, decodingId.GetBytes());
+            tPlayerStatus response = Send<tPlayerStatus>(ProtocolType.GetPlayerStatus, decodingId.GetBytes());
             return response;
         }
         /// <summary>
@@ -881,7 +861,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.OneByOne, oneByOneRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.OneByOne, oneByOneRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -893,7 +873,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.Pause, pauseRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.Pause, pauseRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -905,7 +885,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.Resume, resumeRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.Resume, resumeRequest.GetBytes());
             return response;
         }
         /// <summary>
@@ -917,7 +897,7 @@ namespace Howell5198
         {
             CheckDisposed();
             if (IsConnected == false) throw new InvalidOperationException("5198Client has not connected yet.");
-            tFault response = Send<tFault>(COMMAND.Seek, seekRequest.GetBytes());
+            tFault response = Send<tFault>(ProtocolType.Seek, seekRequest.GetBytes());
             return response;
         }
 
@@ -925,7 +905,7 @@ namespace Howell5198
         void m_Client_DataReceived(object sender, ClientDataReceivedEventArgs<ProtocolHeader> e)
         {
             //应答信息
-            if (e.PackageInfo.Header.proType >= COMMAND.Login)
+            if (e.PackageInfo.Header.proType >= ProtocolType.Login)
             {
                 try
                 {
@@ -934,322 +914,322 @@ namespace Howell5198
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, null);
                         throw new Exception(String.Format("Response Error,EroorNum:{0}", e.PackageInfo.Header.errornum));
                     }
-                    if (e.PackageInfo.Header.proType == COMMAND.Login)
+                    if (e.PackageInfo.Header.proType == ProtocolType.Login)
                     {
                         LoginResponse result = new LoginResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Serverinfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Serverinfo)
                     {
                         ServerInfo result = new ServerInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_color)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_color)
                     {
                         ColorInfo result = new ColorInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_color)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_color)
                     {
                         SetColorResponse result = new SetColorResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_osdchannel)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_osdchannel)
                     {
                         OsdChannelInfo result = new OsdChannelInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_osdchannel)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_osdchannel)
                     {
                         SetOsdChannelResponse result = new SetOsdChannelResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_osddate)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_osddate)
                     {
                         OsdDateInfo result = new OsdDateInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_osddate)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_osddate)
                     {
                         SetOsdDateResponse result = new SetOsdDateResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_videoquality)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_videoquality)
                     {
                         VideoQualityInfo result = new VideoQualityInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_videoquality)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_videoquality)
                     {
                         SetVideoQualityResponse result = new SetVideoQualityResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_streamtype)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_streamtype)
                     {
                         StreamTypeInfo result = new StreamTypeInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_streamtype)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_streamtype)
                     {
                         SetStreamTypeResponse result = new SetStreamTypeResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_netinfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_netinfo)
                     {
                         NetInfo result = new NetInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_netinfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_netinfo)
                     {
                         SetNetInfoResponse result = new SetNetInfoResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_systemtime)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_systemtime)
                     {
                         SystemTimeInfo result = new SystemTimeInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_systemtime)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_systemtime)
                     {
                         SetSystemTimeResponse result = new SetSystemTimeResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Restart_device)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Restart_device)
                     {
                         RestartDeviceResponse result = new RestartDeviceResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Close_device)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Close_device)
                     {
                         CloseDeviceResponse result = new CloseDeviceResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Reset)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Reset)
                     {
                         ResetDeviceResponse result = new ResetDeviceResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_rs232cfg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_rs232cfg)
                     {
                         Rs232CfgInfo result = new Rs232CfgInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_rs232cfg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_rs232cfg)
                     {
                         SetRs232CfgResponse result = new SetRs232CfgResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_ptzrs232cfg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_ptzrs232cfg)
                     {
                         PtzRs232CfgInfo result = new PtzRs232CfgInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_ptzrs232cfg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_ptzrs232cfg)
                     {
                         SetPtzRs232CfgResponse result = new SetPtzRs232CfgResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Ptzcontrol)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Ptzcontrol)
                     {
                         PtzControlResponse result = new PtzControlResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetNetHead)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetNetHead)
                     {
                         GetNetHeadResponse result = new GetNetHeadResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SearchFile)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SearchFile)
                     {
                         SearchFileResponse result = new SearchFileResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetFileInfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetFileInfo)
                     {
                         GetFileInfoResponse result = new GetFileInfoResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetFile)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetFile)
                     {
                         GetFileResponse result = new GetFileResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetDeviceCfg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetDeviceCfg)
                     {
                         DeviceConfig result = new DeviceConfig();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetMotionSet)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetMotionSet)
                     {
                         GetMotionResponse result = new GetMotionResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetMotionSet)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetMotionSet)
                     {
                         SetMotionResponse result = new SetMotionResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SyncTime)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SyncTime)
                     {
                         SyncTimeResponse result = new SyncTimeResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetUser)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetUser)
                     {
                         DavinciUsers result = new DavinciUsers();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.UpdateUser)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.UpdateUser)
                     {
                         UpdateUserResponse result = new UpdateUserResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.CaptureJpeg)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.CaptureJpeg)
                     {
                         CapturenResponse result = new CapturenResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Get_ntpinfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Get_ntpinfo)
                     {
                         NtpInfo result = new NtpInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Set_ntpinfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Set_ntpinfo)
                     {
                         SetNtpInfoResponse result = new SetNtpInfoResponse();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetPanoCameraList)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetPanoCameraList)
                     {
                         tPanoCameraList result = new tPanoCameraList();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.AddPanoCamera)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.AddPanoCamera)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetPanoCamera)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetPanoCamera)
                     {
                         tPanoCamera result = new tPanoCamera();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetPanoCamera)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetPanoCamera)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.DeletePanoCamera)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.DeletePanoCamera)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetServiceVersion)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetServiceVersion)
                     {
                         tServiceVersion result = new tServiceVersion();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetDeviceInfo)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetDeviceInfo)
                     {
                         tDeviceInfo result = new tDeviceInfo();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetDeviceStatus)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetDeviceStatus)
                     {
                         tDeviceStatus result = new tDeviceStatus();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetNetworkInterface)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetNetworkInterface)
                     {
                         tNetworkInterface result = new tNetworkInterface();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
@@ -1257,137 +1237,104 @@ namespace Howell5198
                         return;
                     }
 
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetDecodingUnitList)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetDecodingUnitList)
                     {
                         tDecodingUnitList result = new tDecodingUnitList();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetDecodingUnit)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetDecodingUnit)
                     {
                         tDecodingUnit result = new tDecodingUnit();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetRotatingSpeed)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetRotatingSpeed)
                     {
                         tRotatingSpeed result = new tRotatingSpeed();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetRotatingSpeed)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetRotatingSpeed)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SwitchPanoCamera)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SwitchPanoCamera)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetViewPoint)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetViewPoint)
                     {
                         tViewPoint result = new tViewPoint();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetViewPoint)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetViewPoint)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetViewPointFixed)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetViewPointFixed)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.SetViewPointRows)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.SetViewPointRows)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.GetPlayerStatus)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.GetPlayerStatus)
                     {
                         tPlayerStatus result = new tPlayerStatus();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.OneByOne)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.OneByOne)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Pause)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Pause)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Resume)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Resume)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-                    else if (e.PackageInfo.Header.proType == COMMAND.Seek)
+                    else if (e.PackageInfo.Header.proType == ProtocolType.Seek)
                     {
                         tFault result = new tFault();
                         result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
                         UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
                         return;
                     }
-
-                    //else if ((e.PackageInfo.Header.proType == COMMAND.Main_stream) || (e.PackageInfo.Header.proType == COMMAND.Sub_stream))
-                    //{
-                    //    if (e.PackageInfo.Header.errornum != 0)
-                    //    {
-                    //        UploadWaitingPackageInfo(e.PackageInfo.Header.proType, null);
-                    //        return;
-                    //    }
-                    //    if(e.PackageInfo.Header.dataLen==4)
-                    //    {
-                     //        result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
-                    //        UploadWaitingPackageInfo(e.PackageInfo.Header.proType, result);
-                    //    }
-                    //    else if (e.PackageInfo.Header.dataLen>4)
-                    //    {
-                    //        FramePayload result = new FramePayload();
-                    //        result.FromBytes(e.PackageInfo.Payload, 0, e.PackageInfo.Payload.Length);
-                    //        //UploadWaitingPackageInfo(e.PackageInfo.Header.proType+1, result);       
-                         
-                    //            //视频数据递交
-                    //        if (StreamDataReceived != null)
-                    //        {
-                    //            Byte[] reserved = new Byte[4];
-                    //            reserved[0] = e.PackageInfo.Header.Reserved[3];
-                    //            reserved[1] = e.PackageInfo.Header.Reserved[2];
-                    //            reserved[2] = e.PackageInfo.Header.Reserved[1];
-                    //            reserved[3] = e.PackageInfo.Header.Reserved[0];
-                    //            StreamDataReceived(sender, new StreamDataReceivedEventArgs(System.BitConverter.ToInt32(reserved, 0), result));
-                    //        }
-                            
-                    //    }        
-                    //    return;
-                    //}
                    
                 }
                 catch(Exception ex)
@@ -1405,12 +1352,12 @@ namespace Howell5198
 
         }
         #region Send
-        private TResult Send<TResult>(UInt32 command, byte[] payload,int handle=0)
+        private TResult Send<TResult>(UInt32 ProtocolType, byte[] payload,int handle=0)
             where TResult : class, new()
         {
-            UInt32 cSeq = command;
+            UInt32 cSeq = ProtocolType;
 
-            Send(command, payload, handle);
+            Send(ProtocolType, payload, handle);
 
             using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
             {
@@ -1430,22 +1377,22 @@ namespace Howell5198
                 }
             }
         }
-        private void Send(UInt32 command, byte[] payload, int handle)
+        private void Send(UInt32 protocolType, byte[] payload, int handle)
         {
-           if(command == COMMAND.Serverinfo)
+            if (protocolType == ProtocolType.Serverinfo)
            {
-              // m_Client_Stream[handle].Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, dataLen = (uint)payload.Length, Reserved = System.BitConverter.GetBytes(handle) }, payload));
+              // m_Client_Stream[handle].Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = ProtocolType, dataLen = (uint)payload.Length, Reserved = System.BitConverter.GetBytes(handle) }, payload));
            }
            else
            {
-               m_Client.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, dataLen =(payload == null) ?0:(uint)payload.Length }, payload));
+               m_Client.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = protocolType, dataLen = (payload == null) ? 0 : (uint)payload.Length }, payload));
            }
         }
 
-        private TResult Get<TResult>(UInt32 command)
+        private TResult Get<TResult>(UInt32 ProtocolType)
             where TResult : class, new()
         {
-            UInt32 cSeq = command;
+            UInt32 cSeq = ProtocolType;
             using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
             {
                 AddPackage(package);
@@ -1583,10 +1530,9 @@ namespace Howell5198
             this.Data = framepayload.FrameData;
         }
 
-        /// <summary>
-        /// <summary>
+       /// <summary>
         /// 流类型
-        /// </summary>
+       /// </summary>
         public FramePayload.frametype FrameType { get; private set; }
         /// <summary>
         /// 流数据
@@ -1712,7 +1658,7 @@ namespace Howell5198
              m_Client_Stream.Error += new EventHandler<ClientErrorEventArgs>(m_Client_Error);
              m_Client_Stream.Connect();
              StreamRequest request = new StreamRequest() { ChannelNo = ChannelNo };
-             StreamResponse response=Send<StreamResponse>(Type == 0 ? COMMAND.Main_stream : COMMAND.Sub_stream, request.GetBytes());
+             StreamResponse response=Send<StreamResponse>(Type == 0 ? ProtocolType.Main_stream : ProtocolType.Sub_stream, request.GetBytes());
              if (response.Success == 0)
                  return true;
              else
@@ -1746,7 +1692,7 @@ namespace Howell5198
              //应答信息
                  try
                  {
-                    if ((e.PackageInfo.Header.proType == COMMAND.Main_stream) || (e.PackageInfo.Header.proType == COMMAND.Sub_stream))
+                    if ((e.PackageInfo.Header.proType == ProtocolType.Main_stream) || (e.PackageInfo.Header.proType == ProtocolType.Sub_stream))
                      {
                          if (e.PackageInfo.Header.errornum != 0)
                          {
@@ -1784,12 +1730,12 @@ namespace Howell5198
             
          }
 
-         private TResult Send<TResult>(UInt32 command, byte[] payload)
+         private TResult Send<TResult>(UInt32 ProtocolType, byte[] payload)
             where TResult : class, new()
          {
-             UInt32 cSeq = command;
+             UInt32 cSeq = ProtocolType;
 
-             Send(command, payload);
+             Send(ProtocolType, payload);
 
              using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
              {
@@ -1809,16 +1755,16 @@ namespace Howell5198
                  }
              }
          }
-         private void Send(UInt32 command, byte[] payload)
+         private void Send(UInt32 ProtocolType, byte[] payload)
          {      
-             m_Client_Stream.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, dataLen = (uint)payload.Length }, payload));
+             m_Client_Stream.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = ProtocolType, dataLen = (uint)payload.Length }, payload));
 
          }
 
-         private TResult Get<TResult>(UInt32 command)
+         private TResult Get<TResult>(UInt32 ProtocolType)
              where TResult : class, new()
          {
-             UInt32 cSeq = command;
+             UInt32 cSeq = ProtocolType;
              using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
              {
                  AddPackage(package);
@@ -2001,7 +1947,7 @@ namespace Howell5198
              m_Client_Stream.DataReceived += new EventHandler<ClientDataReceivedEventArgs<ProtocolHeader>>(m_Client_DataReceived);
              m_Client_Stream.Error += new EventHandler<ClientErrorEventArgs>(m_Client_Error);
              m_Client_Stream.Connect();
-             Send(COMMAND.GetFile, m_GetFileRequest.GetBytes());
+             Send(ProtocolType.GetFile, m_GetFileRequest.GetBytes());
          }
          /// <summary>
          /// 停止获取流数据
@@ -2031,7 +1977,7 @@ namespace Howell5198
              //应答信息
              try
              {
-                 if (e.PackageInfo.Header.proType == COMMAND.GetFile)
+                 if (e.PackageInfo.Header.proType == ProtocolType.GetFile)
                  {
                      if (e.PackageInfo.Header.errornum != 0)
                      {
@@ -2058,12 +2004,12 @@ namespace Howell5198
 
          }
 
-         private TResult Send<TResult>(UInt32 command, byte[] payload)
+         private TResult Send<TResult>(UInt32 ProtocolType, byte[] payload)
             where TResult : class, new()
          {
-             UInt32 cSeq = command;
+             UInt32 cSeq = ProtocolType;
 
-             Send(command, payload);
+             Send(ProtocolType, payload);
 
              using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
              {
@@ -2083,16 +2029,16 @@ namespace Howell5198
                  }
              }
          }
-         private void Send(UInt32 command, byte[] payload)
+         private void Send(UInt32 ProtocolType, byte[] payload)
          {
-             m_Client_Stream.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, dataLen = (uint)payload.Length }, payload));
+             m_Client_Stream.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = ProtocolType, dataLen = (uint)payload.Length }, payload));
 
          }
 
-         private TResult Get<TResult>(UInt32 command)
+         private TResult Get<TResult>(UInt32 ProtocolType)
              where TResult : class, new()
          {
-             UInt32 cSeq = command;
+             UInt32 cSeq = ProtocolType;
              using (WaitingPackageInfo package = new WaitingPackageInfo(cSeq))
              {
                  AddPackage(package);

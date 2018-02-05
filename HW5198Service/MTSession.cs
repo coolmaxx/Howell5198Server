@@ -13,17 +13,34 @@ namespace HW5198Service
 {
     public class MTSession
     {
-        public MTSession()
+        /// <summary>
+        /// 流转发会话
+        /// </summary>
+        public MTSession(MediaStreamIdentifier mediaStreamIdentifier)
         {
             VideoClient = null;
-            StreamSessions = new List<StreamSession>();
+            MediaStreamSessions = new List<MediaStreamSession>();
             DeviceID = null;
             ChannelNo = 0;
+            StreamIdentifier = mediaStreamIdentifier;
         }
-        public MTClient VideoClient { get; set; }
-        public List<StreamSession> StreamSessions { get; set; }
-        public String DeviceID { get; set; }
-        public int ChannelNo { get; set; }
+        /// <summary>
+        /// 视频源对象
+        /// </summary>
+        public MTClient VideoClient { get; private set; }
+        public List<MediaStreamSession> MediaStreamSessions { get; private set; }
+        /// <summary>
+        /// 通过伪码解析出的设备ID
+        /// </summary>
+        public String DeviceID { get; private set; }
+        /// <summary>
+        /// 通过伪码解析出的通道号
+        /// </summary>
+        public int ChannelNo { get; private set; }
+        /// <summary>
+        /// 媒体流唯一标识符
+        /// </summary>
+        public MediaStreamIdentifier StreamIdentifier { get;private set; }
         private readonly Object VideoClient_lock = new Object();
         private readonly ReaderWriterLockSlim MTSession_lock = new ReaderWriterLockSlim();
         const int timeout = 30000;//connect时的超时时间
@@ -39,7 +56,7 @@ namespace HW5198Service
             MTSession_lock.EnterWriteLock();
             try
             {
-                foreach (StreamSession stream in StreamSessions)
+                foreach (MediaStreamSession stream in MediaStreamSessions)
                 {
                     if (stream.IsConnected())
                     {
@@ -47,7 +64,7 @@ namespace HW5198Service
                     }
 
                 }
-                StreamSessions.Clear();
+                MediaStreamSessions.Clear();
             }
             finally
             {
@@ -55,12 +72,12 @@ namespace HW5198Service
             }
 
         }
-        public void AddSession(StreamSession streamsession)
+        public void AddSession(MediaStreamSession MediaStreamSession)
         {
             MTSession_lock.EnterWriteLock();
             try
             {
-                StreamSessions.Add(streamsession);
+                MediaStreamSessions.Add(MediaStreamSession);
             }
             finally
             {
@@ -69,14 +86,14 @@ namespace HW5198Service
 
         }
 
-        public void RemoveSession(StreamSession streamsession)
+        public void RemoveSession(MediaStreamSession MediaStreamSession)
         {
             MTSession_lock.EnterWriteLock();
             try
             {
-                if (StreamSessions.Contains(streamsession))
+                if (MediaStreamSessions.Contains(MediaStreamSession))
                 {
-                    StreamSessions.Remove(streamsession);
+                    MediaStreamSessions.Remove(MediaStreamSession);
                 }
             }
             finally
@@ -85,7 +102,7 @@ namespace HW5198Service
             }
         }
 
-        public void Connect(StreamSession session)
+        public void Connect(MediaStreamSession session)
         {
             lock (VideoClient_lock)
             {
@@ -103,7 +120,7 @@ namespace HW5198Service
                 }
                 try
                 {
-                    VideoInputChannel pseudodev = Howell5198ServerAppInstance.CreatNewDataManagementClient().GetVideoInputChannelByPseudoCode(Convert.ToString(session.Context.ChannelNo + 1));
+                    VideoInputChannel pseudodev = Howell5198ServerAppInstance.CreatNewDataManagementClient().GetVideoInputChannelByPseudoCode(Convert.ToString(session.Context.StreamIdentifier.ChannelNo + 1));
                     VideoClient = new MTClient(new System.Net.IPEndPoint(System.Net.IPAddress.Parse(ServiceConfiguration.Instance.MTServerIP), ServiceConfiguration.Instance.MTServerPort));
                     VideoClient.Credential = new MTClientCredential() { UserName = ServiceConfiguration.Instance.UserName, Password = ServiceConfiguration.Instance.Password, MobileTerminalId = session.Context.SessionID };
                     VideoClient.Timeout = timeout;
@@ -124,13 +141,9 @@ namespace HW5198Service
                 }
             }
         }
-        public void Subscribe(StreamSession Session)
+        public void Subscribe(MediaStreamSession Session)
         {
-            int solt = Session.Context.ChannelNo;
-            if (Session.Context.Type == 1)
-            {
-                solt += 10000;
-            }
+            var solt = Session.Context.StreamIdentifier;
             lock (VideoClient_lock)
             {
                 try
@@ -144,76 +157,75 @@ namespace HW5198Service
                     else
                     {
                         VideoClient.MediaDataReceived += new MTClientMediaDataReceivedHandler(MediaDataReceived);
-                        VideoClient.Subscribe((uint)solt, DeviceID, ChannelNo, Session.Context.Type);
+                        uint dialogid=(uint)((solt.StreamNo == 0) ? solt.ChannelNo : (solt.ChannelNo+10000));
+                        VideoClient.Subscribe(dialogid, DeviceID, ChannelNo, solt.StreamNo);
                         AddSession(Session);
-                        Console.WriteLine(String.Format("通道{0}的类型{1}预览流已建立", Session.Context.ChannelNo, Session.Context.Type));
-                        ServiceEnvironment.Instance.Logger.Info(String.Format("通道{0}的类型{1}预览流已建立", Session.Context.ChannelNo, Session.Context.Type));
+                        Console.WriteLine(String.Format("通道{0}的类型{1}预览流已建立", solt.ChannelNo, solt.StreamNo));
+                        ServiceEnvironment.Instance.Logger.Info(String.Format("通道{0}的类型{1}预览流已建立", solt.ChannelNo, solt.StreamNo));
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(String.Format("VideoClient Subscribe Error.ChannelNo:{0}", Session.Context.ChannelNo));
-                    ServiceEnvironment.Instance.Logger.Error(String.Format("VideoClient Subscribe Error.ChannelNO:{0}", Session.Context.ChannelNo), ex);
+                    Console.WriteLine(String.Format("VideoClient Subscribe Error.ChannelNo:{0}", solt.ChannelNo));
+                    ServiceEnvironment.Instance.Logger.Error(String.Format("VideoClient Subscribe Error.ChannelNO:{0}", solt.ChannelNo), ex);
                 }
             }
         }
+        private void MediaStreamSessionClose(object livesession)
+        {
+            ((MediaStreamSession)livesession).Close();
+        }
+
+
         void MediaDataReceived(MTClient sender, MediaData mediaData)
         {
             //int handle = (int)mediaData.DialogId;
             Byte[] framedate = new Byte[mediaData.FrameData.Count];
+            int frametype = 0;
             Buffer.BlockCopy(mediaData.FrameData.Array, mediaData.FrameData.Offset, framedate, 0, mediaData.FrameData.Count);
 
-            FramePayload framepayload = new FramePayload();
             if (mediaData.FrameType == FrameType.PFrame)
-                framepayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_P;
+                frametype = 4;
             else if (mediaData.FrameType == FrameType.IFrame)
-                framepayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_I;
+                frametype = 3;
             else if (mediaData.FrameType == FrameType.BFrame)
-                framepayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_B;
+                frametype = 5;
             else if (mediaData.FrameType == FrameType.Audio)
-                framepayload.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
-            else if (mediaData.FrameType == FrameType.MJpeg)
-                framepayload.FrameType = FramePayload.frametype.HW_FRAME_MOTION_FRAME;
+                frametype = 2;
             else
             {
                 Console.WriteLine("frametype error");
                 ServiceEnvironment.Instance.Logger.Error("frametype error");
                 return;
             }
-            framepayload.FrameData = framedate;
             MTSession_lock.EnterReadLock();
+            MediaStreamSession[] sessions = MediaStreamSessions.ToArray();
+  
+            MTSession_lock.ExitReadLock();
             try
             {
-                foreach (StreamSession livesession in StreamSessions)
+                foreach (MediaStreamSession livesession in sessions)
                 {
                     if (livesession.IsConnected())
                     {
-                        bool sendout = livesession.TrySend(framepayload);
-                        int count = 0;
-                        while (sendout == false)
+                        bool sendout = livesession.TrySend(frametype, framedate, 100, 10);
+                        if(sendout == false)
                         {
-                            Thread.Sleep(10);
-                            sendout = livesession.TrySend(framepayload);
-                            if (livesession.IsConnected() == false)
-                                break;
-                            count++;
-                            if (count > 200)
-                            {
-                                livesession.Close();
-                                Console.WriteLine("预览流数据发送超时，主动关闭session");
-                                ServiceEnvironment.Instance.Logger.Info("预览流数据发送超时，主动关闭session");
-                                return;
-                            }
+                            ThreadPool.QueueUserWorkItem(new WaitCallback(MediaStreamSessionClose), livesession);
+                            Console.WriteLine("预览流数据发送超时，主动关闭session");
+                            ServiceEnvironment.Instance.Logger.Info("预览流数据发送超时，主动关闭session");
+                            return;
                         }
                     }
                     else
-                        livesession.Close();
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(MediaStreamSessionClose), livesession);
                 }
             }
             finally
             {
-                MTSession_lock.ExitReadLock();
             }
         }
+
+        
     }
 }

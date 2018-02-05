@@ -20,18 +20,14 @@ using Howell.Net.DeviceService.PanoCameras;
 
 namespace HW5198Service
 {
-    public class Howell5198ServerAppInstance : IHowell5198ServerAppInstance, IDisposable
+    public class Howell5198ServerAppInstance : IHowell5198ServerContract, IDisposable
     {
         private Howell5198Server m_Server = null;
-       // public const int CLIENT_MAX_COUNT = 100;
-        //private MTClient Client = null;
         private Dictionary<String, double> targetfilelen = new Dictionary<String, double>();//指定beg时间的录像文件的长度
-        private Dictionary<Int32, MTSession> m_mtsessions = new Dictionary<Int32, MTSession>();//所有的预览流
-        private Dictionary<MTClient, StreamSession> m_filesessions = new Dictionary<MTClient, StreamSession>();//所有的回放流
-        private Dictionary<Int32, HWheader> m_HWheaders = new Dictionary<Int32, HWheader>();//所有通道的HW头
+        private Dictionary<MediaStreamIdentifier, MTSession> m_mtsessions = new Dictionary<MediaStreamIdentifier, MTSession>();//所有的预览流
+        private Dictionary<MTClient, MediaStreamSession> m_filesessions = new Dictionary<MTClient, MediaStreamSession>();//所有的回放流
+        private Dictionary<MediaStreamIdentifier, HWheader> m_HWheaders = new Dictionary<MediaStreamIdentifier, HWheader>();//所有通道的HW头
         private Dictionary<String, Howell5198Session> m_AlarmSessions = new Dictionary<String, Howell5198Session>();//所有的注册报警的session
-        //private int totalStream = 0;//来自客户端的流连接总数
-        //private readonly Object totalStreamLocker = new Object();
         private readonly Object mtsessions_lock = new Object();
         private readonly Object AddHWheaderLock = new Object();
         private DeviceSystemClient SystemClient = new DeviceSystemClient(String.Format("{0}/System",ServiceConfiguration.Instance.DeviceServiceAddress));
@@ -49,8 +45,8 @@ namespace HW5198Service
 
             m_Server.SessionClosed += new EventHandler<SessionClosedEventArgs>(m_Server_SessionClosed);
             m_Server.SessionRegistered += new EventHandler<SessionRegisteredEventArgs>(m_Server_SessionRegistered);
-            m_Server.StreamSessionRegistered += new EventHandler<StreamSessionRegisteredEventArgs>(m_Server_StreamSessionRegistered);
-            m_Server.StreamSessionClosed += new EventHandler<StreamSessionClosedEventArgs>(m_Server_StreamSessionClosed);
+            m_Server.MediaStreamSessionRegistered += new EventHandler<MediaStreamSessionRegisteredEventArgs>(m_Server_MediaStreamSessionRegistered);
+            m_Server.MediaStreamSessionClosed += new EventHandler<MediaStreamSessionClosedEventArgs>(m_Server_MediaStreamSessionClosed);
             m_Server.Error += new EventHandler<Howell5198.ErrorEventArgs>(m_Server_Error);
             AlarmTimer.Enabled = true;
             AlarmTimer.Interval =3000;
@@ -68,7 +64,7 @@ namespace HW5198Service
                     if (kvp.Value.IsConnected())
                     {
                         AlarmData alarmData = new AlarmData();
-                        kvp.Value.TrySend(0, COMMAND.AlarmHeartbeat, alarmData.GetBytes());
+                        kvp.Value.TrySend(0, ProtocolType.AlarmHeartbeat, alarmData.GetBytes());
                     }
                     else
                     {
@@ -100,6 +96,8 @@ namespace HW5198Service
                 foreach (MTSession val in m_mtsessions.Values)
                 {
                     val.Close();
+                    Console.WriteLine(String.Format("通道{0}的类型{1}视频流已断开", val.StreamIdentifier.ChannelNo, val.StreamIdentifier.StreamNo));
+                    ServiceEnvironment.Instance.Logger.Info(String.Format("通道{0}的类型{1}视频流已断开", val.StreamIdentifier.ChannelNo, val.StreamIdentifier.StreamNo));
                 }
                 Monitor.Enter(mtsessions_lock);
                 m_mtsessions.Clear();
@@ -152,25 +150,6 @@ namespace HW5198Service
             m_Server.Dispose();
         }
 
-        //private void KeepClientLive()
-        //{
-
-        //    lock (Client)
-        //    {
-        //        if (Client.IsConnected == false)
-        //        {
-        //            try
-        //            {
-        //                Client.Connect();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                ServiceEnvironment.Instance.Logger.Error("MTClient ReConnect Error.", ex);
-        //            }
-        //        }
-        //    }
-           
-        //}
         private HW_MediaInfo CreatHWHeader(Howell.eCamera.Middlewares.Medium.GETCODECACK codec)
         {
             int videoCodec = 0;
@@ -230,25 +209,15 @@ namespace HW5198Service
             ServiceEnvironment.Instance.Logger.Info(String.Format("客户:{0} 已连接,IP:{1}", e.Session.Context.UserName, e.Session.RemoteEndPoint.ToString()));
         }
 
-        void m_Server_StreamSessionRegistered(object sender, StreamSessionRegisteredEventArgs e)
+        void m_Server_MediaStreamSessionRegistered(object sender, MediaStreamSessionRegisteredEventArgs e)
         {    
             try
             {
-                int solt = e.Session.Context.ChannelNo;
-                if (e.Session.Context.Type == 1)
-                {
-                    solt += 10000;
-                }
-                Console.WriteLine(String.Format("请求通道{0}的类型{1}流会话{2} 已建立,来自客户端的流连接总数为{3}", e.Session.Context.ChannelNo, e.Session.Context.Type, e.Session.Context.SessionID, m_Server.StreamCount));
-                ServiceEnvironment.Instance.Logger.Info(String.Format("请求通道{0}的类型{1}流会话{2} 已建立,来自客户端的流连接总数为{3}", e.Session.Context.ChannelNo, e.Session.Context.Type, e.Session.Context.SessionID, m_Server.StreamCount));
+                var solt = e.Session.Context.StreamIdentifier;
+                Console.WriteLine(String.Format("请求通道{0}的类型{1}流会话{2} 已建立,来自客户端的流连接总数为{3}", solt.ChannelNo, solt.StreamNo, e.Session.Context.SessionID, m_Server.StreamCount));
+                ServiceEnvironment.Instance.Logger.Info(String.Format("请求通道{0}的类型{1}流会话{2} 已建立,来自客户端的流连接总数为{3}", solt.ChannelNo, solt.StreamNo, e.Session.Context.SessionID, m_Server.StreamCount));
 
-
-                FramePayload framepayload = new FramePayload();
-                if (e.Session.Context.Type == 0)
-                    framepayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_HEAD;
-                else if (e.Session.Context.Type == 1)
-                    framepayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_HEAD;
-
+                Byte[] FrameData = null;
                 lock (AddHWheaderLock)
                 {
                     if (m_HWheaders.ContainsKey(solt) == false)
@@ -266,7 +235,7 @@ namespace HW5198Service
                             TimeSpan disabledtime = new TimeSpan(0, 0, 60);
                             if (ts > disabledtime)//下线时间超过了60秒，重新取头
                             {
-                                Howell.eCamera.Middlewares.Medium.GETCODECACK codec = m_mtsessions[solt].VideoClient.GetCodec(m_mtsessions[solt].DeviceID, m_mtsessions[solt].ChannelNo, e.Session.Context.Type);
+                                Howell.eCamera.Middlewares.Medium.GETCODECACK codec = m_mtsessions[solt].VideoClient.GetCodec(m_mtsessions[solt].DeviceID, m_mtsessions[solt].ChannelNo, solt.StreamNo);
                                 Console.WriteLine("Video:{0} Resolution:{1}*{2}", codec.Media.Meta.Video.Codec, codec.Media.Meta.Video.Resolution[0], codec.Media.Meta.Video.Resolution[1]);
                                 ServiceEnvironment.Instance.Logger.Info(String.Format("Video:{0} Resolution:{1}*{2}", codec.Media.Meta.Video.Codec, codec.Media.Meta.Video.Resolution[0], codec.Media.Meta.Video.Resolution[1]));
                                 m_HWheaders[solt].Header = CreatHWHeader(codec);
@@ -276,27 +245,27 @@ namespace HW5198Service
                     }
                     else
                     {
-                        Howell.eCamera.Middlewares.Medium.GETCODECACK codec = m_mtsessions[solt].VideoClient.GetCodec(m_mtsessions[solt].DeviceID, m_mtsessions[solt].ChannelNo, e.Session.Context.Type);
+                        Howell.eCamera.Middlewares.Medium.GETCODECACK codec = m_mtsessions[solt].VideoClient.GetCodec(m_mtsessions[solt].DeviceID, m_mtsessions[solt].ChannelNo, solt.StreamNo);
                         Console.WriteLine("Video:{0} Resolution:{1}*{2}", codec.Media.Meta.Video.Codec, codec.Media.Meta.Video.Resolution[0], codec.Media.Meta.Video.Resolution[1]);
                         ServiceEnvironment.Instance.Logger.Info(String.Format("Video:{0} Resolution:{1}*{2}", codec.Media.Meta.Video.Codec, codec.Media.Meta.Video.Resolution[0], codec.Media.Meta.Video.Resolution[1]));
                         m_HWheaders[solt].Header = CreatHWHeader(codec);
                         m_HWheaders[solt].IsOnLine = true;
                     }
-                    framepayload.FrameData = m_HWheaders[solt].Header.GetBytes();
+                    FrameData = m_HWheaders[solt].Header.GetBytes();
                 }
                 if (e.Session.IsConnected() == false)
                 {
-                    Console.WriteLine("m_Server_StreamSessionRegistered时，Session断开连接");
-                    ServiceEnvironment.Instance.Logger.Warn("m_Server_StreamSessionRegistered时，Session断开连接");
+                    Console.WriteLine("m_Server_MediaStreamSessionRegistered时，Session断开连接");
+                    ServiceEnvironment.Instance.Logger.Warn("m_Server_MediaStreamSessionRegistered时，Session断开连接");
                     return;
                 }
-                e.Session.TrySend(framepayload);
+                e.Session.TrySend(1, FrameData,100,10);
                 m_mtsessions[solt].Subscribe(e.Session);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(String.Format("m_Server_StreamSessionRegistered时,{0}", ex.Message));
-                ServiceEnvironment.Instance.Logger.Warn(String.Format("m_Server_StreamSessionRegistered时,{0}", ex.Message));
+                Console.WriteLine(String.Format("m_Server_MediaStreamSessionRegistered时,{0}", ex.Message));
+                ServiceEnvironment.Instance.Logger.Warn(String.Format("m_Server_MediaStreamSessionRegistered时,{0}", ex.Message));
             }
             
         }
@@ -306,36 +275,34 @@ namespace HW5198Service
            Console.WriteLine(String.Format("客户：{0} 已断开", e.Session.Context.UserName));
            ServiceEnvironment.Instance.Logger.Info(String.Format("客户：{0} 已断开", e.Session.Context.UserName));     
         }
-        void m_Server_StreamSessionClosed(object sender, StreamSessionClosedEventArgs e)
+        void m_Server_MediaStreamSessionClosed(object sender, MediaStreamSessionClosedEventArgs e)
         {   
             try
             {
-                int solt = e.StreamSession.Context.ChannelNo;
-                if (e.StreamSession.Context.Type == 1)
-                    solt += 10000;
-                if (e.StreamSession.Context.Type == 2)
+                var solt = e.MediaStreamSession.Context.StreamIdentifier;
+                if (e.MediaStreamSession.Context.IsFileStream)
                 {
                     lock (m_filesessions)
                     {
-                        MTClient fileclient = m_filesessions.FirstOrDefault(q => q.Value == e.StreamSession).Key;
+                        MTClient fileclient = m_filesessions.FirstOrDefault(q => q.Value == e.MediaStreamSession).Key;
                         fileclient.Dispose();
                         m_filesessions.Remove(fileclient);
                     }
-                    Console.WriteLine(String.Format("回放流会话{0} 已断开,回放流连接总数为{1},关闭原因{2}", e.StreamSession.Context.SessionID, m_filesessions.Count, e.CloseReason));
-                    ServiceEnvironment.Instance.Logger.Info(String.Format("回放流会话{0} 已断开,回放流连接总数为{1},关闭原因{2}", e.StreamSession.Context.SessionID, m_filesessions.Count, e.CloseReason));
+                    Console.WriteLine(String.Format("回放流会话{0} 已断开,回放流连接总数为{1},关闭原因{2}", e.MediaStreamSession.Context.SessionID, m_filesessions.Count, e.CloseReason));
+                    ServiceEnvironment.Instance.Logger.Info(String.Format("回放流会话{0} 已断开,回放流连接总数为{1},关闭原因{2}", e.MediaStreamSession.Context.SessionID, m_filesessions.Count, e.CloseReason));
                     return;
                 }
 
 
-                Console.WriteLine(String.Format("请求通道{0}的类型{1}流会话{2} 已断开,来自客户端的流连接总数为{3},关闭原因{4}", e.StreamSession.Context.ChannelNo, e.StreamSession.Context.Type, e.StreamSession.Context.SessionID, m_Server.StreamCount, e.CloseReason));
-                ServiceEnvironment.Instance.Logger.Info(String.Format("请求通道{0}的类型{1}流会话{2} 已断开,来自客户端的流连接总数为{3},关闭原因{4}", e.StreamSession.Context.ChannelNo, e.StreamSession.Context.Type, e.StreamSession.Context.SessionID, m_Server.StreamCount, e.CloseReason));
+                Console.WriteLine(String.Format("请求通道{0}的类型{1}流会话{2} 已断开,来自客户端的流连接总数为{3},关闭原因{4}", solt.ChannelNo, solt.StreamNo, e.MediaStreamSession.Context.SessionID, m_Server.StreamCount, e.CloseReason));
+                ServiceEnvironment.Instance.Logger.Info(String.Format("请求通道{0}的类型{1}流会话{2} 已断开,来自客户端的流连接总数为{3},关闭原因{4}", solt.ChannelNo, solt.StreamNo, e.MediaStreamSession.Context.SessionID, m_Server.StreamCount, e.CloseReason));
 
-                
-                    //if (m_mtsessions.ContainsKey(solt) == false)
-                    //    return;
-                m_mtsessions[solt].RemoveSession(e.StreamSession);
 
-                if (m_mtsessions[solt].StreamSessions != null && m_mtsessions[solt].StreamSessions.Count > 0)//还存在指定通道号的流的话就跳过断开VideoClient;
+                if (m_mtsessions.ContainsKey(solt) == false)
+                    return;
+                m_mtsessions[solt].RemoveSession(e.MediaStreamSession);
+
+                if (m_mtsessions[solt].MediaStreamSessions != null && m_mtsessions[solt].MediaStreamSessions.Count > 0)//还存在指定通道号的流的话就跳过断开VideoClient;
                 {
                 }
                 else
@@ -347,8 +314,8 @@ namespace HW5198Service
                             MTSession target = m_mtsessions[solt];
                             m_mtsessions.Remove(solt); 
                             target.Close();
-                            Console.WriteLine(String.Format("通道{0}的类型{1}预览流已断开,目前接收视频流的来源数量为{2}", e.StreamSession.Context.ChannelNo, e.StreamSession.Context.Type, m_mtsessions.Count));
-                            ServiceEnvironment.Instance.Logger.Info(String.Format("通道{0}的类型{1}预览流已断开,目前接收视频流的来源数量为{2}", e.StreamSession.Context.ChannelNo, e.StreamSession.Context.Type, m_mtsessions.Count));
+                            Console.WriteLine(String.Format("通道{0}的类型{1}预览流已断开,目前接收视频流的来源数量为{2}", solt.ChannelNo, solt.StreamNo, m_mtsessions.Count));
+                            ServiceEnvironment.Instance.Logger.Info(String.Format("通道{0}的类型{1}预览流已断开,目前接收视频流的来源数量为{2}", solt.ChannelNo, solt.StreamNo, m_mtsessions.Count));
                             m_HWheaders[solt].IsOnLine = false;
                             m_HWheaders[solt].DisconnectTime = DateTime.Now;
                         }
@@ -359,8 +326,8 @@ namespace HW5198Service
             }
             catch(Exception ex)
             {
-                Console.WriteLine(String.Format("m_Server_StreamSessionClosed时,{0}", ex.Message));
-                ServiceEnvironment.Instance.Logger.Warn(String.Format("m_Server_StreamSessionClosed时,{0}", ex.Message));
+                Console.WriteLine(String.Format("m_Server_MediaStreamSessionClosed时,{0}", ex.Message));
+                ServiceEnvironment.Instance.Logger.Warn(String.Format("m_Server_MediaStreamSessionClosed时,{0}", ex.Message));
             }
         }
 
@@ -386,19 +353,18 @@ namespace HW5198Service
         /// <param name="logPassword">密码</param>
         /// <param name="clientUserID">暂时未使用</param>
         /// <returns>服务器应答</returns>4
-        public LoginResponse Login(LoginRequest loginrequest)
+        public LoginResponse Login(Howell5198Session vcSession,LoginRequest loginrequest)
         {
             LoginResponse response = new LoginResponse();
-            
             response.Success = 0;
-         
+            vcSession.ErrorNo = 0;
             return response;
         }
         /// <summary>
         /// 获取服务器信息
         /// </summary>
         /// <returns>服务器应答</returns>
-        public ServerInfo GetServerInfo()
+        public ServerInfo GetServerInfo(Howell5198Session vcSession)
         {
             Console.WriteLine("客户端请求ServerInfo");
             ServiceEnvironment.Instance.Logger.Info("客户端请求ServerInfo");
@@ -406,6 +372,7 @@ namespace HW5198Service
             response.SlotCount = 9999;
             response.SverVersion = 65000;
             response.NetVersion = 1;
+            vcSession.ErrorNo = 0;
             return response;
         }
         /// <summary>
@@ -415,14 +382,10 @@ namespace HW5198Service
         /// <param name="channelno">通道号</param>
         /// <param name="type">0:主码流 1:子码流</param>
         /// <returns>服务器应答</returns>
-        public StreamResponse GetStream(StreamSession session)
+        public StreamResponse GetStream(MediaStreamSession session)
         {
             StreamResponse response = new StreamResponse();
-            int solt = session.Context.ChannelNo;
-            if (session.Context.Type == 1)//子码流在m_mtsessions中的key值为 通道号+10000
-            {
-                solt += 10000;
-            }
+            var solt = session.Context.StreamIdentifier;
             Monitor.Enter(mtsessions_lock);
             try
             {
@@ -430,7 +393,7 @@ namespace HW5198Service
                 {
                     try
                     {
-                        m_mtsessions.Add(solt, new MTSession());       
+                        m_mtsessions.Add(solt, new MTSession(solt));       
                         m_mtsessions[solt].Connect(session);
                     }
                     catch (Exception ex)
@@ -451,10 +414,10 @@ namespace HW5198Service
                         ServiceEnvironment.Instance.Logger.Error("GetStream Error. VideoClient is Disposed");
                         m_mtsessions.Remove(solt);
                     }
-                    else if (m_mtsessions[solt].VideoClient.IsConnected == false)//VideoClient超时,断开相关的StreamSession
+                    else if (m_mtsessions[solt].VideoClient.IsConnected == false)//VideoClient超时,断开相关的MediaStreamSession
                     {
                         response.Success = -1;
-                        int streamcount = m_mtsessions[solt].StreamSessions.Count;
+                        int streamcount = m_mtsessions[solt].MediaStreamSessions.Count;
                         m_mtsessions[solt].Close();
                         Console.WriteLine(String.Format("{0}个流会话 已断开,来自客户端的流连接总数为{1},关闭原因{2}", streamcount, m_Server.StreamCount, "VideoClient is unConnected"));
                         ServiceEnvironment.Instance.Logger.Info(String.Format("{0}个流会话 已断开,来自客户端的流连接总数为{1},关闭原因{2}", streamcount, m_Server.StreamCount, "VideoClient is unConnected"));
@@ -470,8 +433,8 @@ namespace HW5198Service
                         if (ts > timeout2)//超过40秒没收到过数据
                         {
                             response.Success = -1;
-                            Console.WriteLine(String.Format("通道{0}类型{1}的MTClient超过40秒未转发数据,服务端主动断开", session.Context.ChannelNo, session.Context.Type));
-                            ServiceEnvironment.Instance.Logger.Warn(String.Format("通道{0}类型{1}的MTClient超过40秒未转发数据,服务端主动断开", session.Context.ChannelNo, session.Context.Type));
+                            Console.WriteLine(String.Format("通道{0}类型{1}的MTClient超过40秒未转发数据,服务端主动断开", solt.ChannelNo, solt.StreamNo));
+                            ServiceEnvironment.Instance.Logger.Warn(String.Format("通道{0}类型{1}的MTClient超过40秒未转发数据,服务端主动断开", solt.ChannelNo, solt.StreamNo));
                             m_mtsessions[solt].Close();
                             m_mtsessions.Remove(solt);
                         }
@@ -490,7 +453,7 @@ namespace HW5198Service
         /// </summary>
         /// <param name="channelno">通道号</param>
         /// <returns>帧数据</returns>
-        public ColorInfo GetColor(Howell5198Session session, Int32 channelno)
+        public ColorInfo GetColor(Howell5198Session session, GetColorRequest getColorRequest)
         {
             Console.WriteLine("客户端请求ColorInfo");
             ColorInfo response = new ColorInfo();
@@ -892,22 +855,21 @@ namespace HW5198Service
             //response.FileInfos[0] = new SearchFileRequest() { Beg = searchFileRequest.Beg, End = searchFileRequest.End, ChannelNo = searchFileRequest.ChannelNo, Type = searchFileRequest.Type };
             //return response;
         }
-        public void GetFile(StreamSession session, GetFileRequest getFileRequest)
+        public void GetFile(MediaStreamSession session, GetFileRequest getFileRequest)
         {
             Console.WriteLine("客户端请求GetFile");
             ServiceEnvironment.Instance.Logger.Info("客户端请求GetFile");
-            GetFileResponse response = new GetFileResponse() { ChannelNo = getFileRequest.ChannelNo,Buffer=new byte[100],Datalen=100,Type=0};
+            Byte[] Buffer = new byte[100];
             int offset2 = 0;
-            LittleEndian.WriteInt32(0, response.Buffer, ref offset2, 100);//beg_tm
-            LittleEndian.WriteInt32(0, response.Buffer, ref offset2, 100);//end_tm
+            LittleEndian.WriteInt32(0, Buffer, ref offset2, 100);//beg_tm
+            LittleEndian.WriteInt32(0, Buffer, ref offset2, 100);//end_tm
             int curfilelen=0;
             String begtime=getFileRequest.Beg.ToString();
             if(targetfilelen.ContainsKey(begtime))
                 curfilelen=Convert.ToInt32(targetfilelen[begtime]);
-            LittleEndian.WriteInt32(curfilelen, response.Buffer, ref offset2, 100);//file_len
-            LittleEndian.WriteInt32(0, response.Buffer, ref offset2, 100);//record_type
-            session.SendFile(response);
-
+            LittleEndian.WriteInt32(curfilelen, Buffer, ref offset2, 100);//file_len
+            LittleEndian.WriteInt32(0, Buffer, ref offset2, 100);//record_type
+            session.Send(1, Buffer);
 
             int solt = getFileRequest.ChannelNo;
             MTClient fileclient=null;
@@ -917,7 +879,7 @@ namespace HW5198Service
                 fileclient.Credential = new MTClientCredential() { UserName = ServiceConfiguration.Instance.UserName, Password = ServiceConfiguration.Instance.Password, MobileTerminalId = session.Context.SessionID };
                 fileclient.Connect();  
 
-                VideoInputChannel pseudodev = CreatNewDataManagementClient().GetVideoInputChannelByPseudoCode(Convert.ToString(session.Context.ChannelNo + 1));
+                VideoInputChannel pseudodev = CreatNewDataManagementClient().GetVideoInputChannelByPseudoCode(Convert.ToString(session.Context.StreamIdentifier.ChannelNo + 1));
                 Identity channelid = Identity.Parse(pseudodev.Id);
                 fileclient.MediaDataReceived += new MTClientMediaDataReceivedHandler(FileDataReceived);
 
@@ -954,37 +916,24 @@ namespace HW5198Service
                     int offset = 0;
                     while (offset < mediaData.FrameData.Count)
                     {
-                        GetFileResponse filedata = new GetFileResponse();
-                        filedata.ChannelNo = m_filesessions[sender].Context.ChannelNo;
-                        filedata.Type = 1;
-                        if (mediaData.FrameData.Count > (offset + filedata.Buffer.Length))
+                        Byte[] buffer = new Byte[2048];
+                        if (mediaData.FrameData.Count > (offset + buffer.Length))
                         {
-                            Buffer.BlockCopy(mediaData.FrameData.Array, mediaData.FrameData.Offset + offset, filedata.Buffer, 0, filedata.Buffer.Length);
-                            filedata.Datalen = filedata.Buffer.Length;
-                            offset += filedata.Buffer.Length;
+                            Buffer.BlockCopy(mediaData.FrameData.Array, mediaData.FrameData.Offset + offset, buffer, 0, buffer.Length);
+                            offset += buffer.Length;
                         }
                         else
                         {
-                            Buffer.BlockCopy(mediaData.FrameData.Array, mediaData.FrameData.Offset + offset, filedata.Buffer, 0, mediaData.FrameData.Count - offset);
-                            filedata.Datalen = mediaData.FrameData.Count - offset;
+                            Buffer.BlockCopy(mediaData.FrameData.Array, mediaData.FrameData.Offset + offset, buffer, 0, mediaData.FrameData.Count - offset);
                             offset = mediaData.FrameData.Count;
                         }
-                        bool sendout = m_filesessions[sender].TrySendFile(filedata);
-                        int count = 0;
-                        while (sendout == false)
+                        bool sendout = m_filesessions[sender].TrySend(3, buffer,100,10);
+                        if(sendout==false)
                         {
-                            Thread.Sleep(10);
-                            sendout = m_filesessions[sender].TrySendFile(filedata);
-                            if (m_filesessions[sender].IsConnected() == false)
-                                return;
-                            count++;
-                            if (count > 200)
-                            {
-                                m_filesessions[sender].Close();
-                                Console.WriteLine("回放流数据发送超时，主动关闭session");
-                                ServiceEnvironment.Instance.Logger.Info("回放流数据发送超时，主动关闭session");
-                                return;
-                            }
+                            m_filesessions[sender].Close();
+                            Console.WriteLine("回放流数据发送超时，主动关闭session");
+                            ServiceEnvironment.Instance.Logger.Info("回放流数据发送超时，主动关闭session");
+                            return;
                         }
                     }
                 }
@@ -1095,9 +1044,7 @@ namespace HW5198Service
         {
             Console.WriteLine("客户端请求GetNetHead");
             ServiceEnvironment.Instance.Logger.Info("客户端请求GetNetHead");
-            int solt=getNetHeadRequest.ChannelNo;
-            if(getNetHeadRequest.IsSub>0)
-                solt += 10000;
+            var solt = new MediaStreamIdentifier(getNetHeadRequest.ChannelNo, (getNetHeadRequest.IsSub > 0)?1:0);
             VideoInputChannel pseudodev = CreatNewDataManagementClient().GetVideoInputChannelByPseudoCode(Convert.ToString(getNetHeadRequest.ChannelNo + 1));
             Identity channelid = Identity.Parse(pseudodev.Id);
 
@@ -1168,27 +1115,37 @@ namespace HW5198Service
 
         public GetMotionResponse GetMotionSet(Howell5198Session session, GetMotionRequest getMotionRequest)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("客户端请求GetMotionSet");
+            GetMotionResponse response = new GetMotionResponse();
+            return response;
         }
 
         public DavinciUsers GetUsers(Howell5198Session session)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("客户端请求GetUsers");
+            DavinciUsers response = new DavinciUsers();
+            return response;
         }
 
         public SetMotionResponse SetMotionSet(Howell5198Session session, SetMotionRequest setMotionRequest)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("客户端请求SetMotionSet");
+            SetMotionResponse response = new SetMotionResponse();
+            return response;
         }
 
         public SyncTimeResponse SyncTime(Howell5198Session session, SyncTimeRequest syncTimeRequest)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("客户端请求SyncTime");
+            SyncTimeResponse response = new SyncTimeResponse();
+            return response;
         }
 
         public UpdateUserResponse UpdateUser(Howell5198Session session, UpdateUserRequest updateUserRequest)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("客户端请求UpdateUser");
+            UpdateUserResponse response = new UpdateUserResponse();
+            return response;
         }
 
 

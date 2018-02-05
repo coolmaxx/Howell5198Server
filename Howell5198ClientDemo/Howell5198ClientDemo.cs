@@ -21,7 +21,7 @@ namespace Howell5198ClientDemo
         public void Run()
         {
             LoginTest("admin", "12345");
-            //StreamTest();
+           //StreamTest();
             //ColorTest();
             //OsdChannelTest();
             //OsdDateTest();
@@ -35,8 +35,9 @@ namespace Howell5198ClientDemo
             //GetNetHeadTest();
             //GetFileTest();
             //DeviceControlTest();
-           //GetDevCfgTest();
-           // GetUserTest();
+            //GetDevCfgTest();
+            //GetUserTest();
+
             NtpServerTest();
             DeviceSystemTest();
             DeviceNetWorkTest();

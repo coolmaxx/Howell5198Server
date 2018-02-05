@@ -8,108 +8,12 @@ using Howell5198.Protocols;
 
 namespace Howell5198
 {
-    public class Howell5198Session : Session<SessionContext>
-    {
-        public Howell5198Session(FixedHeaderProtocolSession<ProtocolHeader> protocolSession, Int32 timeout, System.Net.IPEndPoint remoteEndPoint, SessionContext context)
-            : base(protocolSession.SessionID, timeout, remoteEndPoint, context)
-        {
-            this.ProtocolSession = protocolSession;
-        }
-        /// <summary>
-        /// 协议会话信息
-        /// </summary>
-        public FixedHeaderProtocolSession<ProtocolHeader> ProtocolSession { get; private set; }
-
-        public Boolean IsConnected()
-        {
-            return ProtocolSession.Connected;
-        }
-        /// <summary>
-        /// 发送数据包
-        /// </summary>
-        /// <typeparam name="TPayload"></typeparam>
-        /// <param name="sequence"></param>
-        /// <param name="command"></param>
-        /// <param name="payload"></param>
-        public void Send(UInt32 errornum, UInt32 command, byte[] payload)
-        {
-            if (payload==null)
-            {
-                ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = errornum, dataLen = 0 }, null));
-            }
-            else
-            {
-                ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = errornum, dataLen = (uint)payload.Length }, payload));
-            }
-            
-        }
-        /// <summary>
-        /// 尝试发送数据包
-        /// </summary>
-        /// <param name="command"></param>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        public Boolean TrySend(UInt32 errornum, UInt32 command, byte[] payload)
-        {
-            if (payload == null)
-            {
-                return ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = errornum, dataLen = 0 }, null));
-            }
-            else
-            {
-                return ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = errornum, dataLen = (uint)payload.Length }, payload));
-            }
-        }
-        //private UInt32 m_CSeq = 0;
-        ///// <summary>
-        ///// 获取序号
-        ///// </summary>
-        ///// <returns>应答返回序号</returns>
-        //public UInt32 GetCSeq()
-        //{
-        //    lock (this)
-        //    {
-        //        return ++m_CSeq;
-        //    }
-        //}
-    }
-
     /// <summary>
-    /// 会话上下文对象
+    /// 媒体流会话
     /// </summary>
-    public class SessionContext
+    public class MediaStreamSession : Session<MediaStreamSessionContext>
     {
-        /// <summary>
-        /// 会话上下文对象
-        /// </summary>
-        /// <param name="userName">用户名</param>
-        /// <param name="password">密码</param>
-        /// <param name="isStreamSession">是否为流的会话</param>
-        /// <param name="isStreamSession">会话ID</param>
-        public SessionContext(String userName, String password,String sessionID)
-        {
-            this.UserName = userName;
-            this.Password = password;
-            this.SessionID = sessionID;
-        }
-        /// <summary>
-        /// 用户名
-        /// </summary>
-        public String UserName { get; private set; }
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public String Password { get; private set; }
-
-        /// <summary>
-        /// 会话ID
-        /// </summary>
-        public String SessionID { get; private set; }
-    }
-
-    public class StreamSession : Session<StreamSessionContext>
-    {
-        public StreamSession(FixedHeaderProtocolSession<ProtocolHeader> protocolSession, Int32 timeout, System.Net.IPEndPoint remoteEndPoint, StreamSessionContext context)
+        public MediaStreamSession(FixedHeaderProtocolSession<ProtocolHeader> protocolSession, Int32 timeout, System.Net.IPEndPoint remoteEndPoint, MediaStreamSessionContext context)
             : base(protocolSession.SessionID, timeout, remoteEndPoint, context)
         {
             this.ProtocolSession = protocolSession;
@@ -118,77 +22,162 @@ namespace Howell5198
         /// 协议会话信息
         /// </summary>
         public FixedHeaderProtocolSession<ProtocolHeader> ProtocolSession { get; private set; }
-
+        /// <summary>
+        /// 会话连接状态
+        /// </summary>
+        /// <returns></returns>
         public Boolean IsConnected()
-        {
+        { 
             return ProtocolSession.Connected;
         }
         /// <summary>
-        /// 发送数据包
+        /// 发送媒体数据
         /// </summary>
-        public void Send(FramePayload framePayload)
-        {          
-            byte[] payload = framePayload.GetBytes();
-            uint command = COMMAND.Main_stream;
-            if (Context.Type==1)
-                command = COMMAND.Sub_stream;
-            ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = 0, dataLen = (uint)payload.Length }, payload));
-        }
-        /// <summary>
-        /// 尝试发送数据包
-        /// </summary>
-        /// <returns></returns>
-        public Boolean TrySend(FramePayload framePayload)
+        /// <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-BP帧</param>
+        /// <param name="payload">载荷数据</param>
+        public void Send(Int32 frameType, Byte[] payload)
         {
-            uint command = COMMAND.Main_stream;
-            if (Context.Type == 1)
+            if (payload == null || payload.Length == 0) return;
+            //录像视频
+            if (this.Context.IsFileStream == true)
             {
-                command = COMMAND.Sub_stream;
-                if (framePayload.FrameType == FramePayload.frametype.HW_FRAME_VIDEO_P)
-                    framePayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_P;
-                else if (framePayload.FrameType == FramePayload.frametype.HW_FRAME_VIDEO_I)
-                    framePayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_I;
-                else if (framePayload.FrameType == FramePayload.frametype.HW_FRAME_VIDEO_B)
-                    framePayload.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_BP;
+                GetFileResponse p = new GetFileResponse();
+                if (frameType == 1) p.Type = 0;
+                else p.Type = 1;
+
+                p.Buffer = payload;
+                p.ChannelNo = this.Context.StreamIdentifier.ChannelNo;
+                p.Datalen = payload.Length;
+                p.Buffer = payload;
+                Byte[] data = p.GetBytes();
+                ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                    new ProtocolHeader() { proType = ProtocolType.GetFile, errornum = 0, dataLen = (UInt32)data.Length }, data));
             }
-                
-            if (framePayload.FrameData == null)
-            {
-                return ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = 1, dataLen = 0 }, null));
-            }
+            //实时视频
             else
             {
-                byte[] payload = framePayload.GetBytes();
-                return ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = 0, dataLen = (uint)payload.Length }, payload));
+                FramePayload p = new FramePayload();
+                p.FrameData = payload;
+                //实时主码流
+                if (this.Context.StreamIdentifier.StreamNo == 0)
+                {
+                    if (frameType == 1) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_HEAD;
+                    else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
+                    else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_I;
+                    else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_P;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_BP;
+                    else return;
+                    Byte[] data = p.GetBytes();
+                    ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                        new ProtocolHeader() { proType = ProtocolType.Main_stream, errornum = 0, dataLen = (UInt32)data.Length }, data));
+                }
+                else
+                {
+                    //实时子码流
+                    if (frameType == 1) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_HEAD;
+                    else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
+                    else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_I;
+                    else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_P;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_BP;
+                    else return;
+                    Byte[] data = p.GetBytes();
+                    ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                      new ProtocolHeader() { proType = ProtocolType.Sub_stream, errornum = 0, dataLen = (UInt32)data.Length }, data));
+                }
             }
-           
+
         }
 
         /// <summary>
-        /// 发送回放数据包
+        /// 发送媒体数据
         /// </summary>
-        public void SendFile(GetFileResponse file)
+        /// <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-BP帧</param>
+        /// <param name="payload">载荷数据</param>
+        /// <param name="tryTimes">尝试重新发送的次数</param>
+        /// <param name="tryInterval">尝试重新发送的间隔，单位毫秒</param>
+        /// <returns></returns>
+        public Boolean TrySend(Int32 frameType, Byte[] payload, Int32 tryTimes = 0, Int32 tryInterval = 0)
         {
-            try
+            if (payload == null || payload.Length == 0) return false;
+           
+            //录像视频
+            if (this.Context.IsFileStream == true)
             {
-                byte[] payload = file.GetBytes();
-                uint command = COMMAND.GetFile;
-                ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = 0, dataLen = (uint)payload.Length }, payload));
+                GetFileResponse p = new GetFileResponse();
+                if (frameType == 1) p.Type = 0;
+                else p.Type = 1;
+                p.Buffer = payload;
+                p.ChannelNo = this.Context.StreamIdentifier.ChannelNo;
+                p.Datalen = payload.Length;
+                p.Buffer = payload;
+                Byte[] data = p.GetBytes();
+                int i = 0;
+                do
+                {
+                    if(ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                    new ProtocolHeader() { proType = ProtocolType.GetFile, errornum = 0, dataLen = (UInt32)data.Length }, data)))
+                    {
+                        return true;
+                    }
+                    ++i;
+                    System.Threading.Thread.Sleep(tryInterval);
+                } while (i < tryTimes);
+                return false;
             }
-            catch
-            { }
-           
+            //实时视频
+            else
+            {
+                FramePayload p = new FramePayload();
+                p.FrameData = payload;
+                //实时主码流
+                if (this.Context.StreamIdentifier.StreamNo == 0)
+                {
+                    if (frameType == 1) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_HEAD;
+                    else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
+                    else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_I;
+                    else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_P;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_BP;
+                    else return false;
+                    Byte[] data = p.GetBytes();
+                    int i = 0;
+                    do
+                    {
+                        if (ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                        new ProtocolHeader() { proType = ProtocolType.Main_stream, errornum = 0, dataLen = (UInt32)data.Length }, data)))
+                        {
+                            return true;
+                        }
+                        ++i;
+                        System.Threading.Thread.Sleep(tryInterval);
+                    } while (i < tryTimes);
+                    return false;
+                }
+                //实时子码流
+                else
+                {
+                    if (frameType == 1) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_HEAD;
+                    else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
+                    else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_I;
+                    else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_P;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_BP;
+                    else return false;
+                    Byte[] data = p.GetBytes();
+                    int i = 0;
+                    do
+                    {
+                        if (ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
+                      new ProtocolHeader() { proType = ProtocolType.Sub_stream, errornum = 0, dataLen = (UInt32)data.Length }, data)))
+                        {
+                            return true;
+                        }
+                        ++i;
+                        System.Threading.Thread.Sleep(tryInterval);
+                    } while (i < tryTimes);
+                    return false;
+                }
+            }
         }
 
-        /// <summary>
-        /// 尝试发送回放数据包
-        /// </summary>
-        public bool TrySendFile(GetFileResponse file)
-        {
-            byte[] payload = file.GetBytes();
-            uint command = COMMAND.GetFile;
-            return ProtocolSession.TrySend(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"), new ProtocolHeader() { proType = command, errornum = 0, dataLen = (uint)payload.Length }, payload));
-        }
         /// <summary>
         /// 主动关闭session
         /// </summary>
@@ -198,31 +187,128 @@ namespace Howell5198
         }
     }
 
-    public class StreamSessionContext
+    /// <summary>
+    /// 媒体流会话上下文
+    /// </summary>
+    public class MediaStreamSessionContext
     {
         /// <summary>
-        /// 会话上下文对象
+        /// 媒体流会话上下文对象
         /// </summary>
-        /// <param name="sessionID">唯一标识</param>
-        /// <param name="channelNo">通道号</param>
-        /// <param name="type">流类型，0:主码流 1:子码流 2:回放流</param>
-        public StreamSessionContext(String sessionID, Int32 channelNo, Int32 type)
+        /// <param name="sessionID">会话ID</param>
+        public MediaStreamSessionContext(String sessionID, MediaStreamIdentifier streamIdentifier)
+            : this(sessionID, streamIdentifier, false, null, null)
+        {
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sessionID">会话ID</param>
+        /// <param name="streamIdentifier">码流唯一标识符</param>
+        /// <param name="isFileStream">是否为文件流</param>
+        /// <param name="beginTime">文件开始时间</param>
+        /// <param name="endTime">文件结束时间</param>
+        public MediaStreamSessionContext(String sessionID, MediaStreamIdentifier streamIdentifier, Boolean isFileStream, Nullable<DateTime> beginTime, Nullable<DateTime> endTime)
         {
             this.SessionID = sessionID;
-            this.ChannelNo = channelNo;
-            this.Type = type;
+            this.StreamIdentifier = streamIdentifier;
+            this.IsFileStream = isFileStream;
+            this.BeginTime = beginTime;
+            this.EndTime = endTime;
         }
         /// <summary>
         /// 会话ID
         /// </summary>
         public String SessionID { get; private set; }
         /// <summary>
-        /// 通道号
+        /// 码流唯一标识符
         /// </summary>
-        public Int32 ChannelNo { get; set; }
+        public MediaStreamIdentifier StreamIdentifier { get; private set; }
         /// <summary>
-        /// 0:主码流 1:子码流  2:回放文件流
+        /// 是否为文件流
         /// </summary>
-        public Int32 Type { get; set; }
+        public Boolean IsFileStream { get; private set; }
+        /// <summary>
+        /// 文件开始时间
+        /// </summary>
+        public Nullable<DateTime> BeginTime { get; private set; }
+        /// <summary>
+        /// 文件结束时间
+        /// </summary>
+        public Nullable<DateTime> EndTime { get; private set; }
+    }
+    /// <summary>
+    /// 媒体流唯一标识符
+    /// </summary>
+    public class MediaStreamIdentifier
+    {
+        /// <summary>
+        /// 媒体流唯一标识符
+        /// </summary>
+        /// <param name="channelNo">通道编号0-n</param>
+        /// <param name="streamNo">码流编号 0-主码流，1-子码流...</param>
+        public MediaStreamIdentifier(Int32 channelNo, Int32 streamNo)
+        {
+            this.ChannelNo = channelNo;
+            this.StreamNo = streamNo;
+        }
+        /// <summary>
+        /// 通道编号0-n
+        /// </summary>
+        public Int32 ChannelNo { get; private set; }
+        /// <summary>
+        /// 码流编号 0-主码流，1-子码流...
+        /// </summary>
+        public Int32 StreamNo { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("{0}_{1}", this.ChannelNo, this.StreamNo);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            return obj.GetHashCode() == this.GetHashCode();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+        /// <summary>
+        /// ==
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator ==(MediaStreamIdentifier left, MediaStreamIdentifier right)
+        {
+            if (left as MediaStreamIdentifier == null && right as MediaStreamIdentifier == null) return true;
+            if (left as MediaStreamIdentifier == null || right as MediaStreamIdentifier == null) return false;
+            return left.GetHashCode() == right.GetHashCode();
+        }
+        /// <summary>
+        /// !=
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator !=(MediaStreamIdentifier left, MediaStreamIdentifier right)
+        {
+            return !(left == right);
+        }
+
     }
 }

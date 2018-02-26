@@ -170,6 +170,29 @@ namespace Howell5198
         {
             //不做任何处理
         }
+        private void Send<TResponse>(Howell5198Session session, FixedHeaderPackageInfo<ProtocolHeader> requestInfo, Func<Howell5198Session, TResponse> instanceFunction)
+           where TResponse : class, IBytesSerialize, new()
+        {
+            TResponse response = null;
+            session.ErrorNo = 0;
+            try
+            {
+                response = instanceFunction(session);
+            }
+            catch (Exception ex)
+            {
+                session.ErrorNo = ErrorNo.HW_NET_NETWORK_RECV_ERROR;
+                Console.WriteLine("Protocol Process Error,{0}.", ex.Message);
+            }
+            if (response == null)
+            {
+                session.Send(session.ErrorNo, requestInfo.Header.proType, null);
+            }
+            else
+            {
+                session.Send(session.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+            }
+        }
         private void Send<TRequest, TResponse>(Howell5198Session session, FixedHeaderPackageInfo<ProtocolHeader> requestInfo, Func<Howell5198Session, TRequest, TResponse> instanceFunction)
             where TRequest : class, IBytesSerialize, new()
             where TResponse : class, IBytesSerialize, new()
@@ -239,8 +262,16 @@ namespace Howell5198
                     int type = requestInfo.Header.proType == ProtocolType.Sub_stream ? 1 : 0;
                     MediaStreamSession newStreamSession = new MediaStreamSession(session, AliveInterval, session.RemoteEndPoint,
                           new MediaStreamSessionContext(session.SessionID, new MediaStreamIdentifier(request.ChannelNo, type)));
-
-                    StreamResponse response = m_AppInstance.GetStream(newStreamSession);
+                    StreamResponse response = null;
+                    try
+                    {
+                        response = m_AppInstance.GetStream(newStreamSession);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("GetStream Error,{0}.", ex.Message);
+                    }
+                    
                     if (response.Success == -1)
                     {
                         vcSession.Send(0, requestInfo.Header.proType, response.GetBytes());
@@ -275,7 +306,15 @@ namespace Howell5198
                         newSession.Dispose();
                         return;
                     }
-                    m_AppInstance.GetFile(newSession, request);//获得GetFileResponse.Type=0的包
+                    try
+                    { 
+                        m_AppInstance.GetFile(newSession, request);//获得GetFileResponse.Type=0的包
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("GetFile Error,{0}.", ex.Message);
+                    }
+                   
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetNetHead)
                 {
@@ -327,8 +366,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Get_netinfo)
                 {
-                    NetInfo response = m_AppInstance.GetNetInfo(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<NetInfo>(vcSession, requestInfo, m_AppInstance.GetNetInfo);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Set_netinfo)
                 {
@@ -336,8 +374,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Get_systemtime)
                 {
-                    SystemTimeInfo response = m_AppInstance.GetSystemTime(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<SystemTimeInfo>(vcSession, requestInfo, m_AppInstance.GetSystemTime);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Set_systemtime)
                 {
@@ -345,20 +382,16 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Restart_device)
                 {
-                    RestartDeviceResponse response = m_AppInstance.RestartDevice(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<RestartDeviceResponse>(vcSession, requestInfo, m_AppInstance.RestartDevice);
                 }
 
                 else if (requestInfo.Header.proType == ProtocolType.Close_device)
                 {
-                    CloseDeviceResponse response = m_AppInstance.CloseDevice(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<CloseDeviceResponse>(vcSession, requestInfo, m_AppInstance.CloseDevice);
                 }
-
                 else if (requestInfo.Header.proType == ProtocolType.Reset)
                 {
-                    ResetDeviceResponse response = m_AppInstance.ResetDevice(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<ResetDeviceResponse>(vcSession, requestInfo, m_AppInstance.ResetDevice);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Get_rs232cfg)
                 {
@@ -410,8 +443,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetTimeEx)
                 {
-                    GetNetSyncTimeResponse response = m_AppInstance.GetNetSyncTime(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<GetNetSyncTimeResponse>(vcSession, requestInfo, m_AppInstance.GetNetSyncTime);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.SetTimeEx)
                 {
@@ -423,8 +455,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetDeviceCfg)
                 {
-                    DeviceConfig response = m_AppInstance.GetDeviceConfig(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<DeviceConfig>(vcSession, requestInfo, m_AppInstance.GetDeviceConfig);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetMotionSet)
                 {
@@ -440,8 +471,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetUser)
                 {
-                    DavinciUsers response = m_AppInstance.GetUsers(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<DavinciUsers>(vcSession, requestInfo, m_AppInstance.GetUsers);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.UpdateUser)
                 {
@@ -453,8 +483,7 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Get_ntpinfo)
                 {
-                    NtpInfo response = m_AppInstance.GetNtpInfo(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<NtpInfo>(vcSession, requestInfo, m_AppInstance.GetNtpInfo);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.Set_ntpinfo)
                 {
@@ -482,28 +511,23 @@ namespace Howell5198
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetServiceVersion)
                 {
-                    tServiceVersion response = m_AppInstance.GetServiceVersion(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<tServiceVersion>(vcSession, requestInfo, m_AppInstance.GetServiceVersion);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetDeviceInfo)
                 {
-                    tDeviceInfo response = m_AppInstance.GetDeviceInfo(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<tDeviceInfo>(vcSession, requestInfo, m_AppInstance.GetDeviceInfo);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetDeviceStatus)
                 {
-                    tDeviceStatus response = m_AppInstance.GetDeviceStatus(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<tDeviceStatus>(vcSession, requestInfo, m_AppInstance.GetDeviceStatus);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetNetworkInterface)
                 {
-                    tNetworkInterface response = m_AppInstance.GetNetworkInterface(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<tNetworkInterface>(vcSession, requestInfo, m_AppInstance.GetNetworkInterface);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetDecodingUnitList)
                 {
-                    var response = m_AppInstance.GetDecodingUnitList(vcSession);
-                    vcSession.Send(vcSession.ErrorNo, requestInfo.Header.proType, response.GetBytes());
+                    Send<tDecodingUnitList>(vcSession, requestInfo, m_AppInstance.GetDecodingUnitList);
                 }
                 else if (requestInfo.Header.proType == ProtocolType.GetDecodingUnit)
                 {

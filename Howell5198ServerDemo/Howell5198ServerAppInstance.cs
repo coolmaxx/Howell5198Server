@@ -613,14 +613,7 @@ namespace HW5198Service
         public SystemTimeInfo GetSystemTime(Howell5198Session session)
         {
             Console.WriteLine("客户端请求SystemTimeInfo");
-            SystemTimeInfo response = new SystemTimeInfo();
-            response.WYear = 2016;
-            response.WMonth = 8;
-            response.WDay = 15;
-            response.WHour = 15;
-            response.WMinute = 38;
-            response.WSecond = 23;
-            response.WMilliseconds = 222;
+            SystemTimeInfo response = LocalInstance.GetSystemTime();
             return response;
         }
         /// <summary>

@@ -4576,7 +4576,7 @@
             <summary>
             发送媒体数据
             </summary>
-            <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-BP帧</param>
+            <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-B帧,6-MJPEG帧</param>
             <param name="payload">载荷数据</param>
         </member>
         <member name="M:Howell5198.MediaStreamSession.TrySend(System.Int32,System.Byte[],System.Int32,System.Int32)">

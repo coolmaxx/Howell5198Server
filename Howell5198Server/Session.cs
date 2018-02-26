@@ -33,7 +33,7 @@ namespace Howell5198
         /// <summary>
         /// 发送媒体数据
         /// </summary>
-        /// <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-BP帧</param>
+        /// <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-B帧,6-MJPEG帧</param>
         /// <param name="payload">载荷数据</param>
         public void Send(Int32 frameType, Byte[] payload)
         {
@@ -65,7 +65,8 @@ namespace Howell5198
                     else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
                     else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_I;
                     else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_P;
-                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_BP;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_B;
+                    else if (frameType == 6) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_MJPEG;
                     else return;
                     Byte[] data = p.GetBytes();
                     ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
@@ -78,7 +79,8 @@ namespace Howell5198
                     else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
                     else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_I;
                     else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_P;
-                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_BP;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_B;
+                    else if (frameType == 6) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_MJPEG;
                     else return;
                     Byte[] data = p.GetBytes();
                     ProtocolSession.Send(new FixedHeaderPackageInfo<ProtocolHeader>(Guid.NewGuid().ToString("N"),
@@ -136,7 +138,8 @@ namespace Howell5198
                     else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
                     else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_I;
                     else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_P;
-                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_BP;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_B;
+                    else if (frameType == 6) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_MJPEG;
                     else return false;
                     Byte[] data = p.GetBytes();
                     int i = 0;
@@ -159,7 +162,8 @@ namespace Howell5198
                     else if (frameType == 2) p.FrameType = FramePayload.frametype.HW_FRAME_AUDIO;
                     else if (frameType == 3) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_I;
                     else if (frameType == 4) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_P;
-                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_BP;
+                    else if (frameType == 5) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_B;
+                    else if (frameType == 6) p.FrameType = FramePayload.frametype.HW_FRAME_VIDEO_SUB_MJPEG;
                     else return false;
                     Byte[] data = p.GetBytes();
                     int i = 0;

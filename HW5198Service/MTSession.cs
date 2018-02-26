@@ -150,6 +150,8 @@ namespace HW5198Service
                 {
                     if (VideoClient == null)
                         return;
+                    if (VideoClient.IsConnected == false)
+                        return;
                     if (VideoClient.IsSubscribed)
                     {
                         AddSession(Session);
@@ -166,7 +168,7 @@ namespace HW5198Service
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(String.Format("VideoClient Subscribe Error.ChannelNo:{0}", solt.ChannelNo));
+                    Console.WriteLine(String.Format("VideoClient Subscribe Error.ChannelNo:{0}", solt.ChannelNo)+ex.Message);
                     ServiceEnvironment.Instance.Logger.Error(String.Format("VideoClient Subscribe Error.ChannelNO:{0}", solt.ChannelNo), ex);
                 }
             }
@@ -192,6 +194,8 @@ namespace HW5198Service
                 frametype = 5;
             else if (mediaData.FrameType == FrameType.Audio)
                 frametype = 2;
+            else if (mediaData.FrameType == FrameType.MJpeg)
+                frametype = 6;
             else
             {
                 Console.WriteLine("frametype error");

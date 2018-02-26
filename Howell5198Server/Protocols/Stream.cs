@@ -111,7 +111,10 @@ namespace Howell5198.Protocols
             HW_FRAME_VIDEO_SUB_P = 9,
             HW_FRAME_VIDEO_SUB_BP = 10,
             HW_FRAME_MOTION_FRAME = 13,
-            HW_FRAME_VIDEO_B = 14
+            HW_FRAME_VIDEO_B = 14,
+            HW_FRAME_VIDEO_SUB_B = 15,
+            HW_FRAME_VIDEO_MJPEG=16,
+            HW_FRAME_VIDEO_SUB_MJPEG=17
         };
         public FramePayload()
         {

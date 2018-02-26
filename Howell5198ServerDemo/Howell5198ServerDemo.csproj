@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="ConvertClass.cs" />
     <Compile Include="HWheader.cs" />
+    <Compile Include="LocalInstance.cs" />
     <Compile Include="MTSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

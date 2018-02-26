@@ -867,6 +867,112 @@
             异常对象
             </summary>
         </member>
+        <member name="T:Howell5198.Howell5198Session">
+            <summary>
+            5198协议会话对象
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.#ctor(SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession{Howell5198.ProtocolHeader},System.Int32,System.Net.IPEndPoint,Howell5198.Howell5198SessionContext)">
+            <summary>
+            
+            </summary>
+            <param name="protocolSession"></param>
+            <param name="timeout"></param>
+            <param name="remoteEndPoint"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.IsConnected">
+            <summary>
+            会话连接状态
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.Send(System.Int32,System.UInt32,System.Byte[])">
+            <summary>
+            发送数据包
+            </summary>
+            <param name="errorNo"></param>
+            <param name="ProtocolType"></param>
+            <param name="payload"></param>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.TrySend(System.Int32,System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            尝试发送数据包
+            </summary>
+            <param name="errorNo"></param>
+            <param name="protocolType"></param>
+            <param name="payload"></param>
+            <param name="tryTimes">尝试重新发送的次数</param>
+            <param name="tryInterval">尝试重新发送的间隔，单位毫秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:Howell5198.Howell5198Session.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="P:Howell5198.Howell5198Session.ProtocolSession">
+            <summary>
+            协议会话信息
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198Session.ErrorNo">
+            <summary>
+            错误号 见ErrorNo静态类
+            </summary>
+        </member>
+        <member name="T:Howell5198.Howell5198SessionContext">
+            <summary>
+            会话上下文对象
+            </summary>
+        </member>
+        <member name="M:Howell5198.Howell5198SessionContext.#ctor(System.String,System.String,System.String)">
+            <summary>
+            会话上下文对象
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="isMediaStreamSession">是否为流的会话</param>
+            <param name="isMediaStreamSession">会话ID</param>
+        </member>
+        <member name="M:Howell5198.Howell5198SessionContext.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            会话上下文对象
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="sessionID">会话ID</param>
+            <param name="loggedIn">是否已登录</param>
+        </member>
+        <member name="M:Howell5198.Howell5198SessionContext.SetLoggedIn(System.String,System.String,System.Boolean)">
+            <summary>
+            设置是否已登录
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="loggedIn"></param>
+        </member>
+        <member name="P:Howell5198.Howell5198SessionContext.SessionID">
+            <summary>
+            会话ID
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198SessionContext.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198SessionContext.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Howell5198.Howell5198SessionContext.LoggedIn">
+            <summary>
+            是否已登录系统
+            </summary>
+        </member>
         <member name="M:Howell5198.IHowell5198ServerContract.Login(Howell5198.Howell5198Session,Howell5198.Protocols.LoginRequest)">
             <summary>
             登陆
@@ -4455,112 +4561,6 @@
             设置图像质量的应答
              </summary>
         </member>
-        <member name="T:Howell5198.Howell5198Session">
-            <summary>
-            5198协议会话对象
-            </summary>
-        </member>
-        <member name="M:Howell5198.Howell5198Session.#ctor(SuperSocket.Extensions.Protocol.FixedHeaderProtocolSession{Howell5198.ProtocolHeader},System.Int32,System.Net.IPEndPoint,Howell5198.Howell5198SessionContext)">
-            <summary>
-            
-            </summary>
-            <param name="protocolSession"></param>
-            <param name="timeout"></param>
-            <param name="remoteEndPoint"></param>
-            <param name="context"></param>
-        </member>
-        <member name="M:Howell5198.Howell5198Session.IsConnected">
-            <summary>
-            会话连接状态
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Howell5198.Howell5198Session.Send(System.Int32,System.UInt32,System.Byte[])">
-            <summary>
-            发送数据包
-            </summary>
-            <param name="errorNo"></param>
-            <param name="ProtocolType"></param>
-            <param name="payload"></param>
-        </member>
-        <member name="M:Howell5198.Howell5198Session.TrySend(System.Int32,System.UInt32,System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            尝试发送数据包
-            </summary>
-            <param name="errorNo"></param>
-            <param name="protocolType"></param>
-            <param name="payload"></param>
-            <param name="tryTimes">尝试重新发送的次数</param>
-            <param name="tryInterval">尝试重新发送的间隔，单位毫秒</param>
-            <returns></returns>
-        </member>
-        <member name="M:Howell5198.Howell5198Session.Dispose(System.Boolean)">
-            <summary>
-            
-            </summary>
-            <param name="disposing"></param>
-        </member>
-        <member name="P:Howell5198.Howell5198Session.ProtocolSession">
-            <summary>
-            协议会话信息
-            </summary>
-        </member>
-        <member name="P:Howell5198.Howell5198Session.ErrorNo">
-            <summary>
-            错误号 见ErrorNo静态类
-            </summary>
-        </member>
-        <member name="T:Howell5198.Howell5198SessionContext">
-            <summary>
-            会话上下文对象
-            </summary>
-        </member>
-        <member name="M:Howell5198.Howell5198SessionContext.#ctor(System.String,System.String,System.String)">
-            <summary>
-            会话上下文对象
-            </summary>
-            <param name="userName">用户名</param>
-            <param name="password">密码</param>
-            <param name="isMediaStreamSession">是否为流的会话</param>
-            <param name="isMediaStreamSession">会话ID</param>
-        </member>
-        <member name="M:Howell5198.Howell5198SessionContext.#ctor(System.String,System.String,System.String,System.Boolean)">
-            <summary>
-            会话上下文对象
-            </summary>
-            <param name="userName">用户名</param>
-            <param name="password">密码</param>
-            <param name="sessionID">会话ID</param>
-            <param name="loggedIn">是否已登录</param>
-        </member>
-        <member name="M:Howell5198.Howell5198SessionContext.SetLoggedIn(System.String,System.String,System.Boolean)">
-            <summary>
-            设置是否已登录
-            </summary>
-            <param name="userName"></param>
-            <param name="password"></param>
-            <param name="loggedIn"></param>
-        </member>
-        <member name="P:Howell5198.Howell5198SessionContext.SessionID">
-            <summary>
-            会话ID
-            </summary>
-        </member>
-        <member name="P:Howell5198.Howell5198SessionContext.UserName">
-            <summary>
-            用户名
-            </summary>
-        </member>
-        <member name="P:Howell5198.Howell5198SessionContext.Password">
-            <summary>
-            密码
-            </summary>
-        </member>
-        <member name="P:Howell5198.Howell5198SessionContext.LoggedIn">
-            <summary>
-            是否已登录系统
-            </summary>
-        </member>
         <member name="T:Howell5198.MediaStreamSession">
             <summary>
             媒体流会话
@@ -4576,7 +4576,7 @@
             <summary>
             发送媒体数据
             </summary>
-            <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-BP帧</param>
+            <param name="frameType">媒体帧类型：1-流头结构，2-音频帧，3-I帧，4-P帧，5-B帧,6-MJPEG帧</param>
             <param name="payload">载荷数据</param>
         </member>
         <member name="M:Howell5198.MediaStreamSession.TrySend(System.Int32,System.Byte[],System.Int32,System.Int32)">
